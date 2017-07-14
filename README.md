@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/WebAssembly/spec.svg?branch=master)](https://travis-ci.org/WebAssembly/spec)
+[![Build Status](https://travis-ci.org/WebAssembly/multi-value.svg?branch=master)](https://travis-ci.org/WebAssembly/multi-value)
 
 # Multi-value Proposal for WebAssembly
 
