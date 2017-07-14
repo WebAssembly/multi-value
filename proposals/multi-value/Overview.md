@@ -36,6 +36,77 @@
     * `i32.select3` = `dup if ... else ... end`
 
 
+## Examples
+
+### Functions with multiple return Values
+
+A simple swap function.
+```
+(func $swap (param i32 i32) (result i32 i32)
+	(get_local 1) (get_local 0)
+)
+```
+
+An addition function returning an additional carry bit.
+```
+(func $add64_u_with_carry (param $i i64) (param $j i64) (param $c i32) (result i64 i32)
+	(local $k i64)
+	(set_local $k
+		(i64.add (i64.add (get_local $i) (get_local $j)) (i64.extend_u/i32 (get_local $c)))
+	)
+	(return (get_local $k) (i64.lt_u (get_local $k) (get_local $i)))
+)
+```
+
+### Instructions with multiple results
+
+* `iNN.divrem` : \[iNN iNN\] -> \[iNN iNN\]
+* `iNN.add_carry` : \[iNN iNN i32\] -> \[iNN i32\]
+* `iNN.sub_carry` : \[iNN iNN i32\] -> \[iNN i32\]
+* etc.
+
+
+### Blocks with inputs
+
+Conditionally manipulating a stack operand without using a local.
+```
+(func $add64_u_saturated (param i64 i64) (result i64)
+	($i64.add64_carry (get_local 0) (get_local 1) (i32.const 0))
+	(if (param i64) (result i64)
+		(drop) (i64.const 0xffff_ffff_ffff_ffff)
+	)
+)
+```
+
+An iterative factorial funciton whose loop doesn't use locals, but uses arguments like phis.
+```
+(func $fac (param i64) (result i64)
+	(i64.const 1) (get_local 0)
+	(loop $l (param i64 i64)
+		(pick 1) (pick 1) (i64.mul)
+		(pick 1) (i64.const 1) (i64.sub)
+		(pick 0) (i32.const 0) (i64.gt_u)
+		(br_if $l)
+		(pick 1) (return)
+	)
+)
+```
+
+Macro definition of an instruction expanding into an `if`.
+```
+i64.select3  =
+     dup if (param i64 i64 i64 i32) (result i64) … select ... else … end
+```
+
+Macro expansion of `if` itself.
+```
+if (param t*) (result u*) A else B end  =
+      block (param t* i32) (result u*)
+          block (param t* i32) (result t*) (br_if 0)  B  (br 1) end  A
+      end
+```
+
+
 ## Spec Changes
 
 ### Structure
