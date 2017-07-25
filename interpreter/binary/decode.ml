@@ -199,8 +199,8 @@ let memop s =
 
 let block_type s =
   match peek s with
-  | Some 0x40 -> skip 1 s; ValBlockType []
-  | Some b when b land 0xc0 = 0x40 -> ValBlockType [value_type s]
+  | Some 0x40 -> skip 1 s; ValBlockType None
+  | Some b when b land 0xc0 = 0x40 -> ValBlockType (Some (value_type s))
   | _ -> VarBlockType (at vs33 s)
 
 let rec instr s =

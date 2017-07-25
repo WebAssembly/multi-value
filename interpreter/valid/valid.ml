@@ -175,7 +175,8 @@ let check_memop (c : context) (memop : 'a memop) get_sz at =
 let check_block_type (c : context) (bt : block_type) : func_type =
   match bt with
   | VarBlockType x -> type_ c x
-  | ValBlockType ts -> FuncType ([], ts)
+  | ValBlockType None -> FuncType ([], [])
+  | ValBlockType (Some t) -> FuncType ([], [t])
 
 let rec check_instr (c : context) (e : instr) (s : infer_stack_type) : op_type =
   match e.it with

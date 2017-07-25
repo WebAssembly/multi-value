@@ -67,7 +67,7 @@ type var = int32 Source.phrase
 type literal = Values.value Source.phrase
 type name = int list
 
-type block_type = VarBlockType of var | ValBlockType of value_type list
+type block_type = VarBlockType of var | ValBlockType of value_type option
 
 type instr = instr' Source.phrase
 and instr' =

@@ -218,7 +218,7 @@ let constop v = value_type (type_of v.it) ^ ".const"
 
 let block_type = function
   | VarBlockType x -> [Node ("type " ^ var x, [])]
-  | ValBlockType ts -> decls "result" ts
+  | ValBlockType ts -> decls "result" (list_of_opt ts)
 
 let rec instr e =
   let head, inner =

@@ -93,7 +93,8 @@ let func_type_of = function
 let block_type inst bt =
   match bt with
   | VarBlockType x -> (type_ inst x).it
-  | ValBlockType ts -> FuncType ([], ts)
+  | ValBlockType None -> FuncType ([], [])
+  | ValBlockType (Some t) -> FuncType ([], [t])
 
 let take n (vs : 'a stack) at =
   try Lib.List32.take n vs with Failure _ -> Crash.error at "stack underflow"
@@ -299,12 +300,12 @@ let rec step (inst : instance) (c : config) : config =
 
     | Invoke clos, vs ->
       let FuncType (ins, out) = func_type_of clos in
-      let n = Lib.List32.length ins in
-      let args, vs' = take n vs e.at, drop n vs e.at in
+      let n1, n2 = Lib.List32.length ins, Lib.List32.length out in
+      let args, vs' = take n1 vs e.at, drop n1 vs e.at in
       (match clos with
       | AstFunc (inst', f) ->
         let locals' = List.rev args @ List.map default_value f.it.locals in
-        let instrs' = [Plain (Block (ValBlockType out, f.it.body)) @@ f.at] in
+        let instrs' = [Label (n2, [], [], List.map plain f.it.body) @@ f.at] in
         vs', [Local (!inst', List.map ref locals', [], instrs') @@ e.at]
 
       | HostFunc (t, f) ->

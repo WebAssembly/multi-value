@@ -348,7 +348,8 @@ block :
       fun c ->
       let bt =
         match fst $1 with
-        | FuncType ([], (([] | [_]) as ts)) -> ValBlockType ts
+        | FuncType ([], []) -> ValBlockType None
+        | FuncType ([], [t]) -> ValBlockType (Some t)
         | ft ->  VarBlockType (inline_type c ft at)
       in bt, snd $1 c }
 
@@ -393,7 +394,8 @@ if_block :
       fun c c' ->
       let bt =
         match fst $1 with
-        | FuncType ([], (([] | [_]) as ts)) -> ValBlockType ts
+        | FuncType ([], []) -> ValBlockType None
+        | FuncType ([], [t]) -> ValBlockType (Some t)
         | ft ->  VarBlockType (inline_type c ft at)
       in bt, snd $1 c c' }
 

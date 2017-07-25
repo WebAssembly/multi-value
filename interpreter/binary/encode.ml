@@ -136,9 +136,8 @@ let encode m =
 
     let block_type = function
       | VarBlockType x -> vs33 x.it
-      | ValBlockType [] -> vs7 (-0x40)
-      | ValBlockType [t] -> value_type t
-      | ValBlockType _ -> assert false
+      | ValBlockType None -> vs7 (-0x40)
+      | ValBlockType (Some t) -> value_type t
 
     let rec instr e =
       match e.it with
