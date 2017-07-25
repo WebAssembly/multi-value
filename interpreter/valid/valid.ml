@@ -151,9 +151,6 @@ let check_memop (c : context) (memop : 'a memop) get_sz at =
   require (1 lsl memop.align <= size) at
     "alignment must not be larger than natural"
 
-let check_arity n at =
-  require (n <= 1) at "invalid result arity, larger than 1 is not (yet) allowed"
-
 
 (*
  * Conventions:
@@ -175,6 +172,11 @@ let check_arity n at =
  * declarative typing rules.
  *)
 
+let check_block_type (c : context) (bt : block_type) : func_type =
+  match bt with
+  | VarBlockType x -> type_ c x
+  | ValBlockType ts -> FuncType ([], ts)
+
 let rec check_instr (c : context) (e : instr) (s : infer_stack_type) : op_type =
   match e.it with
   | Unreachable ->
@@ -183,21 +185,21 @@ let rec check_instr (c : context) (e : instr) (s : infer_stack_type) : op_type =
   | Nop ->
     [] --> []
 
-  | Block (ts, es) ->
-    check_arity (List.length ts) e.at;
-    check_block {c with labels = ts :: c.labels} es ts e.at;
-    [] --> ts
+  | Block (bt, es) ->
+    let FuncType (ts1, ts2) = check_block_type c bt in
+    check_block {c with labels = ts2 :: c.labels} es ts2 e.at;
+    ts1 --> ts2
 
-  | Loop (ts, es) ->
-    check_arity (List.length ts) e.at;
-    check_block {c with labels = [] :: c.labels} es ts e.at;
-    [] --> ts
+  | Loop (bt, es) ->
+    let FuncType (ts1, ts2) = check_block_type c bt in
+    check_block {c with labels = ts1 :: c.labels} es ts2 e.at;
+    ts1 --> ts2
 
-  | If (ts, es1, es2) ->
-    check_arity (List.length ts) e.at;
-    check_block {c with labels = ts :: c.labels} es1 ts e.at;
-    check_block {c with labels = ts :: c.labels} es2 ts e.at;
-    [I32Type] --> ts
+  | If (bt, es1, es2) ->
+    let FuncType (ts1, ts2) = check_block_type c bt in
+    check_block {c with labels = ts2 :: c.labels} es1 ts2 e.at;
+    check_block {c with labels = ts2 :: c.labels} es2 ts2 e.at;
+    (ts1 @ [I32Type]) --> ts2
 
   | Br x ->
     label c x -->... []
@@ -319,10 +321,6 @@ and check_block (c : context) (es : instr list) (ts : stack_type) at =
  *   s : func_type
  *   x : variable
  *)
-
-let check_type (t : type_) =
-  let FuncType (ins, out) = t.it in
-  check_arity (List.length out) t.at
 
 let check_func (c : context) (f : func) =
   let {ftype; locals; body} = f.it in
@@ -448,7 +446,6 @@ let check_module (m : module_) =
   let c =
     { c1 with globals = c1.globals @ List.map (fun g -> g.it.gtype) globals }
   in
-  List.iter check_type types;
   List.iter (check_global c1) globals;
   List.iter (check_table c1) tables;
   List.iter (check_memory c1) memories;
