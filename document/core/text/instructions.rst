@@ -52,6 +52,7 @@ The following grammar handles the corresponding update to the :ref:`identifier c
 Control Instructions
 ~~~~~~~~~~~~~~~~~~~~
 
+.. _text-blocktype:
 .. _text-block:
 .. _text-loop:
 .. _text-if:
@@ -60,20 +61,34 @@ Control Instructions
 :ref:`Structured control instructions <syntax-instr-control>` can bind an optional symbolic :ref:`label identifier <text-label>`.
 The same label identifier may optionally be repeated after the corresponding :math:`\T{end}` and :math:`\T{else}` pseudo instructions, to indicate the matching delimiters.
 
+Their :ref:`block type <syntax-blocktype>` is given as a :ref:`type use <text-typeuse>`, analogous to the type of :ref:`functions <text-func>`.
+However, the special case of a type use that is syntactically empty or consists of only a single :ref:`result <text-result>` is not regarded as an :ref:`abbreviation <text-typeuse-abbrev>` for an inline :ref:`function type <syntax-functype>`, but is parsed directly into an optional :ref:`value type <syntax-valtype>`.
+
 .. math::
    \begin{array}{llclll}
+   \production{block type} & \Tblocktype_I &
+   \begin{array}[t]{@{}c@{}} ::= \\ | \\ \end{array}
+   &
+   \begin{array}[t]{@{}lcll@{}}
+     (t{:}\Tresult)^? &\Rightarrow& t^? \\
+     x,I'{:}\Ttypeuse_I &\Rightarrow& x & (\iff I' = \{\}) \\
+   \end{array} \\
    \production{block instruction} & \Tblockinstr_I &::=&
-     \text{block}~~I'{:}\Tlabel_I~~\X{rt}{:}\Tresulttype~~(\X{in}{:}\Tinstr_{I'})^\ast~~\text{end}~~\Tid^?
-       \\ &&&\qquad \Rightarrow\quad \BLOCK~\X{rt}~\X{in}^\ast~\END
+     \text{block}~~I'{:}\Tlabel_I~~\X{bt}{:}\Tblocktype~~(\X{in}{:}\Tinstr_{I'})^\ast~~\text{end}~~\Tid^?
+       \\ &&&\qquad \Rightarrow\quad \BLOCK~\X{bt}~\X{in}^\ast~\END
        \qquad\quad~~ (\iff \Tid^? = \epsilon \vee \Tid^? = \Tlabel) \\ &&|&
-     \text{loop}~~I'{:}\Tlabel_I~~\X{rt}{:}\Tresulttype~~(\X{in}{:}\Tinstr_{I'})^\ast~~\text{end}~~\Tid^?
-       \\ &&&\qquad \Rightarrow\quad \LOOP~\X{rt}~\X{in}^\ast~\END
+     \text{loop}~~I'{:}\Tlabel_I~~\X{bt}{:}\Tblocktype~~(\X{in}{:}\Tinstr_{I'})^\ast~~\text{end}~~\Tid^?
+       \\ &&&\qquad \Rightarrow\quad \LOOP~\X{bt}~\X{in}^\ast~\END
        \qquad\qquad (\iff \Tid^? = \epsilon \vee \Tid^? = \Tlabel) \\ &&|&
-     \text{if}~~I'{:}\Tlabel_I~~\X{rt}{:}\Tresulttype~~(\X{in}_1{:}\Tinstr_{I'})^\ast~~
+     \text{if}~~I'{:}\Tlabel_I~~\X{bt}{:}\Tblocktype~~(\X{in}_1{:}\Tinstr_{I'})^\ast~~
        \text{else}~~\Tid_1^?~~(\X{in}_2{:}\Tinstr_{I'})^\ast~~\text{end}~~\Tid_2^?
-       \\ &&&\qquad \Rightarrow\quad \IF~\X{rt}~\X{in}_1^\ast~\ELSE~\X{in}_2^\ast~\END
+       \\ &&&\qquad \Rightarrow\quad \IF~\X{bt}~\X{in}_1^\ast~\ELSE~\X{in}_2^\ast~\END
        \qquad (\iff \Tid_1^? = \epsilon \vee \Tid_1^? = \Tlabel, \Tid_2^? = \epsilon \vee \Tid_2^? = \Tlabel) \\
    \end{array}
+
+.. note::
+   The side condition stating that the :ref:`identifier context <text-context>` :math:`I'` must be empty in the rule for |Ttypeuse| block types enforces that no identifier can be bound in any |Tparam| declaration for a block type.
+
 
 .. _text-nop:
 .. _text-unreachable:
@@ -109,9 +124,9 @@ The :math:`\text{else}` keyword of an :math:`\text{if}` instruction can be omitt
 .. math::
    \begin{array}{llclll}
    \production{block instruction} &
-     \text{if}~~\Tlabel~~\Tresulttype~~\Tinstr^\ast~~\text{end}
+     \text{if}~~\Tlabel~~\Tblocktype~~\Tinstr^\ast~~\text{end}
        &\equiv&
-     \text{if}~~\Tlabel~~\Tresulttype~~\Tinstr^\ast~~\text{else}~~\text{end}
+     \text{if}~~\Tlabel~~\Tblocktype~~\Tinstr^\ast~~\text{else}~~\text{end}
    \end{array}
 
 
