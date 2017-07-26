@@ -305,8 +305,8 @@ and check_block (c : context) (es : instr list) (ts : stack_type) at =
   let s = check_seq c es in
   let s' = pop (stack ts) s at in
   require (snd s' = []) at
-    ("type mismatch: operator requires " ^ string_of_stack_type ts ^
-     " but stack has " ^ string_of_infer_types (snd s'))
+    ("type mismatch: block requires " ^ string_of_stack_type ts ^
+     " but stack has " ^ string_of_infer_types (snd s))
 
 
 (* Functions & Constants *)

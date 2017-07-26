@@ -15,7 +15,14 @@
 
   (func (export "multi") (result i32)
     (loop (call $dummy) (call $dummy) (call $dummy) (call $dummy))
-    (loop (result i32) (call $dummy) (call $dummy) (call $dummy) (i32.const 8))
+    (loop (result i32) (call $dummy) (call $dummy) (i32.const 8) (call $dummy))
+    (drop)
+    (loop (result i32 i64 i32)
+      (call $dummy) (call $dummy) (call $dummy) (i32.const 8) (call $dummy)
+      (call $dummy) (call $dummy) (call $dummy) (i64.const 7) (call $dummy)
+      (call $dummy) (call $dummy) (call $dummy) (i32.const 9) (call $dummy)
+    )
+    (drop) (drop)
   )
 
   (func (export "nested") (result i32)
@@ -87,6 +94,28 @@
       (loop (result f32) (call $dummy) (f32.const 3))
     )
   )
+  (func (export "as-binary-operands") (result i32)
+    (i32.mul
+      (loop (result i32 i32)
+        (call $dummy) (i32.const 3) (call $dummy) (i32.const 4)
+      )
+    )
+  )
+  (func (export "as-compare-operands") (result i32)
+    (f32.gt
+      (loop (result f32 f32)
+        (call $dummy) (f32.const 3) (call $dummy) (f32.const 3)
+      )
+    )
+  )
+  (func (export "as-mixed-operands") (result i32)
+    (loop (result i32 i32)
+      (call $dummy) (i32.const 3) (call $dummy) (i32.const 4)
+    )
+    (i32.const 5)
+    (i32.add)
+    (i32.mul)
+  )
 
   (func (export "break-bare") (result i32)
     (block (loop (br 1) (br 0) (unreachable)))
@@ -94,11 +123,6 @@
     (block (loop (br_table 1 (i32.const 0)) (unreachable)))
     (block (loop (br_table 1 1 1 (i32.const 1)) (unreachable)))
     (i32.const 19)
-  )
-  (func (export "break-value") (result i32)
-    (block (result i32)
-      (loop (result i32) (br 1 (i32.const 18)) (br 0) (i32.const 19))
-    )
   )
   (func (export "break-repeated") (result i32)
     (block (result i32)
@@ -211,9 +235,11 @@
 (assert_return (invoke "as-binary-operand") (i32.const 12))
 (assert_return (invoke "as-test-operand") (i32.const 0))
 (assert_return (invoke "as-compare-operand") (i32.const 0))
+(assert_return (invoke "as-binary-operands") (i32.const 12))
+(assert_return (invoke "as-compare-operands") (i32.const 0))
+(assert_return (invoke "as-mixed-operands") (i32.const 27))
 
 (assert_return (invoke "break-bare") (i32.const 19))
-(assert_return (invoke "break-value") (i32.const 18))
 (assert_return (invoke "break-repeated") (i32.const 18))
 (assert_return (invoke "break-inner") (i32.const 0x1f))
 
@@ -274,8 +300,20 @@
   "type mismatch"
 )
 (assert_invalid
+  (module (func $type-value-nums-vs-void
+    (loop (i32.const 1) (i32.const 2))
+  ))
+  "type mismatch"
+)
+(assert_invalid
   (module (func $type-value-empty-vs-num (result i32)
     (loop (result i32))
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-value-empty-vs-nums (result i32 i32)
+    (loop (result i32 i32))
   ))
   "type mismatch"
 )
@@ -286,8 +324,32 @@
   "type mismatch"
 )
 (assert_invalid
+  (module (func $type-value-void-vs-nums (result i32 i32)
+    (loop (result i32 i32) (nop))
+  ))
+  "type mismatch"
+)
+(assert_invalid
   (module (func $type-value-num-vs-num (result i32)
     (loop (result i32) (f32.const 0))
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-value-num-vs-nums (result i32 i32)
+    (loop (result i32 i32) (i32.const 0))
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-value-partial-vs-nums (result i32 i32)
+    (i32.const 1) (loop (result i32 i32) (i32.const 2))
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-value-nums-vs-num (result i32)
+    (loop (result i32) (i32.const 1) (i32.const 2))
   ))
   "type mismatch"
 )
