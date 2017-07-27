@@ -160,6 +160,49 @@
     (get_local 0)
   )
 
+  (func (export "param") (result i32)
+    (i32.const 1)
+    (block (param i32) (result i32)
+      (i32.const 2)
+      (i32.add)
+    )
+  )
+  (func (export "params") (result i32)
+    (i32.const 1)
+    (i32.const 2)
+    (block (param i32 i32) (result i32)
+      (i32.add)
+    )
+  )
+  (func (export "params-id") (result i32)
+    (i32.const 1)
+    (i32.const 2)
+    (block (param i32 i32) (result i32 i32))
+    (i32.add)
+  )
+  (func (export "param-break") (result i32)
+    (i32.const 1)
+    (block (param i32) (result i32)
+      (i32.const 2)
+      (i32.add)
+      (br 0)
+    )
+  )
+  (func (export "params-break") (result i32)
+    (i32.const 1)
+    (i32.const 2)
+    (block (param i32 i32) (result i32)
+      (i32.add)
+      (br 0)
+    )
+  )
+  (func (export "params-id-break") (result i32)
+    (i32.const 1)
+    (i32.const 2)
+    (block (param i32 i32) (result i32 i32) (br 0))
+    (i32.add)
+  )
+
   (func (export "effects") (result i32)
     (local i32)
     (block
@@ -195,6 +238,13 @@
 )
 (assert_return (invoke "break-repeated") (i32.const 18))
 (assert_return (invoke "break-inner") (i32.const 0xf))
+
+(assert_return (invoke "param") (i32.const 3))
+(assert_return (invoke "params") (i32.const 3))
+(assert_return (invoke "params-id") (i32.const 3))
+(assert_return (invoke "param-break") (i32.const 3))
+(assert_return (invoke "params-break") (i32.const 3))
+(assert_return (invoke "params-id-break") (i32.const 3))
 
 (assert_return (invoke "effects") (i32.const 1))
 
@@ -451,6 +501,15 @@
   "type mismatch"
 )
 
+
+(assert_malformed
+  (module quote "(func (param i32) (result i32) block (param $x i32) end)")
+  "unexpected token"
+)
+(assert_malformed
+  (module quote "(func (param i32) (result i32) (block (param $x i32)))")
+  "unexpected token"
+)
 
 (assert_malformed
   (module quote "(func block end $l)")

@@ -358,9 +358,6 @@ block_param_body :
   | LPAR PARAM value_type_list RPAR block_param_body
     { let FuncType (ins, out) = fst $5 in
       FuncType ($3 @ ins, out), snd $5 }
-  | LPAR PARAM bind_var VALUE_TYPE RPAR block_param_body  /* Sugar */
-    { let FuncType (ins, out) = fst $6 in
-      FuncType ($4 :: ins, out), snd $6 }
 
 block_result_body :
   | instr_list { FuncType ([], []), $1 }
@@ -404,9 +401,6 @@ if_block_param_body :
   | LPAR PARAM value_type_list RPAR if_block_param_body
     { let FuncType (ins, out) = fst $5 in
       FuncType ($3 @ ins, out), snd $5 }
-  | LPAR PARAM bind_var VALUE_TYPE RPAR if_block_param_body  /* Sugar */
-    { let FuncType (ins, out) = fst $6 in
-      FuncType ($4 :: ins, out), snd $6 }
 
 if_block_result_body :
   | if_ { FuncType ([], []), $1 }

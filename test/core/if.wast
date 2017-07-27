@@ -158,6 +158,49 @@
     )
   )
 
+  (func (export "param") (param i32) (result i32)
+    (i32.const 1)
+    (if (param i32) (result i32) (get_local 0)
+      (then (i32.const 2) (i32.add))
+      (else (i32.const -2) (i32.add))
+    )
+  )
+  (func (export "params") (param i32) (result i32)
+    (i32.const 1)
+    (i32.const 2)
+    (if (param i32 i32) (result i32) (get_local 0)
+      (then (i32.add))
+      (else (i32.sub))
+    )
+  )
+  (func (export "params-id") (param i32) (result i32)
+    (i32.const 1)
+    (i32.const 2)
+    (if (param i32 i32) (result i32 i32) (get_local 0) (then))
+    (i32.add)
+  )
+  (func (export "param-break") (param i32) (result i32)
+    (i32.const 1)
+    (if (param i32) (result i32) (get_local 0)
+      (then (i32.const 2) (i32.add) (br 0))
+      (else (i32.const -2) (i32.add) (br 0))
+    )
+  )
+  (func (export "params-break") (param i32) (result i32)
+    (i32.const 1)
+    (i32.const 2)
+    (if (param i32 i32) (result i32) (get_local 0)
+      (then (i32.add) (br 0))
+      (else (i32.sub) (br 0))
+    )
+  )
+  (func (export "params-id-break") (param i32) (result i32)
+    (i32.const 1)
+    (i32.const 2)
+    (if (param i32 i32) (result i32 i32) (get_local 0) (then (br 0)))
+    (i32.add)
+  )
+
   (func (export "effects") (param i32) (result i32)
     (local i32)
     (if
@@ -178,6 +221,28 @@
       )
     )
     (get_local 1)
+  )
+
+  ;; Examples
+
+  (func $add64_u_with_carry (export "add64_u_with_carry")
+    (param $i i64) (param $j i64) (param $c i32) (result i64 i32)
+    (local $k i64)
+    (set_local $k
+      (i64.add
+        (i64.add (get_local $i) (get_local $j))
+        (i64.extend_u/i32 (get_local $c))
+      )
+    )
+    (return (get_local $k) (i64.lt_u (get_local $k) (get_local $i)))
+  )
+
+  (func $add64_u_saturated (export "add64_u_saturated")
+    (param i64 i64) (result i64)
+    (call $add64_u_with_carry (get_local 0) (get_local 1) (i32.const 0))
+    (if (param i64) (result i64)
+      (then (drop) (i64.const -1))
+    )
   )
 )
 
@@ -241,8 +306,74 @@
   (i32.const 18) (i32.const -18) (i64.const 18)
 )
 
+(assert_return (invoke "param" (i32.const 0)) (i32.const -1))
+(assert_return (invoke "param" (i32.const 1)) (i32.const 3))
+(assert_return (invoke "params" (i32.const 0)) (i32.const -1))
+(assert_return (invoke "params" (i32.const 1)) (i32.const 3))
+(assert_return (invoke "params-id" (i32.const 0)) (i32.const 3))
+(assert_return (invoke "params-id" (i32.const 1)) (i32.const 3))
+(assert_return (invoke "param-break" (i32.const 0)) (i32.const -1))
+(assert_return (invoke "param-break" (i32.const 1)) (i32.const 3))
+(assert_return (invoke "params-break" (i32.const 0)) (i32.const -1))
+(assert_return (invoke "params-break" (i32.const 1)) (i32.const 3))
+(assert_return (invoke "params-id-break" (i32.const 0)) (i32.const 3))
+(assert_return (invoke "params-id-break" (i32.const 1)) (i32.const 3))
+
 (assert_return (invoke "effects" (i32.const 1)) (i32.const -14))
 (assert_return (invoke "effects" (i32.const 0)) (i32.const -6))
+
+(assert_return
+  (invoke "add64_u_with_carry" (i64.const 0) (i64.const 0) (i32.const 0))
+  (i64.const 0) (i32.const 0)
+)
+(assert_return
+  (invoke "add64_u_with_carry" (i64.const 100) (i64.const 124) (i32.const 0))
+  (i64.const 224) (i32.const 0)
+)
+(assert_return
+  (invoke "add64_u_with_carry" (i64.const -1) (i64.const 0) (i32.const 0))
+  (i64.const -1) (i32.const 0)
+)
+(assert_return
+  (invoke "add64_u_with_carry" (i64.const -1) (i64.const 1) (i32.const 0))
+  (i64.const 0) (i32.const 1)
+)
+(assert_return
+  (invoke "add64_u_with_carry" (i64.const -1) (i64.const -1) (i32.const 0))
+  (i64.const -2) (i32.const 1)
+)
+(assert_return
+  (invoke "add64_u_with_carry" (i64.const -1) (i64.const 0) (i32.const 1))
+  (i64.const 0) (i32.const 1)
+)
+(assert_return
+  (invoke "add64_u_with_carry" (i64.const -1) (i64.const 1) (i32.const 1))
+  (i64.const 1) (i32.const 1)
+)
+(assert_return
+  (invoke "add64_u_with_carry" (i64.const 0x8000000000000000) (i64.const 0x8000000000000000) (i32.const 0))
+  (i64.const 0) (i32.const 1)
+)
+
+(assert_return
+  (invoke "add64_u_saturated" (i64.const 0) (i64.const 0)) (i64.const 0)
+)
+(assert_return
+  (invoke "add64_u_saturated" (i64.const 1230) (i64.const 23)) (i64.const 1253)
+)
+(assert_return
+  (invoke "add64_u_saturated" (i64.const -1) (i64.const 0)) (i64.const -1)
+)
+(assert_return
+  (invoke "add64_u_saturated" (i64.const -1) (i64.const 1)) (i64.const -1)
+)
+(assert_return
+  (invoke "add64_u_saturated" (i64.const -1) (i64.const -1)) (i64.const -1)
+)
+(assert_return
+  (invoke "add64_u_saturated" (i64.const 0x8000000000000000) (i64.const 0x8000000000000000)) (i64.const -1)
+)
+
 
 (assert_invalid
   (module (func $type-empty-i32 (result i32) (if (i32.const 0) (then))))
@@ -696,6 +827,15 @@
   "type mismatch"
 )
 
+
+(assert_malformed
+  (module quote "(func (param i32) (result i32) if (param $x i32) end)")
+  "unexpected token"
+)
+(assert_malformed
+  (module quote "(func (param i32) (result i32) (if (param $x i32) (then)))")
+  "unexpected token"
+)
 
 (assert_malformed
   (module quote "(func if end $l)")
