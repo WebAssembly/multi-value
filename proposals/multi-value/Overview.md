@@ -82,10 +82,10 @@ An iterative factorial funciton whose loop doesn't use locals, but uses argument
 ```
 (func $fac (param i64) (result i64)
 	(i64.const 1) (get_local 0)
-	(loop $l (param i64 i64)
+	(loop $l (param i64 i64) (result i64)
 		(pick 1) (pick 1) (i64.mul)
 		(pick 1) (i64.const 1) (i64.sub)
-		(pick 0) (i32.const 0) (i64.gt_u)
+		(pick 0) (i64.const 0) (i64.gt_u)
 		(br_if $l)
 		(pick 1) (return)
 	)
