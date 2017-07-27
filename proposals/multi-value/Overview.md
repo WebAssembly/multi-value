@@ -71,7 +71,7 @@ An addition function returning an additional carry bit.
 Conditionally manipulating a stack operand without using a local.
 ```
 (func $add64_u_saturated (param i64 i64) (result i64)
-	($i64.add64_carry (get_local 0) (get_local 1) (i32.const 0))
+	($i64.add_u_carry (get_local 0) (get_local 1) (i32.const 0))
 	(if (param i64) (result i64)
 		(drop) (i64.const 0xffff_ffff_ffff_ffff)
 	)
