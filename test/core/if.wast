@@ -244,6 +244,36 @@
       (then (drop) (i64.const -1))
     )
   )
+
+  ;; Block signature syntax
+
+  (type $block-sig-1 (func))
+  (type $block-sig-2 (func (result i32)))
+  (type $block-sig-3 (func (param $x i32)))
+  (type $block-sig-4 (func (param i32 f64 i32) (result i32 f64 i32)))
+
+  (func (export "type-use")
+    (if (type $block-sig-1) (i32.const 1) (then))
+    (if (type $block-sig-2) (i32.const 1)
+      (then (i32.const 0)) (else (i32.const 2))
+    )
+    (if (type $block-sig-3) (i32.const 1) (then (drop)) (else (drop)))
+    (i32.const 0) (f64.const 0) (i32.const 0)
+    (if (type $block-sig-4) (i32.const 1) (then))
+    (drop) (drop) (drop)
+    (if (type $block-sig-2) (result i32) (i32.const 1)
+      (then (i32.const 0)) (else (i32.const 2))
+    )
+    (if (type $block-sig-3) (param i32) (i32.const 1)
+      (then (drop)) (else (drop))
+    )
+    (i32.const 0) (f64.const 0) (i32.const 0)
+    (if (type $block-sig-4)
+      (param i32) (param f64 i32) (result i32 f64) (result i32)
+      (i32.const 1) (then)
+    )
+    (drop) (drop) (drop)
+  )
 )
 
 (assert_return (invoke "empty" (i32.const 0)))
@@ -374,6 +404,63 @@
   (invoke "add64_u_saturated" (i64.const 0x8000000000000000) (i64.const 0x8000000000000000)) (i64.const -1)
 )
 
+(assert_return (invoke "type-use"))
+
+(assert_malformed
+  (module quote
+    "(func (i32.const 0) (i32.const 1)"
+    "  (if (param $x i32) (then (drop)) (else (drop)))"
+    ")"
+  )
+  "unexpected token"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func))"
+    "(func (i32.const 1)"
+    "  (if (type $sig) (result i32) (then (i32.const 0)) (else (i32.const 2)))"
+    "  (unreachable)"
+    ")"
+  )
+  "inline function type"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func (param i32) (result i32)))"
+    "(func (i32.const 1)"
+    "  (if (type $sig) (result i32) (then (i32.const 0)) (else (i32.const 2)))"
+    "  (unreachable)"
+    ")"
+  )
+  "inline function type"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func (param i32) (result i32)))"
+    "(func (i32.const 0) (i32.const 1)"
+    "  (if (type $sig) (param i32) (then (drop)) (else (drop)))"
+    "  (unreachable)"
+    ")"
+  )
+  "inline function type"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func (param i32 i32) (result i32)))"
+    "(func (i32.const 0) (i32.const 1)"
+    "  (if (type $sig) (param i32) (result i32) (then)) (unreachable)"
+    ")"
+  )
+  "inline function type"
+)
+
+(assert_invalid
+  (module
+    (type $sig (func))
+    (func (i32.const 1) (if (type $sig) (i32.const 0) (then)))
+  )
+  "type mismatch"
+)
 
 (assert_invalid
   (module (func $type-empty-i32 (result i32) (if (i32.const 0) (then))))

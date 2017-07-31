@@ -215,6 +215,27 @@
     )
     (i32.eq (get_local 0) (i32.const -14))
   )
+
+  (type $block-sig-1 (func))
+  (type $block-sig-2 (func (result i32)))
+  (type $block-sig-3 (func (param $x i32)))
+  (type $block-sig-4 (func (param i32 f64 i32) (result i32 f64 i32)))
+
+  (func (export "type-use")
+    (block (type $block-sig-1))
+    (block (type $block-sig-2) (i32.const 0))
+    (block (type $block-sig-3) (drop))
+    (i32.const 0) (f64.const 0) (i32.const 0)
+    (block (type $block-sig-4))
+    (drop) (drop) (drop)
+    (block (type $block-sig-2) (result i32) (i32.const 0))
+    (block (type $block-sig-3) (param i32) (drop))
+    (i32.const 0) (f64.const 0) (i32.const 0)
+    (block (type $block-sig-4)
+      (param i32) (param f64 i32) (result i32 f64) (result i32)
+    )
+    (drop) (drop) (drop)
+  )
 )
 
 (assert_return (invoke "empty"))
@@ -247,6 +268,49 @@
 (assert_return (invoke "params-id-break") (i32.const 3))
 
 (assert_return (invoke "effects") (i32.const 1))
+
+(assert_return (invoke "type-use"))
+
+(assert_malformed
+  (module quote "(func (i32.const 0) (block (param $x i32) (drop)))")
+  "unexpected token"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func))"
+    "(func (block (type $sig) (result i32) (i32.const 0)) (unreachable))"
+  )
+  "inline function type"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func (param i32) (result i32)))"
+    "(func (block (type $sig) (result i32) (i32.const 0)) (unreachable))"
+  )
+  "inline function type"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func (param i32) (result i32)))"
+    "(func (i32.const 0) (block (type $sig) (param i32) (drop)) (unreachable))"
+  )
+  "inline function type"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func (param i32 i32) (result i32)))"
+    "(func (i32.const 0) (block (type $sig) (param i32) (result i32)) (unreachable))"
+  )
+  "inline function type"
+)
+
+(assert_invalid
+  (module
+    (type $sig (func))
+    (func (block (type $sig) (i32.const 0)))
+  )
+  "type mismatch"
+)
 
 (assert_invalid
   (module (func $type-empty-i32 (result i32) (block)))

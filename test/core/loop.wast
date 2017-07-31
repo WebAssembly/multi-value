@@ -303,6 +303,27 @@
     )
     (get_local 3)
   )
+
+  (type $block-sig-1 (func))
+  (type $block-sig-2 (func (result i32)))
+  (type $block-sig-3 (func (param $x i32)))
+  (type $block-sig-4 (func (param i32 f64 i32) (result i32 f64 i32)))
+
+  (func (export "type-use")
+    (loop (type $block-sig-1))
+    (loop (type $block-sig-2) (i32.const 0))
+    (loop (type $block-sig-3) (drop))
+    (i32.const 0) (f64.const 0) (i32.const 0)
+    (loop (type $block-sig-4))
+    (drop) (drop) (drop)
+    (loop (type $block-sig-2) (result i32) (i32.const 0))
+    (loop (type $block-sig-3) (param i32) (drop))
+    (i32.const 0) (f64.const 0) (i32.const 0)
+    (loop (type $block-sig-4)
+      (param i32) (param f64 i32) (result i32 f64) (result i32)
+    )
+    (drop) (drop) (drop)
+  )
 )
 
 (assert_return (invoke "empty"))
@@ -366,6 +387,49 @@
 (assert_return (invoke "nesting" (f32.const 7) (f32.const 4)) (f32.const 10.3095235825))
 (assert_return (invoke "nesting" (f32.const 7) (f32.const 100)) (f32.const 4381.54785156))
 (assert_return (invoke "nesting" (f32.const 7) (f32.const 101)) (f32.const 2601))
+
+(assert_return (invoke "type-use"))
+
+(assert_malformed
+  (module quote "(func (i32.const 0) (loop (param $x i32) (drop)))")
+  "unexpected token"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func))"
+    "(func (loop (type $sig) (result i32) (i32.const 0)) (unreachable))"
+  )
+  "inline function type"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func (param i32) (result i32)))"
+    "(func (loop (type $sig) (result i32) (i32.const 0)) (unreachable))"
+  )
+  "inline function type"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func (param i32) (result i32)))"
+    "(func (i32.const 0) (loop (type $sig) (param i32) (drop)) (unreachable))"
+  )
+  "inline function type"
+)
+(assert_malformed
+  (module quote
+    "(type $sig (func (param i32 i32) (result i32)))"
+    "(func (i32.const 0) (loop (type $sig) (param i32) (result i32)) (unreachable))"
+  )
+  "inline function type"
+)
+
+(assert_invalid
+  (module
+    (type $sig (func))
+    (func (loop (type $sig) (i32.const 0)))
+  )
+  "type mismatch"
+)
 
 (assert_invalid
   (module (func $type-empty-i32 (result i32) (loop)))
