@@ -120,12 +120,12 @@ debugtest:	$(UNOPT)
 test/%:		$(OPT)
 		../test/core/run.py --wasm `pwd`/$(OPT) $(if $(JS),--js '$(JS)',) $(@:test/%=../test/core/%.wast)
 debugtest/%:	$(UNOPT)
-		../test/core/run.py --wasm `pwd`/$(UNOPT) $(if $(JS),--js '$(JS)',) $(@:test/%=../test/core/%.wast)
+		../test/core/run.py --wasm `pwd`/$(UNOPT) $(if $(JS),--js '$(JS)',) $(@:debugtest/%=../test/core/%.wast)
 
 run/%:		$(OPT)
 		./$(OPT) $(@:run/%=../test/core/%.wast)
-debugrun/%:		$(UNOPT)
-		./$(UNOPT) $(@:run/%=../test/core/%.wast)
+debug/%:	$(UNOPT)
+		./$(UNOPT) $(@:debug/%=../test/core/%.wast)
 
 
 # Miscellaneous targets

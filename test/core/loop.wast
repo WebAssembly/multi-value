@@ -557,6 +557,54 @@
   "type mismatch"
 )
 
+(assert_invalid
+  (module (func $type-param-void-vs-num
+    (loop (param i32) (drop))
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-param-void-vs-nums
+    (loop (param i32 f64) (drop) (drop))
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-param-num-vs-num
+    (f32.const 0) (loop (param i32) (drop))
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-param-num-vs-nums
+    (f32.const 0) (loop (param f32 i32) (drop) (drop))
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-param-nested-void-vs-num
+    (block (loop (param i32) (drop)))
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-param-void-vs-nums
+    (block (loop (param i32 f64) (drop) (drop)))
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-param-num-vs-num
+    (block (f32.const 0) (loop (param i32) (drop)))
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-param-num-vs-nums
+    (block (f32.const 0) (loop (param f32 i32) (drop) (drop)))
+  ))
+  "type mismatch"
+)
 
 (assert_malformed
   (module quote "(func (param i32) (result i32) loop (param $x i32) end)")
