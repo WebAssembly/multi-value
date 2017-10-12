@@ -44,7 +44,7 @@ and admin_instr' =
   | Plain of instr'
   | Trapped of string
   | Break of int32 * value stack
-  | Label of stack_type * instr list * value stack * admin_instr list
+  | Label of int32 * instr list * value stack * admin_instr list
   | Local of instance * value ref list * value stack * admin_instr list
   | Invoke of closure
 
@@ -90,11 +90,17 @@ let func_type_of = function
   | AstFunc (inst, f) -> (lookup "type" (!inst).module_.it.types f.it.ftype).it
   | HostFunc (t, _) -> t
 
+let block_type inst bt =
+  match bt with
+  | VarBlockType x -> (type_ inst x).it
+  | ValBlockType None -> FuncType ([], [])
+  | ValBlockType (Some t) -> FuncType ([], [t])
+
 let take n (vs : 'a stack) at =
-  try Lib.List.take n vs with Failure _ -> Crash.error at "stack underflow"
+  try Lib.List32.take n vs with Failure _ -> Crash.error at "stack underflow"
 
 let drop n (vs : 'a stack) at =
-  try Lib.List.drop n vs with Failure _ -> Crash.error at "stack underflow"
+  try Lib.List32.drop n vs with Failure _ -> Crash.error at "stack underflow"
 
 
 (* Evaluation *)
@@ -120,17 +126,24 @@ let rec step (inst : instance) (c : config) : config =
       | Nop, vs ->
         vs, []
 
-      | Block (ts, es'), vs ->
-        vs, [Label (ts, [], [], List.map plain es') @@ e.at]
+      | Block (bt, es'), vs ->
+        let FuncType (ts1, ts2) = block_type inst bt in
+        let n1 = Lib.List32.length ts1 in
+        let n2 = Lib.List32.length ts2 in
+        let args, vs' = take n1 vs e.at, drop n1 vs e.at in
+        vs', [Label (n2, [], args, List.map plain es') @@ e.at]
 
-      | Loop (ts, es'), vs ->
-        vs, [Label ([], [e' @@ e.at], [], List.map plain es') @@ e.at]
+      | Loop (bt, es'), vs ->
+        let FuncType (ts1, ts2) = block_type inst bt in
+        let n1 = Lib.List32.length ts1 in
+        let args, vs' = take n1 vs e.at, drop n1 vs e.at in
+        vs', [Label (n1, [e' @@ e.at], args, List.map plain es') @@ e.at]
 
-      | If (ts, es1, es2), I32 0l :: vs' ->
-        vs', [Plain (Block (ts, es2)) @@ e.at]
+      | If (bt, es1, es2), I32 0l :: vs' ->
+        vs', [Plain (Block (bt, es2)) @@ e.at]
 
-      | If (ts, es1, es2), I32 i :: vs' ->
-        vs', [Plain (Block (ts, es1)) @@ e.at]
+      | If (bt, es1, es2), I32 i :: vs' ->
+        vs', [Plain (Block (bt, es1)) @@ e.at]
 
       | Br x, vs ->
         [], [Break (x.it, vs) @@ e.at]
@@ -256,21 +269,21 @@ let rec step (inst : instance) (c : config) : config =
     | Break (k, vs'), vs ->
       Crash.error e.at "undefined label"
 
-    | Label (ts, es0, vs', []), vs ->
+    | Label (n, es0, vs', []), vs ->
       vs' @ vs, []
 
-    | Label (ts, es0, vs', {it = Trapped msg; at} :: es'), vs ->
+    | Label (n, es0, vs', {it = Trapped msg; at} :: es'), vs ->
       vs, [Trapped msg @@ at]
 
-    | Label (ts, es0, vs', {it = Break (0l, vs0); at} :: es'), vs ->
-      take (List.length ts) vs0 e.at @ vs, List.map plain es0
+    | Label (n, es0, vs', {it = Break (0l, vs0); at} :: es'), vs ->
+      take n vs0 e.at @ vs, List.map plain es0
 
-    | Label (ts, es0, vs', {it = Break (k, vs0); at} :: es'), vs ->
+    | Label (n, es0, vs', {it = Break (k, vs0); at} :: es'), vs ->
       vs, [Break (Int32.sub k 1l, vs0) @@ at]
 
-    | Label (ts, es0, values, instrs), vs ->
+    | Label (n, es0, values, instrs), vs ->
       let c' = step inst {c with values; instrs; depth = c.depth + 1} in
-      vs, [Label (ts, es0, c'.values, c'.instrs) @@ e.at]
+      vs, [Label (n, es0, c'.values, c'.instrs) @@ e.at]
 
     | Local (inst', locals, vs', []), vs ->
       vs' @ vs, []
@@ -287,12 +300,12 @@ let rec step (inst : instance) (c : config) : config =
 
     | Invoke clos, vs ->
       let FuncType (ins, out) = func_type_of clos in
-      let n = List.length ins in
-      let args, vs' = take n vs e.at, drop n vs e.at in
+      let n1, n2 = Lib.List32.length ins, Lib.List32.length out in
+      let args, vs' = take n1 vs e.at, drop n1 vs e.at in
       (match clos with
       | AstFunc (inst', f) ->
         let locals' = List.rev args @ List.map default_value f.it.locals in
-        let instrs' = [Plain (Block (out, f.it.body)) @@ f.at] in
+        let instrs' = [Label (n2, [], [], List.map plain f.it.body) @@ f.at] in
         vs', [Local (!inst', List.map ref locals', [], instrs') @@ e.at]
 
       | HostFunc (t, f) ->
