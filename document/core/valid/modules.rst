@@ -42,13 +42,13 @@ Functions :math:`\func` are classified by :ref:`function types <syntax-functype>
    \frac{
      C.\CTYPES[x] = [t_1^\ast] \to [t_2^\ast]
      \qquad
-     C,\CLOCALS\,t_1^\ast~t^\ast,\CLABELS~[t_2^\ast],\CRETURN~[t_2^\ast] \vdash \expr : [t_2^\ast]
+     C,\CLOCALS\,t_1^\ast~t^\ast,\CLABELS~[t_2^\ast],\CRETURN~[t_2^\ast] \vdashexpr \expr : [t_2^\ast]
    }{
-     C \vdash \{ \FTYPE~x, \FLOCALS~t^\ast, \FBODY~\expr \} : [t_1^\ast] \to [t_2^\ast]
+     C \vdashfunc \{ \FTYPE~x, \FLOCALS~t^\ast, \FBODY~\expr \} : [t_1^\ast] \to [t_2^\ast]
    }
 
 
-.. index:: table, table type, limits, element type
+.. index:: table, table type
    pair: validation; table
    single: abstract syntax; table
 .. _valid-table:
@@ -56,27 +56,24 @@ Functions :math:`\func` are classified by :ref:`function types <syntax-functype>
 Tables
 ~~~~~~
 
-Tables :math:`\table` are classified by :ref:`table types <syntax-tabletype>` of the form :math:`\limits~\elemtype`.
-
+Tables :math:`\table` are classified by :ref:`table types <syntax-tabletype>`.
 
 :math:`\{ \TTYPE~\tabletype \}`
 ...............................
 
-* Let :math:`\limits~\elemtype` be the :ref:`table types <syntax-tabletype>` :math:`\tabletype`.
-
-* The limits :math:`\limits` must be :ref:`valid <valid-limits>`.
+* The :ref:`table type <syntax-tabletype>` :math:`\tabletype` must be :ref:`valid <valid-tabletype>`.
 
 * Then the table definition is valid with type :math:`\tabletype`.
 
 .. math::
    \frac{
-     \vdash \limits\ok
+     \vdashtabletype \tabletype \ok
    }{
-     C \vdash \{ \TTYPE~\limits~\elemtype \} : \limits~\elemtype
+     C \vdashtable \{ \TTYPE~\tabletype \} : \tabletype
    }
 
 
-.. index:: memory, memory type, limits
+.. index:: memory, memory type
    pair: validation; memory
    single: abstract syntax; memory
 .. _valid-mem:
@@ -84,27 +81,24 @@ Tables :math:`\table` are classified by :ref:`table types <syntax-tabletype>` of
 Memories
 ~~~~~~~~
 
-Memories :math:`\mem` are classified by :ref:`memory types <syntax-memtype>` of the form :math:`\limits`.
-
+Memories :math:`\mem` are classified by :ref:`memory types <syntax-memtype>`.
 
 :math:`\{ \MTYPE~\memtype \}`
 .............................
 
-* Let :math:`\limits` be the :ref:`memory types <syntax-memtype>` :math:`\memtype`.
-
-* The limits :math:`\limits` must be :ref:`valid <valid-limits>`.
+* The :ref:`memory type <syntax-memtype>` :math:`\memtype` must be :ref:`valid <valid-memtype>`.
 
 * Then the memory definition is valid with type :math:`\memtype`.
 
 .. math::
    \frac{
-     \vdash \limits\ok
+     \vdashmemtype \memtype \ok
    }{
-     C \vdash \{ \MTYPE~\limits \} : \limits~\elemtype
+     C \vdashmem \{ \MTYPE~\memtype \} : \memtype
    }
 
 
-.. index:: global, global type, mutability, expression
+.. index:: global, global type, expression
    pair: validation; global
    single: abstract syntax; global
 .. _valid-global:
@@ -118,6 +112,8 @@ Globals :math:`\global` are classified by :ref:`global types <syntax-globaltype>
 :math:`\{ \GTYPE~\mut~t, \GINIT~\expr \}`
 .........................................
 
+* The :ref:`global type <syntax-globaltype>` :math:`\mut~t` must be :ref:`valid <valid-globaltype>`.
+
 * The expression :math:`\expr` must be :ref:`valid <valid-expr>` with :ref:`result type <syntax-resulttype>` :math:`[t]`.
 
 * The expression :math:`\expr` must be :ref:`constant <valid-constant>`.
@@ -126,11 +122,13 @@ Globals :math:`\global` are classified by :ref:`global types <syntax-globaltype>
 
 .. math::
    \frac{
-     C \vdash \expr : [t]
+     \vdashglobaltype \mut~t \ok
      \qquad
-     C \vdash \expr ~\F{const}
+     C \vdashexpr \expr : [t]
+     \qquad
+     C \vdashexprconst \expr ~\F{const}
    }{
-     C \vdash \{ \GTYPE~\mut~t, \GINIT~\expr \} : \mut~t
+     C \vdashglobal \{ \GTYPE~\mut~t, \GINIT~\expr \} : \mut~t
    }
 
 
@@ -169,13 +167,13 @@ Element segments :math:`\elem` are not classified by a type.
    \frac{
      C.\CTABLES[x] = \limits~\ANYFUNC
      \qquad
-     C \vdash \expr : [\I32]
+     C \vdashexpr \expr : [\I32]
      \qquad
-     C \vdash \expr ~\F{const}
+     C \vdashexprconst \expr ~\F{const}
      \qquad
      (C.\CFUNCS[y] = \functype)^\ast
    }{
-     C \vdash \{ \ETABLE~x, \EOFFSET~\expr, \EINIT~y^\ast \} \ok
+     C \vdashelem \{ \ETABLE~x, \EOFFSET~\expr, \EINIT~y^\ast \} \ok
    }
 
 
@@ -207,11 +205,11 @@ Data segments :math:`\data` are not classified by any type.
    \frac{
      C.\CMEMS[x] = \limits
      \qquad
-     C \vdash \expr : [\I32]
+     C \vdashexpr \expr : [\I32]
      \qquad
-     C \vdash \expr ~\F{const}
+     C \vdashexprconst \expr ~\F{const}
    }{
-     C \vdash \{ \DMEM~x, \DOFFSET~\expr, \DINIT~b^\ast \} \ok
+     C \vdashdata \{ \DMEM~x, \DOFFSET~\expr, \DINIT~b^\ast \} \ok
    }
 
 
@@ -239,34 +237,34 @@ Start function declarations :math:`\start` are not classified by any type.
    \frac{
      C.\CFUNCS[x] = [] \to []
    }{
-     C \vdash \{ \SFUNC~x \} \ok
+     C \vdashstart \{ \SFUNC~x \} \ok
    }
 
 
 .. index:: export, name, index, function index, table index, memory index, global index
    pair: validation; export
    single: abstract syntax; export
+.. _valid-exportdesc:
 .. _valid-export:
 
 Exports
 ~~~~~~~
 
-Exports :math:`\export` are classified by their export :ref:`name <syntax-name>`.
-Export descriptions :math:`\exportdesc` are not classified by any type.
+Exports :math:`\export` and export descriptions :math:`\exportdesc` are classified by their :ref:`external type <syntax-externtype>`.
 
 
 :math:`\{ \ENAME~\name, \EDESC~\exportdesc \}`
 ..............................................
 
-* The export description :math:`\exportdesc` must be valid with type :math:`\externtype`.
+* The export description :math:`\exportdesc` must be valid with :ref:`external type <syntax-externtype>` :math:`\externtype`.
 
-* Then the export is valid with name :math:`\name`.
+* Then the export is valid with :ref:`external type <syntax-externtype>` :math:`\externtype`.
 
 .. math::
    \frac{
-     C \vdash \exportdesc \ok
+     C \vdashexportdesc \exportdesc : \externtype
    }{
-     C \vdash \{ \ENAME~\name, \EDESC~\exportdesc \} : \name
+     C \vdashexport \{ \ENAME~\name, \EDESC~\exportdesc \} : \externtype
    }
 
 
@@ -275,13 +273,13 @@ Export descriptions :math:`\exportdesc` are not classified by any type.
 
 * The function :math:`C.\CFUNCS[x]` must be defined in the context.
 
-* Then the export description is valid.
+* Then the export description is valid with :ref:`external type <syntax-externtype>` :math:`\ETFUNC~C.\CFUNCS[x]`.
 
 .. math::
    \frac{
      C.\CFUNCS[x] = \functype
    }{
-     C \vdash \EDFUNC~x \ok
+     C \vdashexportdesc \EDFUNC~x : \ETFUNC~\functype
    }
 
 
@@ -290,13 +288,13 @@ Export descriptions :math:`\exportdesc` are not classified by any type.
 
 * The table :math:`C.\CTABLES[x]` must be defined in the context.
 
-* Then the export description is valid.
+* Then the export description is valid with :ref:`external type <syntax-externtype>` :math:`\ETTABLE~C.\CTABLES[x]`.
 
 .. math::
    \frac{
      C.\CTABLES[x] = \tabletype
    }{
-     C \vdash \EDTABLE~x \ok
+     C \vdashexportdesc \EDTABLE~x : \ETTABLE~\tabletype
    }
 
 
@@ -305,13 +303,13 @@ Export descriptions :math:`\exportdesc` are not classified by any type.
 
 * The memory :math:`C.\CMEMS[x]` must be defined in the context.
 
-* Then the export description is valid.
+* Then the export description is valid with :ref:`external type <syntax-externtype>` :math:`\ETMEM~C.\CMEMS[x]`.
 
 .. math::
    \frac{
      C.\CMEMS[x] = \memtype
    }{
-     C \vdash \EDMEM~x \ok
+     C \vdashexportdesc \EDMEM~x : \ETMEM~\memtype
    }
 
 
@@ -324,19 +322,20 @@ Export descriptions :math:`\exportdesc` are not classified by any type.
 
 * The mutability :math:`\mut` must be |MCONST|.
 
-* Then the export description is valid.
+* Then the export description is valid with :ref:`external type <syntax-externtype>` :math:`\ETGLOBAL~C.\CGLOBALS[x]`.
 
 .. math::
    \frac{
      C.\CGLOBALS[x] = \MCONST~t
    }{
-     C \vdash \EDGLOBAL~x \ok
+     C \vdashexportdesc \EDGLOBAL~x : \ETGLOBAL~(\MCONST~t)
    }
 
 
 .. index:: import, name, function type, table type, memory type, global type
    pair: validation; import
    single: abstract syntax; import
+.. _valid-importdesc:
 .. _valid-import:
 
 Imports
@@ -354,9 +353,9 @@ Imports :math:`\import` and import descriptions :math:`\importdesc` are classifi
 
 .. math::
    \frac{
-     C \vdash \importdesc : \externtype
+     C \vdashimportdesc \importdesc : \externtype
    }{
-     C \vdash \{ \IMODULE~\name_1, \INAME~\name_2, \IDESC~\importdesc \} : \externtype
+     C \vdashimport \{ \IMODULE~\name_1, \INAME~\name_2, \IDESC~\importdesc \} : \externtype
    }
 
 
@@ -373,51 +372,54 @@ Imports :math:`\import` and import descriptions :math:`\importdesc` are classifi
    \frac{
      C.\CTYPES[x] = [t_1^\ast] \to [t_2^\ast]
    }{
-     C \vdash \IDFUNC~x : \ETFUNC~[t_1^\ast] \to [t_2^\ast]
+     C \vdashimportdesc \IDFUNC~x : \ETFUNC~[t_1^\ast] \to [t_2^\ast]
    }
 
 
-:math:`\IDTABLE~\limits~\elemtype`
-..................................
+:math:`\IDTABLE~\tabletype`
+...........................
 
-* The limits :math:`\limits` must be valid.
+* The table type :math:`\tabletype` must be :ref:`valid <valid-tabletype>`.
 
-* Then the import description is valid with type :math:`\ETTABLE~\limits~\elemtype`.
+* Then the import description is valid with type :math:`\ETTABLE~\tabletype`.
 
 .. math::
    \frac{
-     \vdash \limits \ok
+     \vdashtable \tabletype \ok
    }{
-     C \vdash \IDTABLE~\limits~\elemtype : \ETTABLE~\limits~\elemtype
+     C \vdashimportdesc \IDTABLE~\tabletype : \ETTABLE~\tabletype
    }
 
 
-:math:`\IDMEM~\limits`
-......................
+:math:`\IDMEM~\memtype`
+.......................
 
-* The limits :math:`\limits` must be valid.
+* The memory type :math:`\memtype` must be :ref:`valid <valid-memtype>`.
 
-* Then the import description is valid with type :math:`\ETMEM~\limits`.
+* Then the import description is valid with type :math:`\ETMEM~\memtype`.
 
 .. math::
    \frac{
-     \vdash \limits \ok
+     \vdashmemtype \memtype \ok
    }{
-     C \vdash \IDMEM~\limits : \ETMEM~\limits
+     C \vdashimportdesc \IDMEM~\memtype : \ETMEM~\memtype
    }
 
 
-:math:`\IDGLOBAL~\mut~t`
-........................
+:math:`\IDGLOBAL~\globaltype`
+.............................
 
-* The mutability :math:`\mut` must be |MCONST|.
+* The global type :math:`\globaltype` must be :ref:`valid <valid-globaltype>`.
 
-* Then the import description is valid with type :math:`\ETGLOBAL~t`.
+* The mutability of :math:`\globaltype` must be |MCONST|.
+
+* Then the import description is valid with type :math:`\ETGLOBAL~\globaltype`.
 
 .. math::
    \frac{
+     \vdashglobaltype \MCONST~t \ok
    }{
-     C \vdash \IDGLOBAL~\MCONST~t : \ETGLOBAL~\MCONST~t
+     C \vdashimportdesc \IDGLOBAL~\MCONST~t : \ETGLOBAL~\MCONST~t
    }
 
 
@@ -428,6 +430,8 @@ Imports :math:`\import` and import descriptions :math:`\importdesc` are classifi
 
 Modules
 ~~~~~~~
+
+Modules are classified by their mapping from the :ref:`external types <syntax-externtype>` of their :ref:`imports <syntax-import>` to those of their :ref:`exports <syntax-export>`.
 
 A module is entirely *closed*,
 that is, its components can only refer to definitions that appear in the module itself.
@@ -462,11 +466,8 @@ Instead, the context :math:`C` for validation of the module's content is constru
 
 * Under the context :math:`C`:
 
-  * For each :math:`\functype_i` in :math:`\module.\MTYPES`,
-    the :ref:`function type <syntax-functype>` :math:`\functype_i` must be :ref:`valid <valid-functype>`.
-
   * For each :math:`\func_i` in :math:`\module.\MFUNCS`,
-    the definition :math:`\func_i` must be :ref:`valid <valid-func>` with a :ref:`function type <syntax-functype>` :math:`\functype_i`.
+    the definition :math:`\func_i` must be :ref:`valid <valid-func>` with a :ref:`function type <syntax-functype>` :math:`\X{ft}_i`.
 
   * For each :math:`\table_i` in :math:`\module.\MTABLES`,
     the definition :math:`\table_i` must be :ref:`valid <valid-table>` with a :ref:`table type <syntax-tabletype>` :math:`\tabletype_i`.
@@ -492,40 +493,40 @@ Instead, the context :math:`C` for validation of the module's content is constru
     the segment :math:`\import_i` must be :ref:`valid <valid-import>` with an :ref:`external type <syntax-externtype>` :math:`\externtype_i`.
 
   * For each :math:`\export_i` in :math:`\module.\MEXPORTS`,
-    the segment :math:`\import_i` must be :ref:`valid <valid-export>` with a :ref:`name <syntax-name>` :math:`\name_i`.
+    the segment :math:`\import_i` must be :ref:`valid <valid-export>` with :ref:`external type <syntax-externtype>` :math:`\externtype'_i`.
 
 * The length of :math:`C.\CTABLES` must not be larger than :math:`1`.
 
 * The length of :math:`C.\CMEMS` must not be larger than :math:`1`.
 
-* All export names :math:`\name_i` must be different.
+* All export names :math:`\export_i.\ENAME` must be different.
 
 * Let :math:`\externtype^\ast` be the concatenation of :ref:`external types <syntax-externtype>` :math:`\externtype_i` of the imports, in index order.
 
-* Then the module is valid with :ref:`external types <syntax-externtype>` :math:`\externtype^\ast`.
+* Let :math:`{\externtype'}^\ast` be the concatenation of :ref:`external types <syntax-externtype>` :math:`\externtype'_i` of the exports, in index order.
+
+* Then the module is valid with :ref:`external types <syntax-externtype>` :math:`\externtype^\ast \to {\externtype'}^\ast`.
 
 .. math::
    \frac{
      \begin{array}{@{}c@{}}
-     (\vdash \functype \ok)^\ast
+     (C \vdashfunc \func : \X{ft})^\ast
      \quad
-     (C \vdash \func : \X{ft})^\ast
+     (C \vdashtable \table : \X{tt})^\ast
      \quad
-     (C \vdash \table : \X{tt})^\ast
+     (C \vdashmem \mem : \X{mt})^\ast
      \quad
-     (C \vdash \mem : \X{mt})^\ast
-     \quad
-     (C' \vdash \global : \X{gt})^\ast
+     (C' \vdashglobal \global : \X{gt})^\ast
      \\
-     (C \vdash \elem \ok)^\ast
+     (C \vdashelem \elem \ok)^\ast
      \quad
-     (C \vdash \data \ok)^\ast
+     (C \vdashdata \data \ok)^\ast
      \quad
-     (C \vdash \start \ok)^?
+     (C \vdashstart \start \ok)^?
      \quad
-     (C \vdash \import : \X{it})^\ast
+     (C \vdashimport \import : \X{it})^\ast
      \quad
-     (C \vdash \export : \X{name})^\ast
+     (C \vdashexport \export : \X{et})^\ast
      \\
      \X{ift}^\ast = \etfuncs(\X{it}^\ast)
      \qquad
@@ -543,10 +544,10 @@ Instead, the context :math:`C` for validation of the module's content is constru
      \qquad
      |C.\CMEMS| \leq 1
      \qquad
-     \name^\ast ~\F{disjoint}
+     (\export.\ENAME)^\ast ~\F{disjoint}
      \end{array}
    }{
-     \vdash \{
+     \vdashmodule \{
        \begin{array}[t]{@{}l@{}}
          \MTYPES~\functype^\ast,
          \MFUNCS~\func^\ast,
@@ -557,7 +558,7 @@ Instead, the context :math:`C` for validation of the module's content is constru
          \MDATA~\data^\ast,
          \MSTART~\start^?,
          \MIMPORTS~\import^\ast,
-         \MEXPORTS~\export^\ast \} : \X{it}^\ast \\
+         \MEXPORTS~\export^\ast \} : \X{it}^\ast \to \X{et}^\ast \\
        \end{array}
    }
 

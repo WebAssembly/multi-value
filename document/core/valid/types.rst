@@ -6,6 +6,31 @@ However, restrictions apply to :ref:`limits <syntax-limits>`, which must be chec
 Moreover, :ref:`block types <syntax-blocktype>` are converted to plain :ref:`function types <syntax-functype>` for ease of processing.
 
 
+.. index:: limits
+   pair: validation; limits
+   single: abstract syntax; limits
+.. _valid-limits:
+
+Limits
+~~~~~~
+
+:ref:`Limits <syntax-limits>` must have meaningful bounds.
+
+:math:`\{ \LMIN~n, \LMAX~m^? \}`
+................................
+
+* If the maximum :math:`m^?` is not empty, then its value must not be smaller than :math:`n`.
+
+* Then the limit is valid.
+
+.. math::
+   \frac{
+     (n \leq m)^?
+   }{
+     \vdashlimits \{ \LMIN~n, \LMAX~m^? \} \ok
+   }
+
+
 .. index:: block type
    pair: validation; block type
    single: abstract syntax; block type
@@ -27,7 +52,7 @@ Block Types
    \frac{
      C.\CTYPES[\typeidx] = \functype
    }{
-     C \vdash \typeidx : \functype
+     C \vdashblocktype \typeidx : \functype
    }
 
 
@@ -39,31 +64,72 @@ Block Types
 .. math::
    \frac{
    }{
-     C \vdash [\valtype^?] : [] \to [\valtype^?]
+     C \vdashblocktype [\valtype^?] : [] \to [\valtype^?]
    }
 
 
 
-.. index:: limits
-   pair: validation; limits
-   single: abstract syntax; limits
-.. _valid-limits:
+.. index:: table type, element type, limits
+   pair: validation; table type
+   single: abstract syntax; table type
+.. _valid-tabletype:
 
-Limits
-~~~~~~
+Table Types
+~~~~~~~~~~~
 
-:ref:`Limits <syntax-limits>` must have menaingful bounds.
+:math:`\limits~\elemtype`
+.........................
 
-:math:`\{ \LMIN~n, \LMAX~m^? \}`
-................................
+* The limits :math:`\limits` must be :ref:`valid <valid-limits>`.
 
-* If the maximum :math:`m^?` is not empty, then its value must not be smaller than :math:`n`.
-
-* Then the limit is valid.
+* Then the table type is valid.
 
 .. math::
    \frac{
-     (n \leq m)^?
+     \vdashlimits \limits \ok
    }{
-     \vdash \{ \LMIN~n, \LMAX~m^? \} \ok
+     \vdashtabletype \limits~\elemtype \ok
+   }
+
+
+.. index:: memory type, limits
+   pair: validation; memory type
+   single: abstract syntax; memory type
+.. _valid-memtype:
+
+Memory Types
+~~~~~~~~~~~~
+
+:math:`\limits`
+...............
+
+* The limits :math:`\limits` must be :ref:`valid <valid-limits>`.
+
+* Then the memory type is valid.
+
+.. math::
+   \frac{
+     \vdashlimits \limits \ok
+   }{
+     \vdashmemtype \limits \ok
+   }
+
+
+.. index:: global type, value type, mutability
+   pair: validation; global type
+   single: abstract syntax; global type
+.. _valid-globaltype:
+
+Global Types
+~~~~~~~~~~~~
+
+:math:`\mut~\valtype`
+.....................
+
+* The global type is valid.
+
+.. math::
+   \frac{
+   }{
+     \vdashglobaltype \mut~\valtype \ok
    }

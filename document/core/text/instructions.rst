@@ -102,7 +102,7 @@ However, the special case of a type use that is syntactically empty or consists 
 All other control instruction are represented verbatim.
 
 .. math::
-   \begin{array}{llclll}
+   \begin{array}{llcllll}
    \production{plain instruction} & \Tplaininstr_I &::=&
      \text{unreachable} &\Rightarrow& \UNREACHABLE \\ &&|&
      \text{nop} &\Rightarrow& \NOP \\ &&|&
@@ -112,8 +112,12 @@ All other control instruction are represented verbatim.
        &\Rightarrow& \BRTABLE~l^\ast~l_N \\ &&|&
      \text{return} &\Rightarrow& \RETURN \\ &&|&
      \text{call}~~x{:}\Tfuncidx_I &\Rightarrow& \CALL~x \\ &&|&
-     \text{call\_indirect}~~x{:}\Ttypeidx_I &\Rightarrow& \CALLINDIRECT~x \\
+     \text{call\_indirect}~~x,I'{:}\Ttypeuse_I &\Rightarrow& \CALLINDIRECT~x
+       & (\iff I' = \{\}) \\
    \end{array}
+
+.. note::
+   The side condition stating that the :ref:`identifier context <text-context>` :math:`I'` must be empty in the rule for |CALLINDIRECT| enforces that no identifier can be bound in any |Tparam| declaration appearing in the type annotation.
 
 
 Abbreviations
@@ -192,9 +196,9 @@ The offset defaults to :math:`\T{0}`, the alignment to the storage size of the r
 Lexically, an |Toffset| or |Talign| phrase is considered a single :ref:`keyword token <text-keyword>`, so no :ref:`white space <text-space>` is allowed around the :math:`\text{=}`.
 
 .. math::
-   \begin{array}{llclll}
+   \begin{array}{llcllll}
    \production{memory argument} & \Tmemarg_N &::=&
-     o{:}\Toffset~~a{:}\Talign_N &\Rightarrow& \{ \ALIGN~a,~\OFFSET~o \} \\
+     o{:}\Toffset~~a{:}\Talign_N &\Rightarrow& \{ \ALIGN~n,~\OFFSET~o \} & (\iff a = 2^n) \\
    \production{memory offset} & \Toffset &::=&
      \text{offset{=}}o{:}\Tu32 &\Rightarrow& o \\ &&|&
      \epsilon &\Rightarrow& 0 \\
@@ -417,7 +421,7 @@ Numeric Instructions
      \text{f64.convert\_u/i32} &\Rightarrow& \F64.\CONVERT\K{\_u/}\I32 \\ &&|&
      \text{f64.convert\_s/i64} &\Rightarrow& \F64.\CONVERT\K{\_s/}\I64 \\ &&|&
      \text{f64.convert\_u/i64} &\Rightarrow& \F64.\CONVERT\K{\_u/}\I64 \\ &&|&
-     \text{f64.demote/f32} &\Rightarrow& \F64.\PROMOTE\K{/}\F32 \\ &&|&
+     \text{f64.promote/f32} &\Rightarrow& \F64.\PROMOTE\K{/}\F32 \\ &&|&
      \text{i32.reinterpret/f32} &\Rightarrow& \I32.\REINTERPRET\K{/}\F32 \\ &&|&
      \text{i64.reinterpret/f64} &\Rightarrow& \I64.\REINTERPRET\K{/}\F64 \\ &&|&
      \text{f32.reinterpret/i32} &\Rightarrow& \F32.\REINTERPRET\K{/}\I32 \\ &&|&
@@ -434,7 +438,7 @@ Folded Instructions
 Instructions can be written as S-expressions by grouping them into *folded* form. In that notation, an instruction is wrapped in parentheses and optionally includes nested folded instructions to indicate its operands.
 
 In the case of :ref:`block instructions <text-instr-block>`, the folded form omits the :math:`\text{end}` delimiter.
-For |IF| instructions, both branches have to wrapped into nested S-expressions, headed by the keywords :math:`\text{then}` and :math:`\text{else}`.
+For |IF| instructions, both branches have to be wrapped into nested S-expressions, headed by the keywords :math:`\text{then}` and :math:`\text{else}`.
 
 The set of all phrases defined by the following abbreviations recursively forms the auxiliary syntactic class |Tfoldedinstr|.
 Such a folded instruction can appear anywhere a regular instruction can.
