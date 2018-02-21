@@ -609,7 +609,6 @@
 .. Types, non-terminals
 
 .. |Tvaltype| mathdef:: \xref{text/types}{text-valtype}{\T{valtype}}
-.. |Tresulttype| mathdef:: \xref{text/types}{text-resulttype}{\T{resulttype}}
 .. |Tfunctype| mathdef:: \xref{text/types}{text-functype}{\T{functype}}
 
 .. |Tglobaltype| mathdef:: \xref{text/types}{text-globaltype}{\T{globaltype}}

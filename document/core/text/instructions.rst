@@ -450,14 +450,14 @@ Such a folded instruction can appear anywhere a regular instruction can.
    \production{instruction} & 
      \text{(}~\Tplaininstr~~\Tfoldedinstr^\ast~\text{)}
        &\equiv\quad \Tfoldedinstr^\ast~~\Tplaininstr \\ &
-     \text{(}~\text{block}~~\Tlabel~~\Tresulttype~~\Tinstr^\ast~\text{)}
-       &\equiv\quad \text{block}~~\Tlabel~~\Tresulttype~~\Tinstr^\ast~~\text{end} \\ &
-     \text{(}~\text{loop}~~\Tlabel~~\Tresulttype~~\Tinstr^\ast~\text{)}
-       &\equiv\quad \text{loop}~~\Tlabel~~\Tresulttype~~\Tinstr^\ast~~\text{end} \\ &
-     \text{(}~\text{if}~~\Tlabel~~\Tresulttype~~\Tfoldedinstr^\ast
+     \text{(}~\text{block}~~\Tlabel~~\Tblocktype~~\Tinstr^\ast~\text{)}
+       &\equiv\quad \text{block}~~\Tlabel~~\Tblocktype~~\Tinstr^\ast~~\text{end} \\ &
+     \text{(}~\text{loop}~~\Tlabel~~\Tblocktype~~\Tinstr^\ast~\text{)}
+       &\equiv\quad \text{loop}~~\Tlabel~~\Tblocktype~~\Tinstr^\ast~~\text{end} \\ &
+     \text{(}~\text{if}~~\Tlabel~~\Tblocktype~~\Tfoldedinstr^\ast
        &\hspace{-3ex} \text{(}~\text{then}~~\Tinstr_1^\ast~\text{)}~~\text{(}~\text{else}~~\Tinstr_2^\ast~\text{)}^?~~\text{)}
        \quad\equiv \\ &\qquad
-         \Tfoldedinstr^\ast~~\text{if}~~\Tlabel~~\Tresulttype &\hspace{-1ex} \Tinstr_1^\ast~~\text{else}~~(\Tinstr_2^\ast)^?~\text{end} \\
+         \Tfoldedinstr^\ast~~\text{if}~~\Tlabel~~\Tblocktype &\hspace{-1ex} \Tinstr_1^\ast~~\text{else}~~(\Tinstr_2^\ast)^?~\text{end} \\
    \end{array}
 
 .. note::
