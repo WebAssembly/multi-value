@@ -95,7 +95,7 @@ const exportingModuleIdentityFn = (() => {
 
     builder
         .addFunction('id', kSig_i_i)
-        .addBody([])
+        .addBody([kExprGetLocal, 0])
         .exportFunc();
 
     return builder.toBuffer();
@@ -408,6 +408,7 @@ test(() => {
     assert_equals(f.length, 0);
     assert_equals('name' in f, true);
     assert_equals(Function.prototype.call.call(f), 42);
+    assert_equals('prototype' in f, false);
     assertThrows(() => new f(), TypeError);
 }, "Exported WebAssembly functions");
 
@@ -894,7 +895,7 @@ test(() => {
 
 test(() => {
   let module = new WebAssembly.Module(exportingModuleIdentityFn );
-  let instance new WebAssembly.Instance(module);
+  let instance = new WebAssembly.Instance(module);
 
   let value = 2 ** 31;
   let output = instance.exports.id(value);
