@@ -50,11 +50,12 @@ All parts of this specification are defined in terms of this abstract syntax.</p
 <li><span class="math notranslate">\(A^?\)</span> is an optional occurrence of <span class="math notranslate">\(A\)</span>.
 (This is a shorthand for <span class="math notranslate">\(A^n\)</span> where <span class="math notranslate">\(n \leq 1\)</span>.)</li>
 <li>Productions are written <span class="math notranslate">\(\mathit{sym} ::= A_1 ~|~ \dots ~|~ A_n\)</span>.</li>
+<li>Large productions may be split into multiple definitions, indicated by ending the first one with explicit ellipses, <span class="math notranslate">\(\mathit{sym} ::= A_1 ~|~ \dots\)</span>, and starting continuations with ellipses, <span class="math notranslate">\(\mathit{sym} ::= \dots ~|~ A_2\)</span>.</li>
 <li>Some productions are augmented with side conditions in parentheses, “<span class="math notranslate">\((\mathrel{\mbox{if}} \mathit{condition})\)</span>”, that provide a shorthand for a combinatorial expansion of the production into many separate cases.</li>
 </ul>
 </div>
 <div class="section" id="auxiliary-notation">
-<span id="notation-compose"></span><span id="notation-concat"></span><span id="notation-record"></span><span id="notation-replace"></span><span id="notation-slice"></span><h2>Auxiliary Notation<a class="headerlink" href="#auxiliary-notation" title="Permalink to this headline">¶</a></h2>
+<span id="notation-compose"></span><span id="notation-concat"></span><span id="notation-project"></span><span id="notation-record"></span><span id="notation-replace"></span><span id="notation-slice"></span><span id="notation-index"></span><span id="notation-length"></span><span id="notation-epsilon"></span><h2>Auxiliary Notation<a class="headerlink" href="#auxiliary-notation" title="Permalink to this headline">¶</a></h2>
 <p>When dealing with syntactic constructs the following notation is also used:</p>
 <ul class="simple">
 <li><span class="math notranslate">\(\epsilon\)</span> denotes the empty sequence.</li>
@@ -106,7 +107,7 @@ where the <span class="math notranslate">\(A\)</span> can either be values or co
 A vector can have at most <span class="math notranslate">\(2^{32}-1\)</span> elements.</p>
 <div class="math notranslate">
 \[\begin{split}\begin{array}{lllll}
-\def\mathdef1949#1{{}}\mathdef1949{vector} &amp; \href{../syntax/conventions.html#syntax-vec}{\mathit{vec}}(A) &amp;::=&amp;
+\def\mathdef1950#1{{}}\mathdef1950{vector} &amp; \href{../syntax/conventions.html#syntax-vec}{\mathit{vec}}(A) &amp;::=&amp;
   A^n
   &amp; (\mathrel{\mbox{if}} n &lt; 2^{32})\\
 \end{array}\end{split}\]</div>

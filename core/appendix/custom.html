@@ -37,7 +37,7 @@ However, they provide useful meta data that implementations can make use of to i
 <p>Currently, only one dedicated custom section is defined, the <a class="reference internal" href="#binary-namesec"><span class="std std-ref">name section</span></a>.</p>
 <div class="section" id="name-section">
 <span id="binary-namesec"></span><span id="index-1"></span><h2>Name Section<a class="headerlink" href="#name-section" title="Permalink to this headline">¶</a></h2>
-<p>The <em>name section</em> is a <a class="reference internal" href="../binary/modules.html#binary-customsec"><span class="std std-ref">custom sections</span></a> whose name string is itself <span class="math notranslate">\(\def\mathdef119#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef119{name}\)</span>.
+<p>The <em>name section</em> is a <a class="reference internal" href="../binary/modules.html#binary-customsec"><span class="std std-ref">custom section</span></a> whose name string is itself <span class="math notranslate">\(\def\mathdef119#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef119{name}\)</span>.
 The name section should appear only once in a module, and only after the <a class="reference internal" href="../binary/modules.html#binary-datasec"><span class="std std-ref">data section</span></a>.</p>
 <p>The purpose of this section is to attach printable names to definitions in a module, which e.g. can be used by a debugger or when parts of the module are to be rendered in <a class="reference internal" href="../text/index.html#text"><span class="std std-ref">text form</span></a>.</p>
 <div class="admonition note">
@@ -57,7 +57,7 @@ Each subsection consists of a</p>
 <div class="math notranslate">
 \[\begin{split}\begin{array}{llcll}
 \def\mathdef60#1{{}}\mathdef60{name section} &amp; \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namesec}} &amp;::=&amp;
-  \href{../binary/modules.html#binary-module}{\mathtt{section}}_0(\href{../appendix/custom.html#binary-namesubsection}{\mathtt{namedata}}) \\
+  \href{../binary/modules.html#binary-section}{\mathtt{section}}_0(\href{../appendix/custom.html#binary-namesubsection}{\mathtt{namedata}}) \\
 \def\mathdef60#1{{}}\mathdef60{name data} &amp; \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namedata}} &amp;::=&amp;
   n{:}\href{../binary/values.html#binary-name}{\mathtt{name}}~~\href{../appendix/custom.html#binary-namesubsection}{\mathtt{namesubsection}}^\ast &amp; (\mathrel{\mbox{if}} n = \def\mathdef120#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef120{name}) \\
 \def\mathdef60#1{{}}\mathdef60{name subsection} &amp; \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namesubsection}}_N(\mathtt{B}) &amp;::=&amp;
