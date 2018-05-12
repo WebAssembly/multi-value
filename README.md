@@ -5,7 +5,9 @@
 This repository is a clone of [github.com/WebAssembly/spec/](https://github.com/WebAssembly/spec/).
 It is meant for discussion, prototype specification and implementation of a proposal to add support for returning multiple values to WebAssembly.
 
-See the [overview](proposals/multi-value/Overview.md) for a summary of the proposal.
+* See the [overview](proposals/multi-value/Overview.md) for a summary of the proposal.
+
+* See the [modified spec](https://webassembly.github.io/multi-value/core/) for details.
 
 Original `README` from upstream repository follows...
 
