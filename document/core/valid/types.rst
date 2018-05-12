@@ -68,7 +68,6 @@ Block Types
    }
 
 
-
 .. index:: table type, element type, limits
    pair: validation; table type
    single: abstract syntax; table type

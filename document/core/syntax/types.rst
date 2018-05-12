@@ -49,7 +49,7 @@ Result Types
 ~~~~~~~~~~~~
 
 *Result types* classify the result of :ref:`executing <exec-instr>` :ref:`instructions <syntax-instr>` or :ref:`functions <syntax-func>`,
-which is a sequence of values.
+which is a sequence of values written with brackets.
 
 .. math::
    \begin{array}{llll}

@@ -50,12 +50,12 @@ type code = value stack * admin_instr list
 and admin_instr = admin_instr' phrase
 and admin_instr' =
   | Plain of instr'
+  | Invoke of func_inst
   | Trapping of string
   | Returning of value stack
   | Breaking of int32 * value stack
   | Label of int32 * instr list * code
   | Frame of int32 * frame * code
-  | Invoke of func_inst
 
 type config =
 {
@@ -231,11 +231,11 @@ let rec step (c : config) : config =
           vs', []
         with exn -> vs', [Trapping (memory_error e.at exn) @@ e.at]);
 
-      | CurrentMemory, vs ->
+      | MemorySize, vs ->
         let mem = memory frame.inst (0l @@ e.at) in
         I32 (Memory.size mem) :: vs, []
 
-      | GrowMemory, I32 delta :: vs' ->
+      | MemoryGrow, I32 delta :: vs' ->
         let mem = memory frame.inst (0l @@ e.at) in
         let old_size = Memory.size mem in
         let result =

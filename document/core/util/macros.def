@@ -327,8 +327,8 @@
 
 .. |LOAD| mathdef:: \xref{syntax/instructions}{syntax-instr-memory}{\K{load}}
 .. |STORE| mathdef:: \xref{syntax/instructions}{syntax-instr-memory}{\K{store}}
-.. |CURRENTMEMORY| mathdef:: \xref{syntax/instructions}{syntax-instr-memory}{\K{current\_memory}}
-.. |GROWMEMORY| mathdef:: \xref{syntax/instructions}{syntax-instr-memory}{\K{grow\_memory}}
+.. |MEMORYSIZE| mathdef:: \xref{syntax/instructions}{syntax-instr-memory}{\K{memory.size}}
+.. |MEMORYGROW| mathdef:: \xref{syntax/instructions}{syntax-instr-memory}{\K{memory.grow}}
 
 .. |CONST| mathdef:: \xref{syntax/instructions}{syntax-instr-numeric}{\K{const}}
 .. |EQZ| mathdef:: \xref{syntax/instructions}{syntax-instr-numeric}{\K{eqz}}
@@ -478,7 +478,7 @@
 .. |Bversion| mathdef:: \xref{binary/modules}{binary-version}{\B{version}}
 .. |Bmodule| mathdef:: \xref{binary/modules}{binary-module}{\B{module}}
 
-.. |Bsection| mathdef:: \xref{binary/modules}{binary-module}{\B{section}}
+.. |Bsection| mathdef:: \xref{binary/modules}{binary-section}{\B{section}}
 .. |Bcustomsec| mathdef:: \xref{binary/modules}{binary-customsec}{\B{customsec}}
 .. |Btypesec| mathdef:: \xref{binary/modules}{binary-typesec}{\B{typesec}}
 .. |Bfuncsec| mathdef:: \xref{binary/modules}{binary-funcsec}{\B{funcsec}}

@@ -162,7 +162,7 @@ WebAssemblyText.decode(binary)
 
 The implementation consumes a WebAssembly AST given in S-expression syntax. Here is an overview of the grammar of types, expressions, functions, and modules, mirroring what's described in the [design doc](https://github.com/WebAssembly/design/blob/master/Semantics.md).
 
-Note: The grammar is shown here for convenience, the definite source is the [specification of the text format](https://webassembly.github.io/spec/text/).
+Note: The grammar is shown here for convenience, the definite source is the [specification of the text format](https://webassembly.github.io/spec/core/text/).
 ```
 num:    <digit> (_? <digit>)*
 hexnum: <hexdigit> (_? <hexdigit>)*
@@ -225,8 +225,8 @@ op:
   set_global <var>
   <val_type>.load((8|16|32)_<sign>)? <offset>? <align>?
   <val_type>.store(8|16|32)? <offset>? <align>?
-  current_memory
-  grow_memory
+  memory.size
+  memory.grow
   <val_type>.const <value>
   <val_type>.<unop>
   <val_type>.<binop>
