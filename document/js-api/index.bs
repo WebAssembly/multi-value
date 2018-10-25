@@ -84,6 +84,9 @@ urlPrefix: https://tc39.github.io/ecma262/; spec: ECMASCRIPT
         text: the Number value; url: sec-ecmascript-language-types-number-type
         text: NumberToRawBytes; url: sec-numbertorawbytes
         text: Built-in Function Objects; url: sec-built-in-function-objects
+        text: CreateArrayFromList; url: sec-createarrayfromlist
+        text: GetMethod; url: sec-getmethod
+        text: IterableToList; url: sec-iterabletolist
 urlPrefix: https://webassembly.github.io/spec/core/; spec: WebAssembly; type: dfn
     url: valid/modules.html#valid-module
         text: valid
@@ -748,7 +751,11 @@ This slot holds a [=function address=] relative to the [=surrounding agent=]'s [
     1. Set the [=surrounding agent=]'s [=associated store=] to |store|.
     1. If |ret| is [=error=], throw an exception. This exception should be a WebAssembly {{RuntimeError}} exception, unless otherwise indicated by <a href="#errors">the WebAssembly error mapping</a>.
     1. If |outArity| is 0, return undefined.
-    1. Otherwise, return [=ToJSValue=](|v|), where |v| is the singular element of |ret|.
+    1. Otherwise, if |outArity| is 1, return [=ToJSValue=](|v|), where |v| is the singular element of |ret|.
+    1. Otherwise,
+        1. Let |values| be a new, empty [=list=].
+        1. For each |r| in |ret|, [=append=] [=ToJSValue=](|r|) to |values|.
+        1. Return [=CreateArrayFromList=](|values|).
 </div>
 
 Note: [=call an Exported Function|Calling an Exported Function=] executes in the \[[Realm]] of the callee Exported Function, as per the definition of [=built-in function objects=].
@@ -767,7 +774,15 @@ Note: Exported Functions do not have a \[[Construct]] method and thus it is not 
         1. Let |ret| be ? [=Call=](|func|, undefined, |jsArguments|). If an exception is thrown, trigger a WebAssembly trap, and propagate the exception to the enclosing JavaScript.
         1. Let [|parameters|] → [|results|] be |functype|.
         1. If |results| is empty, return undefined.
-        1. Otherwise, return [=ToWebAssemblyValue=](|ret|, |results|[0]).
+        1. Otherwise, if |results| contains a single element, return [=ToWebAssemblyValue=](|ret|, |results|[0]).
+        1. Otherwise,
+            1. Let |method| be ? [=GetMethod=](|results|, @@iterator).
+            1. If |method| is undefined, [=throw=] a {{TypeError}}.
+            1. Let |values| be ? [=IterableToList=](|ret|, |method|).
+            1. Let |wasmValues| be a new, empty [=list=].
+            1. For each |value| and |resultType| in |values| and |results|,
+                1. [=Append=] [=ToWebAssemblyValue=](|value|, |resultType|) to |wasmValues|.
+            1. Return |wasmValues|.
     1. Let |store| be the [=surrounding agent=]'s [=associated store=].
     1. Let (|store|, |funcaddr|) be [=alloc_func=](|store|, |functype|, |hostfunc|).
     1. Set the [=surrounding agent=]'s [=associated store=] to |store|.
