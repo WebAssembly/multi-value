@@ -98,12 +98,14 @@ The control stack is likewise manipulated through auxiliary functions:
    func push_ctrl(opcode : opcode, in : list(val_type), out : list(val_type)) =
      let frame = ctrl_frame(opcode, in, out, opds.size(), false)
      ctrls.push(frame)
+     push_opds(in)
 
    func pop_ctrl() : ctrl_frame =
      error_if(ctrls.is_empty())
-     let frame = ctrls.pop()
+     let frame = ctrls[0]
      pop_opds(frame.end_types)
      error_if(opds.size() =/= frame.height)
+     ctrls.pop()
      return frame
 
    func label_types(frame : ctrl_frame) : list(val_types) =
@@ -167,18 +169,15 @@ Other instructions are checked in a similar manner.
        case (block t1*->t2*)
          pop_opds([t1*])
          push_ctrl(block, [t1*], [t2*])
-         push_opds([t1*])
 
        case (loop t1*->t2*)
          pop_opds([t1*])
          push_ctrl(loop, [t1*], [t2*])
-         push_opds([t1*])
 
        case (if t1*->t2*)
          pop_opd(I32)
          pop_opds([t1*])
          push_ctrl(if, [t1*], [t2*])
-         push_opds([t1*])
 
        case (end)
          let frame = pop_ctrl()
@@ -188,7 +187,6 @@ Other instructions are checked in a similar manner.
          let frame = pop_ctrl()
          error_if(frame.opcode =/= if)
          push_ctrl(else, frame.start_types, frame.end_types)
-         push_opds(frame.start_types)
 
        case (br n)
          error_if(ctrls.size() < n)
