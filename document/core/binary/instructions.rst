@@ -43,7 +43,7 @@ Control Instructions
    \production{block type} & \Bblocktype &::=&
      \hex{40} &\Rightarrow& \epsilon \\ &&|&
      t{:}\Bvaltype &\Rightarrow& t \\ &&|&
-     x{:}\Bs33 &\Rightarrow& x \\
+     x{:}\Bs33 &\Rightarrow& x & (\iff x \geq 0) \\
    \production{instruction} & \Binstr &::=&
      \hex{00} &\Rightarrow& \UNREACHABLE \\ &&|&
      \hex{01} &\Rightarrow& \NOP \\ &&|&
