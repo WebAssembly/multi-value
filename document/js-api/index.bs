@@ -924,7 +924,8 @@ Note: Exported Functions do not have a \[[Construct]] method and thus it is not 
             1. If |method| is undefined, [=throw=] a {{TypeError}}.
             1. Let |values| be ? [=IterableToList=](|ret|, |method|).
             1. Let |wasmValues| be a new, empty [=list=].
-            1. For each |value| and |resultType| in |values| and |results|,
+            1. Assert: |values| and |results| have the same length.
+            1. For each |value| and |resultType| in |values| and |results|, paired linearly,
                 1. [=Append=] [=ToWebAssemblyValue=](|value|, |resultType|) to |wasmValues|.
             1. Return |wasmValues|.
     1. Let |store| be the [=surrounding agent=]'s [=associated store=].
