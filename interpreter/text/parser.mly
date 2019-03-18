@@ -145,13 +145,13 @@ let inline_type_explicit (c : context) x ft at =
 
 %}
 
-%token NAT INT FLOAT STRING VAR VALUE_TYPE ANYFUNC MUT LPAR RPAR
+%token NAT INT FLOAT STRING VAR VALUE_TYPE FUNCREF MUT LPAR RPAR
 %token NOP DROP BLOCK END IF THEN ELSE SELECT LOOP BR BR_IF BR_TABLE
 %token CALL CALL_INDIRECT RETURN
-%token GET_LOCAL SET_LOCAL TEE_LOCAL GET_GLOBAL SET_GLOBAL
+%token LOCAL_GET LOCAL_SET LOCAL_TEE GLOBAL_GET GLOBAL_SET
 %token LOAD STORE OFFSET_EQ_NAT ALIGN_EQ_NAT
 %token CONST UNARY BINARY TEST COMPARE CONVERT
-%token UNREACHABLE CURRENT_MEMORY GROW_MEMORY
+%token UNREACHABLE MEMORY_SIZE MEMORY_GROW
 %token FUNC START TYPE PARAM RESULT LOCAL GLOBAL
 %token TABLE ELEM MEMORY DATA OFFSET IMPORT EXPORT TABLE
 %token MODULE BIN QUOTE
@@ -205,7 +205,7 @@ value_type_list :
   | VALUE_TYPE value_type_list { $1 :: $2 }
 
 elem_type :
-  | ANYFUNC { AnyFuncType }
+  | FUNCREF { FuncRefType }
 
 global_type :
   | VALUE_TYPE { GlobalType ($1, Immutable) }
@@ -294,13 +294,15 @@ align_opt :
 
 instr :
   | plain_instr { let at = at () in fun c -> [$1 c @@ at] }
-  | call_instr { fun c -> let e, es = $1 c in e :: es }
+  | call_instr_instr { fun c -> let e, es = $1 c in e :: es }
   | block_instr { let at = at () in fun c -> [$1 c @@ at] }
   | expr { $1 } /* Sugar */
 
 plain_instr :
   | UNREACHABLE { fun c -> unreachable }
   | NOP { fun c -> nop }
+  | DROP { fun c -> drop }
+  | SELECT { fun c -> select }
   | BR var { fun c -> br ($2 c label) }
   | BR_IF var { fun c -> br_if ($2 c label) }
   | BR_TABLE var var_list
@@ -308,17 +310,15 @@ plain_instr :
       br_table xs x }
   | RETURN { fun c -> return }
   | CALL var { fun c -> call ($2 c func) }
-  | DROP { fun c -> drop }
-  | SELECT { fun c -> select }
-  | GET_LOCAL var { fun c -> get_local ($2 c local) }
-  | SET_LOCAL var { fun c -> set_local ($2 c local) }
-  | TEE_LOCAL var { fun c -> tee_local ($2 c local) }
-  | GET_GLOBAL var { fun c -> get_global ($2 c global) }
-  | SET_GLOBAL var { fun c -> set_global ($2 c global) }
+  | LOCAL_GET var { fun c -> local_get ($2 c local) }
+  | LOCAL_SET var { fun c -> local_set ($2 c local) }
+  | LOCAL_TEE var { fun c -> local_tee ($2 c local) }
+  | GLOBAL_GET var { fun c -> global_get ($2 c global) }
+  | GLOBAL_SET var { fun c -> global_set ($2 c global) }
   | LOAD offset_opt align_opt { fun c -> $1 $3 $2 }
   | STORE offset_opt align_opt { fun c -> $1 $3 $2 }
-  | CURRENT_MEMORY { fun c -> current_memory }
-  | GROW_MEMORY { fun c -> grow_memory }
+  | MEMORY_SIZE { fun c -> memory_size }
+  | MEMORY_GROW { fun c -> memory_grow }
   | CONST literal { fun c -> fst (literal $1 $2) }
   | TEST { fun c -> $1 }
   | COMPARE { fun c -> $1 }
@@ -326,34 +326,63 @@ plain_instr :
   | BINARY { fun c -> $1 }
   | CONVERT { fun c -> $1 }
 
+
 call_instr :
   | CALL_INDIRECT call_instr_type
-    { let at1 = ati 1 in
-      fun c -> let x, es = $2 c in call_indirect x @@ at1, es }
+    { let at = at () in fun c -> call_indirect ($2 c) @@ at }
 
 call_instr_type :
   | type_use call_instr_params
     { let at1 = ati 1 in
       fun c ->
       match $2 c with
-      | FuncType ([], []), es -> $1 c type_, es
-      | ft, es -> inline_type_explicit c ($1 c type_) ft at1, es }
+      | FuncType ([], []) -> $1 c type_
+      | ft -> inline_type_explicit c ($1 c type_) ft at1 }
   | call_instr_params
-    { let at1 = ati 1 in
-      fun c -> let ft, es = $1 c in inline_type c ft at1, es }
+    { let at = at () in fun c -> inline_type c ($1 c) at }
 
 call_instr_params :
   | LPAR PARAM value_type_list RPAR call_instr_params
-    { fun c ->
-      let FuncType (ts1, ts2), es = $5 c in FuncType ($3 @ ts1, ts2), es }
+    { fun c -> let FuncType (ts1, ts2) = $5 c in FuncType ($3 @ ts1, ts2) }
   | call_instr_results
-    { fun c -> let ts, es = $1 c in FuncType ([], ts), es }
+    { fun c -> FuncType ([], $1 c) }
 
 call_instr_results :
   | LPAR RESULT value_type_list RPAR call_instr_results
+    { fun c -> $3 @ $5 c }
+  | /* empty */
+    { fun c -> [] }
+
+
+call_instr_instr :
+  | CALL_INDIRECT call_instr_type_instr
+    { let at1 = ati 1 in
+      fun c -> let x, es = $2 c in call_indirect x @@ at1, es }
+
+call_instr_type_instr :
+  | type_use call_instr_params_instr
+    { let at1 = ati 1 in
+      fun c ->
+      match $2 c with
+      | FuncType ([], []), es -> $1 c type_, es
+      | ft, es -> inline_type_explicit c ($1 c type_) ft at1, es }
+  | call_instr_params_instr
+    { let at = at () in
+      fun c -> let ft, es = $1 c in inline_type c ft at, es }
+
+call_instr_params_instr :
+  | LPAR PARAM value_type_list RPAR call_instr_params_instr
+    { fun c ->
+      let FuncType (ts1, ts2), es = $5 c in FuncType ($3 @ ts1, ts2), es }
+  | call_instr_results_instr
+    { fun c -> let ts, es = $1 c in FuncType ([], ts), es }
+
+call_instr_results_instr :
+  | LPAR RESULT value_type_list RPAR call_instr_results_instr
     { fun c -> let ts, es = $5 c in $3 @ ts, es }
   | instr
     { fun c -> [], $1 c }
+
 
 block_instr :
   | BLOCK labeling_opt block END labeling_end_opt
@@ -475,6 +504,7 @@ if_ :
 
 instr_list :
   | /* empty */ { fun c -> [] }
+  | call_instr { fun c -> [$1 c] }
   | instr instr_list { fun c -> $1 c @ $2 c }
 
 expr_list :
