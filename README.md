@@ -7,7 +7,7 @@ It is meant for discussion, prototype specification and implementation of a prop
 
 * See the [overview](proposals/multi-value/Overview.md) for a summary of the proposal.
 
-* See the [modified spec](https://webassembly.github.io/multi-value/core/) for details.
+* See the [modified spec](https://webassembly.github.io/multi-value/) for details.
 
 Original `README` from upstream repository follows...
 
