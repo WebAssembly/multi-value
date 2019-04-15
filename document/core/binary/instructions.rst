@@ -39,7 +39,7 @@ Control Instructions
 .. _binary-call_indirect:
 
 .. math::
-   \begin{array}{llclll}
+   \begin{array}{llcllll}
    \production{block type} & \Bblocktype &::=&
      \hex{40} &\Rightarrow& \epsilon \\ &&|&
      t{:}\Bvaltype &\Rightarrow& t \\ &&|&
