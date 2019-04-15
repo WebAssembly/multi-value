@@ -1,0 +1,856 @@
+\begin{sphinxtheindex}
+\def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
+
+  \bigletter {Symbols}
+  \item : abstract syntax
+    \subitem administrative instruction, \hyperpage{43}
+
+  \indexspace
+  \bigletter A
+  \item abbreviations, \hyperindexformat{\textbf}{102}
+  \item abstract syntax, \hyperindexformat{\textbf}{5}, \hyperpage{85}, \hyperpage{101}, 
+		\hyperpage{128}
+    \subitem block type, \hyperpage{12}, \hyperpage{22}
+    \subitem byte, \hyperpage{6}
+    \subitem data, \hyperpage{16}, \hyperpage{33}
+    \subitem element, \hyperpage{16}, \hyperpage{32}
+    \subitem element type, \hyperpage{9}
+    \subitem export, \hyperpage{16}, \hyperpage{33}
+    \subitem export instance, \hyperpage{41}
+    \subitem expression, \hyperpage{14}, \hyperpage{30}, \hyperpage{75}
+    \subitem external type, \hyperpage{10}
+    \subitem external value, \hyperpage{41}
+    \subitem floating-point number, \hyperpage{7}
+    \subitem frame, \hyperpage{42}
+    \subitem function, \hyperpage{15}, \hyperpage{31}
+    \subitem function address, \hyperpage{40}
+    \subitem function index, \hyperpage{14}
+    \subitem function instance, \hyperpage{40}
+    \subitem function type, \hyperpage{9}
+    \subitem global, \hyperpage{16}, \hyperpage{32}
+    \subitem global address, \hyperpage{40}
+    \subitem global index, \hyperpage{14}
+    \subitem global instance, \hyperpage{41}
+    \subitem global type, \hyperpage{9}, \hyperpage{22}
+    \subitem grammar, \hyperpage{5}
+    \subitem import, \hyperpage{17}, \hyperpage{34}
+    \subitem instruction, \hyperpage{10--12}, \hyperpage{23--27}, \hyperpage{63--66}, 
+		\hyperpage{69}
+    \subitem integer, \hyperpage{7}
+    \subitem label, \hyperpage{42}
+    \subitem label index, \hyperpage{14}
+    \subitem limits, \hyperpage{9}, \hyperpage{21}
+    \subitem local, \hyperpage{15}
+    \subitem local index, \hyperpage{14}
+    \subitem memory, \hyperpage{15}, \hyperpage{32}
+    \subitem memory address, \hyperpage{40}
+    \subitem memory index, \hyperpage{14}
+    \subitem memory instance, \hyperpage{41}
+    \subitem memory type, \hyperpage{9}, \hyperpage{22}
+    \subitem module, \hyperpage{14}, \hyperpage{35}
+    \subitem module instance, \hyperpage{40}
+    \subitem mutability, \hyperpage{9}
+    \subitem name, \hyperpage{8}
+    \subitem notation, \hyperpage{5}
+    \subitem result, \hyperpage{39}
+    \subitem result type, \hyperpage{9}
+    \subitem signed integer, \hyperpage{7}
+    \subitem start function, \hyperpage{16}, \hyperpage{33}
+    \subitem store, \hyperpage{39}
+    \subitem table, \hyperpage{15}, \hyperpage{31}
+    \subitem table address, \hyperpage{40}
+    \subitem table index, \hyperpage{14}
+    \subitem table instance, \hyperpage{41}
+    \subitem table type, \hyperpage{9}, \hyperpage{22}
+    \subitem type, \hyperpage{8}
+    \subitem type definition, \hyperpage{14}
+    \subitem type index, \hyperpage{14}
+    \subitem uninterpreted integer, \hyperpage{7}
+    \subitem unsigned integer, \hyperpage{7}
+    \subitem value, \hyperpage{6}, \hyperpage{39}
+    \subitem value type, \hyperpage{8}
+    \subitem vector, \hyperpage{6}
+  \item activation, \hyperpage{42}
+  \item address, \hyperindexformat{\textbf}{40}, \hyperpage{65, 66}, \hyperpage{69}, \hyperpage{77}
+    \subitem function, \hyperpage{40}
+    \subitem global, \hyperpage{40}
+    \subitem memory, \hyperpage{40}
+    \subitem table, \hyperpage{40}
+  \item administrative instruction, \hyperpage{138, 139}
+    \subitem : abstract syntax, \hyperpage{43}
+  \item administrative instructions, \hyperindexformat{\textbf}{43}
+  \item algorithm, \hyperpage{130}
+  \item allocation, \hyperpage{39}, \hyperindexformat{\textbf}{77}, \hyperpage{121}, 
+		\hyperpage{129}
+  \item arithmetic NaN, \hyperpage{7}
+  \item ASCII, \hyperpage{103--105}
+
+  \indexspace
+  \bigletter B
+  \item binary format, \hyperpage{8}, \hyperindexformat{\textbf}{85}, \hyperpage{122}, 
+		\hyperpage{129, 130}, \hyperpage{133}
+    \subitem block type, \hyperpage{89}
+    \subitem byte, \hyperpage{86}
+    \subitem custom section, \hyperpage{95}
+    \subitem data, \hyperpage{98}
+    \subitem element, \hyperpage{97}
+    \subitem element type, \hyperpage{89}
+    \subitem export, \hyperpage{96}
+    \subitem expression, \hyperpage{94}
+    \subitem floating-point number, \hyperpage{87}
+    \subitem function, \hyperpage{96, 97}
+    \subitem function index, \hyperpage{94}
+    \subitem function type, \hyperpage{88}
+    \subitem global, \hyperpage{96}
+    \subitem global index, \hyperpage{94}
+    \subitem global type, \hyperpage{89}
+    \subitem grammar, \hyperpage{85}
+    \subitem import, \hyperpage{96}
+    \subitem instruction, \hyperpage{89--91}
+    \subitem integer, \hyperpage{86}
+    \subitem label index, \hyperpage{94}
+    \subitem limits, \hyperpage{88}
+    \subitem local, \hyperpage{97}
+    \subitem local index, \hyperpage{94}
+    \subitem memory, \hyperpage{96}
+    \subitem memory index, \hyperpage{94}
+    \subitem memory type, \hyperpage{88}
+    \subitem module, \hyperpage{98}
+    \subitem mutability, \hyperpage{89}
+    \subitem name, \hyperpage{87}
+    \subitem notation, \hyperpage{85}
+    \subitem result type, \hyperpage{88}
+    \subitem section, \hyperpage{94}
+    \subitem signed integer, \hyperpage{86}
+    \subitem start function, \hyperpage{97}
+    \subitem table, \hyperpage{96}
+    \subitem table index, \hyperpage{94}
+    \subitem table type, \hyperpage{89}
+    \subitem type, \hyperpage{88}
+    \subitem type index, \hyperpage{94}
+    \subitem type section, \hyperpage{95}
+    \subitem uninterpreted integer, \hyperpage{86}
+    \subitem unsigned integer, \hyperpage{86}
+    \subitem value, \hyperpage{86}
+    \subitem value type, \hyperpage{88}
+    \subitem vector, \hyperpage{86}
+  \item bit, \hyperpage{46}
+  \item bit width, \hyperpage{7, 8}, \hyperpage{45}, \hyperpage{66}
+  \item block, \hyperindexformat{\textbf}{12}, \hyperpage{27}, \hyperpage{69}, \hyperpage{72}, 
+		\hyperpage{89}, \hyperpage{108}
+    \subitem type, \hyperpage{12}
+  \item block context, \hyperindexformat{\textbf}{44}
+  \item block type, \hyperindexformat{\textbf}{12}, \hyperpage{22}, \hyperpage{27}, \hyperpage{89}
+    \subitem abstract syntax, \hyperpage{12}
+    \subitem binary format, \hyperpage{89}
+    \subitem validation, \hyperpage{22}
+  \item Boolean, \hyperpage{3}, \hyperpage{46, 47}
+  \item branch, \hyperindexformat{\textbf}{12}, \hyperpage{27}, \hyperpage{44}, \hyperpage{69}, 
+		\hyperpage{89}, \hyperpage{108}
+  \item byte, \hyperindexformat{\textbf}{6}, \hyperpage{8}, \hyperpage{16}, \hyperpage{33}, 
+		\hyperpage{41}, \hyperpage{46}, \hyperpage{78}, \hyperpage{85--87}, \hyperpage{98}, 
+		\hyperpage{105, 106}, \hyperpage{116}, \hyperpage{118}, \hyperpage{125}, 
+		\hyperpage{137}, \hyperpage{140}
+    \subitem abstract syntax, \hyperpage{6}
+    \subitem binary format, \hyperpage{86}
+    \subitem text format, \hyperpage{105}
+
+  \indexspace
+  \bigletter C
+  \item call, \hyperpage{42, 43}, \hyperindexformat{\textbf}{73}
+  \item canonical NaN, \hyperpage{7}
+  \item character, \hyperindexformat{\textbf}{103}, \hyperpage{103--106}, \hyperpage{129}
+    \subitem text format, \hyperpage{103}
+  \item closure, \hyperpage{40}
+  \item code, \hyperpage{10}, \hyperpage{129}
+    \subitem section, \hyperpage{97}
+  \item code point, \hyperpage{2}, \hyperpage{8}, \hyperpage{103}, \hyperpage{106}, \hyperpage{128}
+  \item code section, \hyperindexformat{\textbf}{97}
+  \item comment, \hyperpage{103}, \hyperindexformat{\textbf}{104}
+  \item concepts, \hyperpage{3}
+  \item configuration, \hyperpage{38}, \hyperindexformat{\textbf}{44}, \hyperpage{138}, 
+		\hyperpage{142}
+  \item constant, \hyperpage{14}, \hyperpage{16}, \hyperindexformat{\textbf}{30}, \hyperpage{39}
+  \item context, \hyperindexformat{\textbf}{19}, \hyperpage{23}, \hyperpage{25--27}, \hyperpage{35}, 
+		\hyperpage{98}, \hyperpage{137}, \hyperpage{139}
+  \item control instruction, \hyperindexformat{\textbf}{12}
+  \item control instructions, \hyperpage{27}, \hyperpage{69}, \hyperpage{89}, \hyperpage{108}
+  \item custom section, \hyperindexformat{\textbf}{95}, \hyperpage{133}
+    \subitem binary format, \hyperpage{95}
+
+  \indexspace
+  \bigletter D
+  \item data, \hyperpage{14, 15}, \hyperindexformat{\textbf}{16}, \hyperpage{33}, \hyperpage{35}, 
+		\hyperpage{43}, \hyperpage{98}, \hyperpage{116}, \hyperpage{118, 119}, 
+		\hyperpage{128}, \hyperpage{140}
+    \subitem abstract syntax, \hyperpage{16}
+    \subitem binary format, \hyperpage{98}
+    \subitem section, \hyperpage{98}
+    \subitem segment, \hyperpage{16}, \hyperpage{33}, \hyperpage{98}, \hyperpage{116}, 
+		\hyperpage{118}
+    \subitem text format, \hyperpage{116}, \hyperpage{118}
+    \subitem validation, \hyperpage{33}
+  \item data section, \hyperindexformat{\textbf}{98}
+  \item data segment, \hyperpage{41}
+  \item decoding, \hyperpage{3}
+  \item design goals, \hyperpage{1}
+  \item determinism, \hyperpage{45}, \hyperpage{63}
+
+  \indexspace
+  \bigletter E
+  \item element, \hyperpage{9}, \hyperpage{14, 15}, \hyperindexformat{\textbf}{16}, \hyperpage{32}, 
+		\hyperpage{35}, \hyperpage{43}, \hyperpage{97, 98}, \hyperpage{116}, 
+		\hyperpage{118, 119}, \hyperpage{124}, \hyperpage{128}, \hyperpage{139}
+    \subitem abstract syntax, \hyperpage{16}
+    \subitem binary format, \hyperpage{97}
+    \subitem section, \hyperpage{97}
+    \subitem segment, \hyperpage{16}, \hyperpage{32}, \hyperpage{97}, \hyperpage{116}, 
+		\hyperpage{118}
+    \subitem text format, \hyperpage{116}, \hyperpage{118}
+    \subitem type, \hyperpage{9}
+    \subitem validation, \hyperpage{32}
+  \item element section, \hyperindexformat{\textbf}{97}
+  \item element segment, \hyperpage{41}
+  \item element type, \hyperindexformat{\textbf}{9}, \hyperpage{22}, \hyperpage{76}, \hyperpage{89}, 
+		\hyperpage{107}
+    \subitem abstract syntax, \hyperpage{9}
+    \subitem binary format, \hyperpage{89}
+    \subitem text format, \hyperpage{107}
+  \item embedder, \hyperindexformat{\textbf}{3}, \hyperpage{40, 41}, \hyperpage{121}
+  \item embedding, \hyperindexformat{\textbf}{121}
+  \item evaluation context, \hyperpage{38}, \hyperindexformat{\textbf}{44}
+  \item execution, \hyperpage{3}, \hyperpage{8, 9}, \hyperindexformat{\textbf}{37}, \hyperpage{129}
+    \subitem expression, \hyperpage{75}
+    \subitem instruction, \hyperpage{63--66}, \hyperpage{69}
+  \item exponent, \hyperpage{7}, \hyperpage{46}
+  \item export, \hyperpage{14}, \hyperindexformat{\textbf}{16}, \hyperpage{33}, \hyperpage{35}, 
+		\hyperpage{41}, \hyperpage{79}, \hyperpage{83}, \hyperpage{96}, \hyperpage{98}, 
+		\hyperpage{115--117}, \hyperpage{119}, \hyperpage{123}, \hyperpage{128}
+    \subitem abstract syntax, \hyperpage{16}
+    \subitem binary format, \hyperpage{96}
+    \subitem instance, \hyperpage{41}
+    \subitem section, \hyperpage{96}
+    \subitem text format, \hyperpage{115--117}
+    \subitem validation, \hyperpage{33}
+  \item export instance, \hyperpage{40}, \hyperindexformat{\textbf}{41}, \hyperpage{79}, 
+		\hyperpage{123}, \hyperpage{137}
+    \subitem abstract syntax, \hyperpage{41}
+  \item export section, \hyperindexformat{\textbf}{96}
+  \item expression, \hyperindexformat{\textbf}{14}, \hyperpage{15, 16}, \hyperpage{30--33}, 
+		\hyperpage{75}, \hyperpage{94}, \hyperpage{96--98}, \hyperpage{113}, 
+		\hyperpage{116--118}
+    \subitem abstract syntax, \hyperpage{14}
+    \subitem binary format, \hyperpage{94}
+    \subitem constant, \hyperpage{14}, \hyperpage{30}, \hyperpage{94}, \hyperpage{113}
+    \subitem execution, \hyperpage{75}
+    \subitem text format, \hyperpage{113}
+    \subitem validation, \hyperpage{30}
+  \item extern type, \hyperpage{139}
+  \item extern value, \hyperpage{139}
+  \item external
+    \subitem type, \hyperpage{10}
+    \subitem value, \hyperpage{41}
+  \item external type, \hyperindexformat{\textbf}{10}, \hyperpage{75, 76}, \hyperpage{79}, 
+		\hyperpage{137}
+    \subitem abstract syntax, \hyperpage{10}
+  \item external value, \hyperpage{10}, \hyperindexformat{\textbf}{41}, \hyperpage{41}, 
+		\hyperpage{75}, \hyperpage{79}, \hyperpage{137}
+    \subitem abstract syntax, \hyperpage{41}
+
+  \indexspace
+  \bigletter F
+  \item file extension, \hyperpage{85}, \hyperpage{101}
+  \item floating point, \hyperpage{2}
+  \item floating-point, \hyperpage{3}, \hyperindexformat{\textbf}{7}, \hyperpage{8}, \hyperpage{10}, 
+		\hyperpage{39}, \hyperpage{45, 46}, \hyperpage{51}
+  \item floating-point number, \hyperpage{87}, \hyperpage{105}
+    \subitem abstract syntax, \hyperpage{7}
+    \subitem binary format, \hyperpage{87}
+    \subitem text format, \hyperpage{105}
+  \item folded instruction, \hyperindexformat{\textbf}{113}
+  \item frame, \hyperindexformat{\textbf}{42}, \hyperpage{43, 44}, \hyperpage{65, 66}, 
+		\hyperpage{69}, \hyperpage{73}, \hyperpage{129, 130}, \hyperpage{138--140}
+    \subitem abstract syntax, \hyperpage{42}
+  \item function, \hyperpage{3}, \hyperpage{9}, \hyperpage{12}, \hyperpage{14}, 
+		\hyperindexformat{\textbf}{15}, \hyperpage{16, 17}, \hyperpage{19}, \hyperpage{31}, 
+		\hyperpage{35}, \hyperpage{40--43}, \hyperpage{73}, \hyperpage{77}, \hyperpage{79}, 
+		\hyperpage{83}, \hyperpage{96--98}, \hyperpage{115}, \hyperpage{119}, 
+		\hyperpage{123}, \hyperpage{128, 129}, \hyperpage{134}
+    \subitem abstract syntax, \hyperpage{15}, \hyperpage{31}
+    \subitem address, \hyperpage{40}
+    \subitem binary format, \hyperpage{96, 97}
+    \subitem export, \hyperpage{16}
+    \subitem import, \hyperpage{17}
+    \subitem index, \hyperpage{14}
+    \subitem instance, \hyperpage{40}
+    \subitem section, \hyperpage{96}
+    \subitem text format, \hyperpage{115}
+    \subitem type, \hyperpage{9}
+  \item function address, \hyperpage{41}, \hyperpage{43}, \hyperpage{75}, \hyperpage{77}, 
+		\hyperpage{79}, \hyperpage{83}, \hyperpage{123, 124}, \hyperpage{137}, 
+		\hyperpage{139}
+    \subitem abstract syntax, \hyperpage{40}
+  \item function index, \hyperpage{12}, \hyperindexformat{\textbf}{14}, \hyperpage{15--17}, 
+		\hyperpage{27}, \hyperpage{31--33}, \hyperpage{69}, \hyperpage{79}, \hyperpage{89}, 
+		\hyperpage{94}, \hyperpage{96, 97}, \hyperpage{108}, \hyperpage{114--118}, 
+		\hyperpage{134}, \hyperpage{139}
+    \subitem abstract syntax, \hyperpage{14}
+    \subitem binary format, \hyperpage{94}
+    \subitem text format, \hyperpage{114}
+  \item function instance, \hyperpage{39}, \hyperindexformat{\textbf}{40}, \hyperpage{40}, 
+		\hyperpage{43}, \hyperpage{73}, \hyperpage{77}, \hyperpage{79}, \hyperpage{83}, 
+		\hyperpage{123}, \hyperpage{129}, \hyperpage{136}, \hyperpage{141}
+    \subitem abstract syntax, \hyperpage{40}
+  \item function section, \hyperindexformat{\textbf}{96}
+  \item function type, \hyperindexformat{\textbf}{9}, \hyperpage{10}, \hyperpage{12}, 
+		\hyperpage{14}, \hyperpage{17}, \hyperpage{19}, \hyperpage{23}, \hyperpage{31}, 
+		\hyperpage{34, 35}, \hyperpage{40}, \hyperpage{63}, \hyperpage{75--77}, 
+		\hyperpage{83}, \hyperpage{88}, \hyperpage{96--98}, \hyperpage{107}, 
+		\hyperpage{115}, \hyperpage{119}, \hyperpage{123}, \hyperpage{136}, 
+		\hyperpage{139}
+    \subitem abstract syntax, \hyperpage{9}
+    \subitem binary format, \hyperpage{88}
+    \subitem text format, \hyperpage{107}
+
+  \indexspace
+  \bigletter G
+  \item global, \hyperpage{9}, \hyperpage{12}, \hyperpage{14}, \hyperindexformat{\textbf}{16}, 
+		\hyperpage{16, 17}, \hyperpage{32}, \hyperpage{35}, \hyperpage{41}, \hyperpage{79}, 
+		\hyperpage{96}, \hyperpage{98}, \hyperpage{117}, \hyperpage{119}, 
+		\hyperpage{127, 128}
+    \subitem abstract syntax, \hyperpage{16}
+    \subitem address, \hyperpage{40}
+    \subitem binary format, \hyperpage{96}
+    \subitem export, \hyperpage{16}
+    \subitem import, \hyperpage{17}
+    \subitem index, \hyperpage{14}
+    \subitem instance, \hyperpage{41}
+    \subitem mutability, \hyperpage{9}
+    \subitem section, \hyperpage{96}
+    \subitem text format, \hyperpage{117}
+    \subitem type, \hyperpage{9}
+    \subitem validation, \hyperpage{32}
+  \item global address, \hyperpage{40, 41}, \hyperpage{65}, \hyperpage{76}, \hyperpage{79}, 
+		\hyperpage{127}
+    \subitem abstract syntax, \hyperpage{40}
+  \item global index, \hyperpage{12}, \hyperindexformat{\textbf}{14}, \hyperpage{16, 17}, 
+		\hyperpage{25}, \hyperpage{33}, \hyperpage{65}, \hyperpage{79}, \hyperpage{90}, 
+		\hyperpage{94}, \hyperpage{96}, \hyperpage{109}, \hyperpage{114}, \hyperpage{117}
+    \subitem abstract syntax, \hyperpage{14}
+    \subitem binary format, \hyperpage{94}
+    \subitem text format, \hyperpage{114}
+  \item global instance, \hyperpage{39, 40}, \hyperindexformat{\textbf}{41}, \hyperpage{65}, 
+		\hyperpage{79}, \hyperpage{127}, \hyperpage{129}, \hyperpage{136, 137}, 
+		\hyperpage{141}
+    \subitem abstract syntax, \hyperpage{41}
+  \item global section, \hyperindexformat{\textbf}{96}
+  \item global type, \hyperindexformat{\textbf}{9}, \hyperpage{10}, \hyperpage{16, 17}, 
+		\hyperpage{19}, \hyperpage{22}, \hyperpage{32}, \hyperpage{34}, \hyperpage{76, 77}, 
+		\hyperpage{79}, \hyperpage{89}, \hyperpage{96}, \hyperpage{107}, \hyperpage{115}, 
+		\hyperpage{117}, \hyperpage{127}, \hyperpage{136, 137}
+    \subitem abstract syntax, \hyperpage{9}
+    \subitem binary format, \hyperpage{89}
+    \subitem text format, \hyperpage{107}
+    \subitem validation, \hyperpage{22}
+  \item globaltype, \hyperpage{19}
+  \item grammar notation, \hyperindexformat{\textbf}{5}, \hyperpage{85}, \hyperpage{101}
+  \item grow, \hyperpage{79}
+
+  \indexspace
+  \bigletter H
+  \item host, \hyperpage{121}
+  \item host function, \hyperindexformat{\textbf}{40}, \hyperpage{74}, \hyperpage{77}, 
+		\hyperpage{123}, \hyperpage{136}
+
+  \indexspace
+  \bigletter I
+  \item identifier, \hyperpage{101, 102}, \hyperpage{114--117}, \hyperpage{119}, \hyperpage{129}
+  \item identifier context, \hyperindexformat{\textbf}{102}, \hyperpage{119}
+  \item identifiers, \hyperindexformat{\textbf}{106}
+    \subitem text format, \hyperpage{106}
+  \item IEEE 754, \hyperpage{2, 3}, \hyperpage{7, 8}, \hyperpage{46}, \hyperpage{51}
+  \item implementation, \hyperpage{121}, \hyperpage{127}
+  \item implementation limitations, \hyperindexformat{\textbf}{127}
+  \item import, \hyperpage{10}, \hyperpage{14--16}, \hyperindexformat{\textbf}{17}, \hyperpage{31}, 
+		\hyperpage{34, 35}, \hyperpage{75}, \hyperpage{79}, \hyperpage{96}, \hyperpage{98}, 
+		\hyperpage{115--117}, \hyperpage{119}, \hyperpage{122}, \hyperpage{128}
+    \subitem abstract syntax, \hyperpage{17}
+    \subitem binary format, \hyperpage{96}
+    \subitem section, \hyperpage{96}
+    \subitem text format, \hyperpage{115--117}
+    \subitem validation, \hyperpage{34}
+  \item import section, \hyperindexformat{\textbf}{96}
+  \item index, \hyperindexformat{\textbf}{14}, \hyperpage{16, 17}, \hyperpage{33}, \hyperpage{40}, 
+		\hyperpage{94}, \hyperpage{96}, \hyperpage{102}, \hyperpage{108}, 
+		\hyperpage{114--117}, \hyperpage{134}
+    \subitem function, \hyperpage{14}
+    \subitem global, \hyperpage{14}
+    \subitem label, \hyperpage{14}
+    \subitem local, \hyperpage{14}
+    \subitem memory, \hyperpage{14}
+    \subitem table, \hyperpage{14}
+    \subitem type, \hyperpage{14}
+  \item index space, \hyperindexformat{\textbf}{14}, \hyperpage{17}, \hyperpage{19}, 
+		\hyperpage{102}, \hyperpage{134}
+  \item instance, \hyperindexformat{\textbf}{40}, \hyperpage{81}
+    \subitem export, \hyperpage{41}
+    \subitem function, \hyperpage{40}
+    \subitem global, \hyperpage{41}
+    \subitem memory, \hyperpage{41}
+    \subitem module, \hyperpage{40}
+    \subitem table, \hyperpage{41}
+  \item instantiation, \hyperpage{3}, \hyperpage{8}, \hyperpage{16, 17}, 
+		\hyperindexformat{\textbf}{81}, \hyperpage{122}, \hyperpage{142}
+  \item instantiation. module, \hyperpage{19}
+  \item instruction, \hyperpage{3}, \hyperpage{9}, \hyperindexformat{\textbf}{10}, \hyperpage{14}, 
+		\hyperpage{23}, \hyperpage{30}, \hyperpage{41--44}, \hyperpage{63}, \hyperpage{72}, 
+		\hyperpage{89}, \hyperpage{107}, \hyperpage{128}, \hyperpage{130}, 
+		\hyperpage{139, 140}
+    \subitem abstract syntax, \hyperpage{10--12}
+    \subitem binary format, \hyperpage{89--91}
+    \subitem execution, \hyperpage{63--66}, \hyperpage{69}
+    \subitem text format, \hyperpage{108--110}
+    \subitem validation, \hyperpage{23--27}
+  \item instruction sequence, \hyperpage{30}, \hyperpage{72}
+  \item integer, \hyperpage{3}, \hyperindexformat{\textbf}{7}, \hyperpage{8}, \hyperpage{10}, 
+		\hyperpage{39}, \hyperpage{45, 46}, \hyperpage{66}, \hyperpage{86}, 
+		\hyperpage{104}
+    \subitem abstract syntax, \hyperpage{7}
+    \subitem binary format, \hyperpage{86}
+    \subitem signed, \hyperpage{7}
+    \subitem text format, \hyperpage{104}
+    \subitem uninterpreted, \hyperpage{7}
+    \subitem unsigned, \hyperpage{7}
+  \item invocation, \hyperpage{3}, \hyperpage{40}, \hyperindexformat{\textbf}{83}, \hyperpage{124}, 
+		\hyperpage{142}
+
+  \indexspace
+  \bigletter K
+  \item keyword, \hyperindexformat{\textbf}{103}
+
+  \indexspace
+  \bigletter L
+  \item label, \hyperindexformat{\textbf}{12}, \hyperpage{27}, \hyperindexformat{\textbf}{42}, 
+		\hyperpage{43, 44}, \hyperpage{69}, \hyperpage{73}, \hyperpage{89}, 
+		\hyperpage{108}, \hyperpage{129, 130}, \hyperpage{140}
+    \subitem abstract syntax, \hyperpage{42}
+    \subitem index, \hyperpage{14}
+  \item label index, \hyperpage{12}, \hyperindexformat{\textbf}{14}, \hyperpage{27}, \hyperpage{69}, 
+		\hyperpage{89}, \hyperpage{94}, \hyperpage{108}, \hyperpage{114}
+    \subitem abstract syntax, \hyperpage{14}
+    \subitem binary format, \hyperpage{94}
+    \subitem text format, \hyperpage{108}, \hyperpage{114}
+  \item LEB128, \hyperpage{86}, \hyperpage{89}
+  \item lexical format, \hyperpage{103}
+  \item limits, \hyperindexformat{\textbf}{9}, \hyperpage{9}, \hyperpage{15}, \hyperpage{21, 22}, 
+		\hyperpage{66}, \hyperpage{75--79}, \hyperpage{88, 89}, \hyperpage{107}, 
+		\hyperpage{137}
+    \subitem abstract syntax, \hyperpage{9}
+    \subitem binary format, \hyperpage{88}
+    \subitem memory, \hyperpage{9}
+    \subitem table, \hyperpage{9}
+    \subitem text format, \hyperpage{107}
+    \subitem validation, \hyperpage{21}
+  \item linear memory, \hyperpage{3}
+  \item little endian, \hyperpage{12}, \hyperpage{46}, \hyperpage{87}
+  \item local, \hyperpage{12}, \hyperpage{14}, \hyperindexformat{\textbf}{15}, \hyperpage{31}, 
+		\hyperpage{42}, \hyperpage{97}, \hyperpage{115}, \hyperpage{128}, \hyperpage{134}, 
+		\hyperpage{139}
+    \subitem abstract syntax, \hyperpage{15}
+    \subitem binary format, \hyperpage{97}
+    \subitem index, \hyperpage{14}
+    \subitem text format, \hyperpage{115}
+  \item local index, \hyperpage{12}, \hyperindexformat{\textbf}{14}, \hyperpage{15}, \hyperpage{25}, 
+		\hyperpage{31}, \hyperpage{65}, \hyperpage{90}, \hyperpage{94}, \hyperpage{109}, 
+		\hyperpage{114}, \hyperpage{134}
+    \subitem abstract syntax, \hyperpage{14}
+    \subitem binary format, \hyperpage{94}
+    \subitem text format, \hyperpage{114}
+
+  \indexspace
+  \bigletter M
+  \item magnitude, \hyperpage{7}
+  \item matching, \hyperindexformat{\textbf}{76}, \hyperpage{79}
+  \item memory, \hyperpage{3}, \hyperpage{9}, \hyperpage{12}, \hyperpage{14}, 
+		\hyperindexformat{\textbf}{15}, \hyperpage{16, 17}, \hyperpage{32, 33}, 
+		\hyperpage{35}, \hyperpage{41}, \hyperpage{43}, \hyperpage{46}, \hyperpage{78, 79}, 
+		\hyperpage{96}, \hyperpage{98}, \hyperpage{116}, \hyperpage{118, 119}, 
+		\hyperpage{125}, \hyperpage{128}, \hyperpage{140}
+    \subitem abstract syntax, \hyperpage{15}
+    \subitem address, \hyperpage{40}
+    \subitem binary format, \hyperpage{96}
+    \subitem data, \hyperpage{16}, \hyperpage{33}, \hyperpage{98}, \hyperpage{116}, \hyperpage{118}
+    \subitem export, \hyperpage{16}
+    \subitem import, \hyperpage{17}
+    \subitem index, \hyperpage{14}
+    \subitem instance, \hyperpage{41}
+    \subitem limits, \hyperpage{9}
+    \subitem section, \hyperpage{96}
+    \subitem text format, \hyperpage{116}
+    \subitem type, \hyperpage{9}
+    \subitem validation, \hyperpage{32}
+  \item memory address, \hyperpage{40, 41}, \hyperpage{66}, \hyperpage{75}, \hyperpage{78, 79}, 
+		\hyperpage{125}, \hyperpage{140}
+    \subitem abstract syntax, \hyperpage{40}
+  \item memory index, \hyperpage{12}, \hyperindexformat{\textbf}{14}, \hyperpage{15--17}, 
+		\hyperpage{26}, \hyperpage{33}, \hyperpage{66}, \hyperpage{79}, \hyperpage{90}, 
+		\hyperpage{94}, \hyperpage{96}, \hyperpage{98}, \hyperpage{109}, \hyperpage{114}, 
+		\hyperpage{116--118}
+    \subitem abstract syntax, \hyperpage{14}
+    \subitem binary format, \hyperpage{94}
+    \subitem text format, \hyperpage{114}
+  \item memory instance, \hyperpage{39, 40}, \hyperindexformat{\textbf}{41}, \hyperpage{43}, 
+		\hyperpage{66}, \hyperpage{78, 79}, \hyperpage{125}, \hyperpage{129}, 
+		\hyperpage{136, 137}, \hyperpage{141}
+    \subitem abstract syntax, \hyperpage{41}
+  \item memory instruction, \hyperindexformat{\textbf}{12}, \hyperpage{26}, \hyperpage{66}, 
+		\hyperpage{90}, \hyperpage{109}
+  \item memory section, \hyperindexformat{\textbf}{96}
+  \item memory type, \hyperindexformat{\textbf}{9}, \hyperpage{9, 10}, \hyperpage{15}, 
+		\hyperpage{17}, \hyperpage{19}, \hyperpage{22}, \hyperpage{32}, \hyperpage{34}, 
+		\hyperpage{41}, \hyperpage{75}, \hyperpage{77, 78}, \hyperpage{88}, \hyperpage{96}, 
+		\hyperpage{107}, \hyperpage{115, 116}, \hyperpage{125}, \hyperpage{136, 137}
+    \subitem abstract syntax, \hyperpage{9}
+    \subitem binary format, \hyperpage{88}
+    \subitem text format, \hyperpage{107}
+    \subitem validation, \hyperpage{22}
+  \item module, \hyperpage{3}, \hyperindexformat{\textbf}{14}, \hyperpage{19}, \hyperpage{35}, 
+		\hyperpage{39, 40}, \hyperpage{79}, \hyperpage{81}, \hyperpage{83}, \hyperpage{85}, 
+		\hyperpage{98}, \hyperpage{119}, \hyperpage{122, 123}, \hyperpage{128--130}, 
+		\hyperpage{134}, \hyperpage{142}
+    \subitem abstract syntax, \hyperpage{14}
+    \subitem binary format, \hyperpage{98}
+    \subitem instance, \hyperpage{40}
+    \subitem text format, \hyperpage{119}
+    \subitem validation, \hyperpage{35}
+  \item module instance, \hyperpage{40}, \hyperpage{42}, \hyperpage{77}, \hyperpage{79}, 
+		\hyperpage{83}, \hyperpage{122, 123}, \hyperpage{129}, \hyperpage{137}, 
+		\hyperpage{139}
+    \subitem abstract syntax, \hyperpage{40}
+  \item module instruction, \hyperpage{44}
+  \item mutability, \hyperindexformat{\textbf}{9}, \hyperpage{9}, \hyperpage{16}, \hyperpage{22}, 
+		\hyperpage{41}, \hyperpage{76, 77}, \hyperpage{79}, \hyperpage{89}, 
+		\hyperpage{107}, \hyperpage{137}, \hyperpage{141}
+    \subitem abstract syntax, \hyperpage{9}
+    \subitem binary format, \hyperpage{89}
+    \subitem global, \hyperpage{9}
+    \subitem text format, \hyperpage{107}
+
+  \indexspace
+  \bigletter N
+  \item name, \hyperpage{2}, \hyperindexformat{\textbf}{8}, \hyperpage{16, 17}, \hyperpage{33, 34}, 
+		\hyperpage{40, 41}, \hyperpage{87}, \hyperpage{96}, \hyperpage{106}, 
+		\hyperpage{115--117}, \hyperpage{128}, \hyperpage{133}, \hyperpage{137}
+    \subitem abstract syntax, \hyperpage{8}
+    \subitem binary format, \hyperpage{87}
+    \subitem text format, \hyperpage{106}
+  \item name map, \hyperindexformat{\textbf}{134}
+  \item name section, \hyperpage{119}, \hyperindexformat{\textbf}{133}
+  \item NaN, \hyperindexformat{\textbf}{7}, \hyperpage{45}, \hyperpage{53}, \hyperpage{63}
+    \subitem arithmetic, \hyperpage{7}
+    \subitem canonical, \hyperpage{7}
+    \subitem payload, \hyperpage{7}
+  \item notation, \hyperpage{5}, \hyperpage{85}, \hyperpage{101}
+    \subitem abstract syntax, \hyperpage{5}
+    \subitem binary format, \hyperpage{85}
+    \subitem text format, \hyperpage{101}
+  \item numeric instruction, \hyperindexformat{\textbf}{10}, \hyperpage{23}, \hyperpage{63}, 
+		\hyperpage{91}, \hyperpage{110}
+
+  \indexspace
+  \bigletter O
+  \item offset, \hyperpage{14}
+  \item opcode, \hyperindexformat{\textbf}{89}, \hyperpage{130}, \hyperpage{132}
+  \item operand, \hyperpage{10}
+  \item operand stack, \hyperpage{10}, \hyperpage{23}
+
+  \indexspace
+  \bigletter P
+  \item page size, \hyperpage{9}, \hyperpage{12}, \hyperpage{15}, \hyperindexformat{\textbf}{41}, 
+		\hyperpage{88}, \hyperpage{107}, \hyperpage{116}
+  \item parameter, \hyperpage{9}, \hyperpage{14}, \hyperpage{128}
+  \item parametric instruction, \hyperindexformat{\textbf}{11}
+  \item parametric instructions, \hyperpage{24}, \hyperpage{64}
+  \item payload, \hyperpage{7}
+  \item phases, \hyperpage{3}
+  \item polymorphism, \hyperindexformat{\textbf}{23}, \hyperpage{24}, \hyperpage{27}, 
+		\hyperpage{89, 90}, \hyperpage{108, 109}
+  \item portability, \hyperpage{1}
+  \item preservation, \hyperindexformat{\textbf}{142}
+  \item progress, \hyperindexformat{\textbf}{142}
+
+  \indexspace
+  \bigletter R
+  \item reduction rules, \hyperindexformat{\textbf}{38}
+  \item result, \hyperpage{9}, \hyperindexformat{\textbf}{39}, \hyperpage{124}, \hyperpage{128}, 
+		\hyperpage{135}
+    \subitem abstract syntax, \hyperpage{39}
+    \subitem type, \hyperpage{9}
+  \item result type, \hyperindexformat{\textbf}{9}, \hyperpage{9}, \hyperpage{12}, \hyperpage{19}, 
+		\hyperpage{27}, \hyperpage{30}, \hyperpage{69}, \hyperpage{88, 89}, 
+		\hyperpage{107, 108}, \hyperpage{135}, \hyperpage{138--140}
+    \subitem abstract syntax, \hyperpage{9}
+    \subitem binary format, \hyperpage{88}
+  \item resulttype, \hyperpage{19}
+  \item rewrite rule, \hyperpage{102}
+  \item rounding, \hyperpage{52}
+  \item runtime, \hyperindexformat{\textbf}{39}
+
+  \indexspace
+  \bigletter S
+  \item S-expression, \hyperpage{101}, \hyperpage{113}
+  \item section, \hyperindexformat{\textbf}{94}, \hyperpage{98}, \hyperpage{129}, \hyperpage{133}
+    \subitem binary format, \hyperpage{94}
+    \subitem code, \hyperpage{97}
+    \subitem custom, \hyperpage{95}
+    \subitem data, \hyperpage{98}
+    \subitem element, \hyperpage{97}
+    \subitem export, \hyperpage{96}
+    \subitem function, \hyperpage{96}
+    \subitem global, \hyperpage{96}
+    \subitem import, \hyperpage{96}
+    \subitem memory, \hyperpage{96}
+    \subitem name, \hyperpage{119}
+    \subitem start, \hyperpage{97}
+    \subitem table, \hyperpage{96}
+    \subitem type, \hyperpage{95}
+  \item segment, \hyperpage{43}
+  \item sign, \hyperpage{47}
+  \item signed integer, \hyperindexformat{\textbf}{7}, \hyperpage{47}, \hyperpage{86}, 
+		\hyperpage{104}
+    \subitem abstract syntax, \hyperpage{7}
+    \subitem binary format, \hyperpage{86}
+    \subitem text format, \hyperpage{104}
+  \item significand, \hyperpage{7}, \hyperpage{46}
+  \item soundness, \hyperindexformat{\textbf}{134}, \hyperpage{142}
+  \item source text, \hyperindexformat{\textbf}{103}, \hyperpage{103}, \hyperpage{129}
+  \item stack, \hyperpage{37}, \hyperindexformat{\textbf}{42}, \hyperpage{83}, \hyperpage{130}
+  \item stack machine, \hyperpage{10}
+  \item start function, \hyperpage{14}, \hyperindexformat{\textbf}{16}, \hyperpage{33}, 
+		\hyperpage{35}, \hyperpage{97, 98}, \hyperpage{117}, \hyperpage{119}
+    \subitem abstract syntax, \hyperpage{16}
+    \subitem binary format, \hyperpage{97}
+    \subitem section, \hyperpage{97}
+    \subitem text format, \hyperpage{117}
+    \subitem validation, \hyperpage{33}
+  \item start section, \hyperindexformat{\textbf}{97}
+  \item store, \hyperpage{37}, \hyperindexformat{\textbf}{39}, \hyperpage{40--42}, \hyperpage{44}, 
+		\hyperpage{63}, \hyperpage{65, 66}, \hyperpage{69}, \hyperpage{74, 75}, 
+		\hyperpage{77}, \hyperpage{81}, \hyperpage{83}, \hyperpage{121}, 
+		\hyperpage{123--125}, \hyperpage{127}, \hyperpage{136}, \hyperpage{138--141}
+    \subitem abstract syntax, \hyperpage{39}
+  \item store extension, \hyperindexformat{\textbf}{140}
+  \item string, \hyperindexformat{\textbf}{105}
+    \subitem text format, \hyperpage{105}
+  \item structured control, \hyperindexformat{\textbf}{12}, \hyperpage{27}, \hyperpage{69}, 
+		\hyperpage{89}, \hyperpage{108}
+  \item structured control instruction, \hyperpage{128}
+
+  \indexspace
+  \bigletter T
+  \item table, \hyperpage{3}, \hyperpage{9}, \hyperpage{12}, \hyperpage{14}, 
+		\hyperindexformat{\textbf}{15}, \hyperpage{16, 17}, \hyperpage{31, 32}, 
+		\hyperpage{35}, \hyperpage{41}, \hyperpage{43}, \hyperpage{78, 79}, \hyperpage{96}, 
+		\hyperpage{98}, \hyperpage{116}, \hyperpage{119}, \hyperpage{124}, \hyperpage{128}, 
+		\hyperpage{139}
+    \subitem abstract syntax, \hyperpage{15}
+    \subitem address, \hyperpage{40}
+    \subitem binary format, \hyperpage{96}
+    \subitem element, \hyperpage{16}, \hyperpage{32}, \hyperpage{97}, \hyperpage{116}, 
+		\hyperpage{118}
+    \subitem export, \hyperpage{16}
+    \subitem import, \hyperpage{17}
+    \subitem index, \hyperpage{14}
+    \subitem instance, \hyperpage{41}
+    \subitem limits, \hyperpage{9}
+    \subitem section, \hyperpage{96}
+    \subitem text format, \hyperpage{116}
+    \subitem type, \hyperpage{9}
+    \subitem validation, \hyperpage{31}
+  \item table address, \hyperpage{40, 41}, \hyperpage{69}, \hyperpage{75}, \hyperpage{78, 79}, 
+		\hyperpage{124}, \hyperpage{139}
+    \subitem abstract syntax, \hyperpage{40}
+  \item table index, \hyperindexformat{\textbf}{14}, \hyperpage{15--17}, \hyperpage{32, 33}, 
+		\hyperpage{79}, \hyperpage{94}, \hyperpage{96, 97}, \hyperpage{114}, 
+		\hyperpage{116--118}
+    \subitem abstract syntax, \hyperpage{14}
+    \subitem binary format, \hyperpage{94}
+    \subitem text format, \hyperpage{114}
+  \item table instance, \hyperpage{39, 40}, \hyperindexformat{\textbf}{41}, \hyperpage{43}, 
+		\hyperpage{69}, \hyperpage{78, 79}, \hyperpage{124}, \hyperpage{129}, 
+		\hyperpage{136, 137}, \hyperpage{141}
+    \subitem abstract syntax, \hyperpage{41}
+  \item table section, \hyperindexformat{\textbf}{96}
+  \item table type, \hyperindexformat{\textbf}{9}, \hyperpage{9, 10}, \hyperpage{15}, 
+		\hyperpage{17}, \hyperpage{19}, \hyperpage{22}, \hyperpage{31}, \hyperpage{34}, 
+		\hyperpage{41}, \hyperpage{75, 76}, \hyperpage{78}, \hyperpage{89}, \hyperpage{96}, 
+		\hyperpage{107}, \hyperpage{115, 116}, \hyperpage{124}, \hyperpage{136, 137}
+    \subitem abstract syntax, \hyperpage{9}
+    \subitem binary format, \hyperpage{89}
+    \subitem text format, \hyperpage{107}
+    \subitem validation, \hyperpage{22}
+  \item terminal configuration, \hyperpage{142}
+  \item text format, \hyperpage{2}, \hyperindexformat{\textbf}{101}, \hyperpage{122}, 
+		\hyperpage{129}
+    \subitem byte, \hyperpage{105}
+    \subitem character, \hyperpage{103}
+    \subitem comment, \hyperpage{104}
+    \subitem data, \hyperpage{116}, \hyperpage{118}
+    \subitem element, \hyperpage{116}, \hyperpage{118}
+    \subitem element type, \hyperpage{107}
+    \subitem export, \hyperpage{115--117}
+    \subitem expression, \hyperpage{113}
+    \subitem floating-point number, \hyperpage{105}
+    \subitem function, \hyperpage{115}
+    \subitem function index, \hyperpage{114}
+    \subitem function type, \hyperpage{107}
+    \subitem global, \hyperpage{117}
+    \subitem global index, \hyperpage{114}
+    \subitem global type, \hyperpage{107}
+    \subitem grammar, \hyperpage{101}
+    \subitem identifiers, \hyperpage{106}
+    \subitem import, \hyperpage{115--117}
+    \subitem instruction, \hyperpage{108--110}
+    \subitem integer, \hyperpage{104}
+    \subitem label index, \hyperpage{108}, \hyperpage{114}
+    \subitem limits, \hyperpage{107}
+    \subitem local, \hyperpage{115}
+    \subitem local index, \hyperpage{114}
+    \subitem memory, \hyperpage{116}
+    \subitem memory index, \hyperpage{114}
+    \subitem memory type, \hyperpage{107}
+    \subitem module, \hyperpage{119}
+    \subitem mutability, \hyperpage{107}
+    \subitem name, \hyperpage{106}
+    \subitem notation, \hyperpage{101}
+    \subitem signed integer, \hyperpage{104}
+    \subitem start function, \hyperpage{117}
+    \subitem string, \hyperpage{105}
+    \subitem table, \hyperpage{116}
+    \subitem table index, \hyperpage{114}
+    \subitem table type, \hyperpage{107}
+    \subitem token, \hyperpage{103}
+    \subitem type, \hyperpage{106}
+    \subitem type definition, \hyperpage{114}
+    \subitem type index, \hyperpage{114}
+    \subitem type use, \hyperpage{114}
+    \subitem uninterpreted integer, \hyperpage{104}
+    \subitem unsigned integer, \hyperpage{104}
+    \subitem value, \hyperpage{104}
+    \subitem value type, \hyperpage{107}
+    \subitem vector, \hyperpage{103}
+    \subitem white space, \hyperpage{104}
+  \item thread, \hyperindexformat{\textbf}{44}, \hyperpage{138, 139}, \hyperpage{142}
+  \item token, \hyperindexformat{\textbf}{103}, \hyperpage{129}
+  \item trap, \hyperpage{3}, \hyperpage{12}, \hyperpage{39}, \hyperpage{43, 44}, \hyperpage{63}, 
+		\hyperpage{81}, \hyperpage{83}, \hyperpage{135}, \hyperpage{139}
+  \item two's complement, \hyperpage{3}, \hyperpage{7}, \hyperpage{10}, \hyperpage{47}, 
+		\hyperpage{86}
+  \item type, \hyperindexformat{\textbf}{8}, \hyperpage{79}, \hyperpage{88}, \hyperpage{106}, 
+		\hyperpage{128}
+    \subitem abstract syntax, \hyperpage{8}
+    \subitem binary format, \hyperpage{88}
+    \subitem block, \hyperpage{12}
+    \subitem element, \hyperpage{9}
+    \subitem external, \hyperpage{10}
+    \subitem function, \hyperpage{9}
+    \subitem global, \hyperpage{9}
+    \subitem index, \hyperpage{14}
+    \subitem memory, \hyperpage{9}
+    \subitem result, \hyperpage{9}
+    \subitem section, \hyperpage{95}
+    \subitem table, \hyperpage{9}
+    \subitem text format, \hyperpage{106}
+    \subitem value, \hyperpage{8}
+  \item type definition, \hyperindexformat{\textbf}{14}, \hyperpage{14}, \hyperpage{35}, 
+		\hyperpage{95}, \hyperpage{98}, \hyperpage{114}, \hyperpage{119}
+    \subitem abstract syntax, \hyperpage{14}
+    \subitem text format, \hyperpage{114}
+  \item type index, \hyperpage{12}, \hyperindexformat{\textbf}{14}, \hyperpage{14, 15}, 
+		\hyperpage{17}, \hyperpage{27}, \hyperpage{31}, \hyperpage{69}, \hyperpage{89}, 
+		\hyperpage{94}, \hyperpage{96, 97}, \hyperpage{108}, \hyperpage{114, 115}
+    \subitem abstract syntax, \hyperpage{14}
+    \subitem binary format, \hyperpage{94}
+    \subitem text format, \hyperpage{114}
+  \item type section, \hyperindexformat{\textbf}{95}
+    \subitem binary format, \hyperpage{95}
+  \item type system, \hyperindexformat{\textbf}{19}, \hyperpage{134}
+  \item type use, \hyperpage{114}
+    \subitem text format, \hyperpage{114}
+  \item typing rules, \hyperindexformat{\textbf}{20}
+
+  \indexspace
+  \bigletter U
+  \item Unicode, \hyperpage{2}, \hyperpage{8}, \hyperpage{87}, \hyperpage{101}, \hyperpage{103}, 
+		\hyperpage{105}, \hyperpage{128}
+  \item unicode, \hyperpage{129}
+  \item Unicode UTF-8, \hyperpage{133}
+  \item uninterpreted integer, \hyperindexformat{\textbf}{7}, \hyperpage{47}, \hyperpage{86}, 
+		\hyperpage{104}
+    \subitem abstract syntax, \hyperpage{7}
+    \subitem binary format, \hyperpage{86}
+    \subitem text format, \hyperpage{104}
+  \item unsigned integer, \hyperindexformat{\textbf}{7}, \hyperpage{47}, \hyperpage{86}, 
+		\hyperpage{104}
+    \subitem abstract syntax, \hyperpage{7}
+    \subitem binary format, \hyperpage{86}
+    \subitem text format, \hyperpage{104}
+  \item unwinding, \hyperindexformat{\textbf}{12}
+  \item UTF-8, \hyperpage{2}, \hyperpage{8}, \hyperindexformat{\textbf}{87}, \hyperpage{101}, 
+		\hyperpage{105}
+
+  \indexspace
+  \bigletter V
+  \item validation, \hyperpage{3}, \hyperpage{8}, \hyperindexformat{\textbf}{19}, \hyperpage{63}, 
+		\hyperpage{75}, \hyperpage{122}, \hyperpage{129, 130}
+    \subitem block type, \hyperpage{22}
+    \subitem data, \hyperpage{33}
+    \subitem element, \hyperpage{32}
+    \subitem export, \hyperpage{33}
+    \subitem expression, \hyperpage{30}
+    \subitem global, \hyperpage{32}
+    \subitem global type, \hyperpage{22}
+    \subitem import, \hyperpage{34}
+    \subitem instruction, \hyperpage{23--27}
+    \subitem limits, \hyperpage{21}
+    \subitem memory, \hyperpage{32}
+    \subitem memory type, \hyperpage{22}
+    \subitem module, \hyperpage{35}
+    \subitem start function, \hyperpage{33}
+    \subitem table, \hyperpage{31}
+    \subitem table type, \hyperpage{22}
+  \item validity, \hyperpage{142}
+  \item valtype, \hyperpage{19}
+  \item value, \hyperpage{3}, \hyperindexformat{\textbf}{6}, \hyperpage{10}, \hyperpage{16}, 
+		\hyperpage{23}, \hyperindexformat{\textbf}{39}, \hyperpage{39}, \hyperpage{41}, 
+		\hyperpage{44, 45}, \hyperpage{63--66}, \hyperpage{79}, \hyperpage{83}, 
+		\hyperpage{86}, \hyperpage{104}, \hyperpage{124}, \hyperpage{127}, \hyperpage{129}, 
+		\hyperpage{135}, \hyperpage{137}, \hyperpage{139}, \hyperpage{141}
+    \subitem abstract syntax, \hyperpage{6}, \hyperpage{39}
+    \subitem binary format, \hyperpage{86}
+    \subitem external, \hyperpage{41}
+    \subitem text format, \hyperpage{104}
+    \subitem type, \hyperpage{8}
+  \item value type, \hyperindexformat{\textbf}{8}, \hyperpage{9--12}, \hyperpage{15}, 
+		\hyperpage{19}, \hyperpage{22}, \hyperpage{24}, \hyperpage{31}, \hyperpage{39}, 
+		\hyperpage{63}, \hyperpage{66}, \hyperpage{76, 77}, \hyperpage{79}, 
+		\hyperpage{88--90}, \hyperpage{107}, \hyperpage{109}, \hyperpage{130}, 
+		\hyperpage{135}, \hyperpage{139}
+    \subitem abstract syntax, \hyperpage{8}
+    \subitem binary format, \hyperpage{88}
+    \subitem text format, \hyperpage{107}
+  \item variable instruction, \hyperindexformat{\textbf}{12}
+  \item variable instructions, \hyperpage{25}, \hyperpage{65}, \hyperpage{90}, \hyperpage{109}
+  \item vector, \hyperindexformat{\textbf}{6}, \hyperpage{9}, \hyperpage{12}, \hyperpage{16}, 
+		\hyperpage{27}, \hyperpage{69}, \hyperpage{86}, \hyperpage{89}, \hyperpage{103}, 
+		\hyperpage{108}
+    \subitem abstract syntax, \hyperpage{6}
+    \subitem binary format, \hyperpage{86}
+    \subitem text format, \hyperpage{103}
+  \item version, \hyperpage{98}
+
+  \indexspace
+  \bigletter W
+  \item white space, \hyperpage{103}, \hyperindexformat{\textbf}{104}
+
+\end{sphinxtheindex}

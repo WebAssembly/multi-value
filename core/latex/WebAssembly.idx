@@ -1,0 +1,1811 @@
+\indexentry{design goals|hyperpage}{1}
+\indexentry{portability|hyperpage}{1}
+\indexentry{IEEE 754|hyperpage}{2}
+\indexentry{floating point|hyperpage}{2}
+\indexentry{Unicode|hyperpage}{2}
+\indexentry{name|hyperpage}{2}
+\indexentry{text format|hyperpage}{2}
+\indexentry{UTF-8|hyperpage}{2}
+\indexentry{code point|hyperpage}{2}
+\indexentry{concepts|hyperpage}{3}
+\indexentry{value|hyperpage}{3}
+\indexentry{instruction|hyperpage}{3}
+\indexentry{trap|hyperpage}{3}
+\indexentry{function|hyperpage}{3}
+\indexentry{table|hyperpage}{3}
+\indexentry{memory|hyperpage}{3}
+\indexentry{linear memory|hyperpage}{3}
+\indexentry{module|hyperpage}{3}
+\indexentry{embedder|hyperindexformat{\textbf}}{3}
+\indexentry{integer|hyperpage}{3}
+\indexentry{floating-point|hyperpage}{3}
+\indexentry{IEEE 754|hyperpage}{3}
+\indexentry{Boolean|hyperpage}{3}
+\indexentry{two's complement|hyperpage}{3}
+\indexentry{phases|hyperpage}{3}
+\indexentry{decoding|hyperpage}{3}
+\indexentry{validation|hyperpage}{3}
+\indexentry{execution|hyperpage}{3}
+\indexentry{instantiation|hyperpage}{3}
+\indexentry{invocation|hyperpage}{3}
+\indexentry{abstract syntax|hyperindexformat{\textbf}}{5}
+\indexentry{grammar notation|hyperindexformat{\textbf}}{5}
+\indexentry{notation|hyperpage}{5}
+\indexentry{abstract syntax!grammar|hyperpage}{5}
+\indexentry{abstract syntax!notation|hyperpage}{5}
+\indexentry{notation!abstract syntax|hyperpage}{5}
+\indexentry{vector|hyperindexformat{\textbf}}{6}
+\indexentry{abstract syntax!vector|hyperpage}{6}
+\indexentry{vector!abstract syntax|hyperpage}{6}
+\indexentry{value|hyperindexformat{\textbf}}{6}
+\indexentry{abstract syntax!value|hyperpage}{6}
+\indexentry{value!abstract syntax|hyperpage}{6}
+\indexentry{byte|hyperindexformat{\textbf}}{6}
+\indexentry{abstract syntax!byte|hyperpage}{6}
+\indexentry{byte!abstract syntax|hyperpage}{6}
+\indexentry{integer|hyperindexformat{\textbf}}{7}
+\indexentry{unsigned integer|hyperindexformat{\textbf}}{7}
+\indexentry{signed integer|hyperindexformat{\textbf}}{7}
+\indexentry{uninterpreted integer|hyperindexformat{\textbf}}{7}
+\indexentry{bit width|hyperpage}{7}
+\indexentry{two's complement|hyperpage}{7}
+\indexentry{abstract syntax!integer|hyperpage}{7}
+\indexentry{integer!abstract syntax|hyperpage}{7}
+\indexentry{abstract syntax!unsigned integer|hyperpage}{7}
+\indexentry{unsigned integer!abstract syntax|hyperpage}{7}
+\indexentry{abstract syntax!signed integer|hyperpage}{7}
+\indexentry{signed integer!abstract syntax|hyperpage}{7}
+\indexentry{abstract syntax!uninterpreted integer|hyperpage}{7}
+\indexentry{uninterpreted integer!abstract syntax|hyperpage}{7}
+\indexentry{integer!unsigned|hyperpage}{7}
+\indexentry{integer!signed|hyperpage}{7}
+\indexentry{integer!uninterpreted|hyperpage}{7}
+\indexentry{floating-point|hyperindexformat{\textbf}}{7}
+\indexentry{NaN|hyperindexformat{\textbf}}{7}
+\indexentry{payload|hyperpage}{7}
+\indexentry{significand|hyperpage}{7}
+\indexentry{exponent|hyperpage}{7}
+\indexentry{magnitude|hyperpage}{7}
+\indexentry{canonical NaN|hyperpage}{7}
+\indexentry{arithmetic NaN|hyperpage}{7}
+\indexentry{bit width|hyperpage}{7}
+\indexentry{IEEE 754|hyperpage}{7}
+\indexentry{abstract syntax!floating-point number|hyperpage}{7}
+\indexentry{floating-point number!abstract syntax|hyperpage}{7}
+\indexentry{NaN!payload|hyperpage}{7}
+\indexentry{NaN!canonical|hyperpage}{7}
+\indexentry{NaN!arithmetic|hyperpage}{7}
+\indexentry{name|hyperindexformat{\textbf}}{8}
+\indexentry{byte|hyperpage}{8}
+\indexentry{Unicode|hyperpage}{8}
+\indexentry{UTF-8|hyperpage}{8}
+\indexentry{code point|hyperpage}{8}
+\indexentry{binary format|hyperpage}{8}
+\indexentry{abstract syntax!name|hyperpage}{8}
+\indexentry{name!abstract syntax|hyperpage}{8}
+\indexentry{type|hyperindexformat{\textbf}}{8}
+\indexentry{validation|hyperpage}{8}
+\indexentry{instantiation|hyperpage}{8}
+\indexentry{execution|hyperpage}{8}
+\indexentry{abstract syntax!type|hyperpage}{8}
+\indexentry{type!abstract syntax|hyperpage}{8}
+\indexentry{value type|hyperindexformat{\textbf}}{8}
+\indexentry{integer|hyperpage}{8}
+\indexentry{floating-point|hyperpage}{8}
+\indexentry{IEEE 754|hyperpage}{8}
+\indexentry{bit width|hyperpage}{8}
+\indexentry{abstract syntax!value type|hyperpage}{8}
+\indexentry{value type!abstract syntax|hyperpage}{8}
+\indexentry{value!type|hyperpage}{8}
+\indexentry{type!value|hyperpage}{8}
+\indexentry{result type|hyperindexformat{\textbf}}{9}
+\indexentry{value type|hyperpage}{9}
+\indexentry{instruction|hyperpage}{9}
+\indexentry{execution|hyperpage}{9}
+\indexentry{function|hyperpage}{9}
+\indexentry{abstract syntax!result type|hyperpage}{9}
+\indexentry{result type!abstract syntax|hyperpage}{9}
+\indexentry{result!type|hyperpage}{9}
+\indexentry{type!result|hyperpage}{9}
+\indexentry{function type|hyperindexformat{\textbf}}{9}
+\indexentry{value type|hyperpage}{9}
+\indexentry{vector|hyperpage}{9}
+\indexentry{function|hyperpage}{9}
+\indexentry{parameter|hyperpage}{9}
+\indexentry{result|hyperpage}{9}
+\indexentry{result type|hyperpage}{9}
+\indexentry{abstract syntax!function type|hyperpage}{9}
+\indexentry{function type!abstract syntax|hyperpage}{9}
+\indexentry{function!type|hyperpage}{9}
+\indexentry{type!function|hyperpage}{9}
+\indexentry{limits|hyperindexformat{\textbf}}{9}
+\indexentry{memory type|hyperpage}{9}
+\indexentry{table type|hyperpage}{9}
+\indexentry{abstract syntax!limits|hyperpage}{9}
+\indexentry{limits!abstract syntax|hyperpage}{9}
+\indexentry{memory!limits|hyperpage}{9}
+\indexentry{table!limits|hyperpage}{9}
+\indexentry{memory type|hyperindexformat{\textbf}}{9}
+\indexentry{limits|hyperpage}{9}
+\indexentry{page size|hyperpage}{9}
+\indexentry{memory|hyperpage}{9}
+\indexentry{abstract syntax!memory type|hyperpage}{9}
+\indexentry{memory type!abstract syntax|hyperpage}{9}
+\indexentry{memory!type|hyperpage}{9}
+\indexentry{type!memory|hyperpage}{9}
+\indexentry{memory!limits|hyperpage}{9}
+\indexentry{limits!memory|hyperpage}{9}
+\indexentry{table type|hyperindexformat{\textbf}}{9}
+\indexentry{element type|hyperindexformat{\textbf}}{9}
+\indexentry{limits|hyperpage}{9}
+\indexentry{table|hyperpage}{9}
+\indexentry{element|hyperpage}{9}
+\indexentry{abstract syntax!table type|hyperpage}{9}
+\indexentry{table type!abstract syntax|hyperpage}{9}
+\indexentry{abstract syntax!element type|hyperpage}{9}
+\indexentry{element type!abstract syntax|hyperpage}{9}
+\indexentry{table!type|hyperpage}{9}
+\indexentry{type!table|hyperpage}{9}
+\indexentry{table!limits|hyperpage}{9}
+\indexentry{limits!table|hyperpage}{9}
+\indexentry{element!type|hyperpage}{9}
+\indexentry{type!element|hyperpage}{9}
+\indexentry{global type|hyperindexformat{\textbf}}{9}
+\indexentry{mutability|hyperindexformat{\textbf}}{9}
+\indexentry{value type|hyperpage}{9}
+\indexentry{global|hyperpage}{9}
+\indexentry{mutability|hyperpage}{9}
+\indexentry{abstract syntax!global type|hyperpage}{9}
+\indexentry{global type!abstract syntax|hyperpage}{9}
+\indexentry{abstract syntax!mutability|hyperpage}{9}
+\indexentry{mutability!abstract syntax|hyperpage}{9}
+\indexentry{global!type|hyperpage}{9}
+\indexentry{type!global|hyperpage}{9}
+\indexentry{global!mutability|hyperpage}{9}
+\indexentry{mutability!global|hyperpage}{9}
+\indexentry{external type|hyperindexformat{\textbf}}{10}
+\indexentry{function type|hyperpage}{10}
+\indexentry{table type|hyperpage}{10}
+\indexentry{memory type|hyperpage}{10}
+\indexentry{global type|hyperpage}{10}
+\indexentry{import|hyperpage}{10}
+\indexentry{external value|hyperpage}{10}
+\indexentry{abstract syntax!external type|hyperpage}{10}
+\indexentry{external type!abstract syntax|hyperpage}{10}
+\indexentry{external!type|hyperpage}{10}
+\indexentry{type!external|hyperpage}{10}
+\indexentry{instruction|hyperindexformat{\textbf}}{10}
+\indexentry{code|hyperpage}{10}
+\indexentry{stack machine|hyperpage}{10}
+\indexentry{operand|hyperpage}{10}
+\indexentry{operand stack|hyperpage}{10}
+\indexentry{abstract syntax!instruction|hyperpage}{10}
+\indexentry{instruction!abstract syntax|hyperpage}{10}
+\indexentry{numeric instruction|hyperindexformat{\textbf}}{10}
+\indexentry{value|hyperpage}{10}
+\indexentry{value type|hyperpage}{10}
+\indexentry{integer|hyperpage}{10}
+\indexentry{floating-point|hyperpage}{10}
+\indexentry{two's complement|hyperpage}{10}
+\indexentry{abstract syntax!instruction|hyperpage}{10}
+\indexentry{instruction!abstract syntax|hyperpage}{10}
+\indexentry{parametric instruction|hyperindexformat{\textbf}}{11}
+\indexentry{value type|hyperpage}{11}
+\indexentry{abstract syntax!instruction|hyperpage}{11}
+\indexentry{instruction!abstract syntax|hyperpage}{11}
+\indexentry{variable instruction|hyperindexformat{\textbf}}{12}
+\indexentry{local|hyperpage}{12}
+\indexentry{global|hyperpage}{12}
+\indexentry{local index|hyperpage}{12}
+\indexentry{global index|hyperpage}{12}
+\indexentry{abstract syntax!instruction|hyperpage}{12}
+\indexentry{instruction!abstract syntax|hyperpage}{12}
+\indexentry{memory instruction|hyperindexformat{\textbf}}{12}
+\indexentry{memory|hyperpage}{12}
+\indexentry{memory index|hyperpage}{12}
+\indexentry{page size|hyperpage}{12}
+\indexentry{little endian|hyperpage}{12}
+\indexentry{trap|hyperpage}{12}
+\indexentry{abstract syntax!instruction|hyperpage}{12}
+\indexentry{instruction!abstract syntax|hyperpage}{12}
+\indexentry{control instruction|hyperindexformat{\textbf}}{12}
+\indexentry{structured control|hyperindexformat{\textbf}}{12}
+\indexentry{label|hyperindexformat{\textbf}}{12}
+\indexentry{block|hyperindexformat{\textbf}}{12}
+\indexentry{block type|hyperindexformat{\textbf}}{12}
+\indexentry{branch|hyperindexformat{\textbf}}{12}
+\indexentry{unwinding|hyperindexformat{\textbf}}{12}
+\indexentry{result type|hyperpage}{12}
+\indexentry{label index|hyperpage}{12}
+\indexentry{function index|hyperpage}{12}
+\indexentry{type index|hyperpage}{12}
+\indexentry{vector|hyperpage}{12}
+\indexentry{trap|hyperpage}{12}
+\indexentry{function|hyperpage}{12}
+\indexentry{table|hyperpage}{12}
+\indexentry{function type|hyperpage}{12}
+\indexentry{value type|hyperpage}{12}
+\indexentry{type index|hyperpage}{12}
+\indexentry{abstract syntax!instruction|hyperpage}{12}
+\indexentry{instruction!abstract syntax|hyperpage}{12}
+\indexentry{abstract syntax!block type|hyperpage}{12}
+\indexentry{block type!abstract syntax|hyperpage}{12}
+\indexentry{block!type|hyperpage}{12}
+\indexentry{type!block|hyperpage}{12}
+\indexentry{expression|hyperindexformat{\textbf}}{14}
+\indexentry{constant|hyperpage}{14}
+\indexentry{global|hyperpage}{14}
+\indexentry{offset|hyperpage}{14}
+\indexentry{element|hyperpage}{14}
+\indexentry{data|hyperpage}{14}
+\indexentry{instruction|hyperpage}{14}
+\indexentry{abstract syntax!expression|hyperpage}{14}
+\indexentry{expression!abstract syntax|hyperpage}{14}
+\indexentry{expression!constant|hyperpage}{14}
+\indexentry{module|hyperindexformat{\textbf}}{14}
+\indexentry{type definition|hyperpage}{14}
+\indexentry{function type|hyperpage}{14}
+\indexentry{function|hyperpage}{14}
+\indexentry{table|hyperpage}{14}
+\indexentry{memory|hyperpage}{14}
+\indexentry{global|hyperpage}{14}
+\indexentry{element|hyperpage}{14}
+\indexentry{data|hyperpage}{14}
+\indexentry{start function|hyperpage}{14}
+\indexentry{import|hyperpage}{14}
+\indexentry{export|hyperpage}{14}
+\indexentry{abstract syntax!module|hyperpage}{14}
+\indexentry{module!abstract syntax|hyperpage}{14}
+\indexentry{index|hyperindexformat{\textbf}}{14}
+\indexentry{index space|hyperindexformat{\textbf}}{14}
+\indexentry{type index|hyperindexformat{\textbf}}{14}
+\indexentry{function index|hyperindexformat{\textbf}}{14}
+\indexentry{table index|hyperindexformat{\textbf}}{14}
+\indexentry{memory index|hyperindexformat{\textbf}}{14}
+\indexentry{global index|hyperindexformat{\textbf}}{14}
+\indexentry{local index|hyperindexformat{\textbf}}{14}
+\indexentry{label index|hyperindexformat{\textbf}}{14}
+\indexentry{function|hyperpage}{14}
+\indexentry{global|hyperpage}{14}
+\indexentry{table|hyperpage}{14}
+\indexentry{memory|hyperpage}{14}
+\indexentry{local|hyperpage}{14}
+\indexentry{parameter|hyperpage}{14}
+\indexentry{import|hyperpage}{14}
+\indexentry{abstract syntax!type index|hyperpage}{14}
+\indexentry{type index!abstract syntax|hyperpage}{14}
+\indexentry{abstract syntax!function index|hyperpage}{14}
+\indexentry{function index!abstract syntax|hyperpage}{14}
+\indexentry{abstract syntax!table index|hyperpage}{14}
+\indexentry{table index!abstract syntax|hyperpage}{14}
+\indexentry{abstract syntax!memory index|hyperpage}{14}
+\indexentry{memory index!abstract syntax|hyperpage}{14}
+\indexentry{abstract syntax!global index|hyperpage}{14}
+\indexentry{global index!abstract syntax|hyperpage}{14}
+\indexentry{abstract syntax!local index|hyperpage}{14}
+\indexentry{local index!abstract syntax|hyperpage}{14}
+\indexentry{abstract syntax!label index|hyperpage}{14}
+\indexentry{label index!abstract syntax|hyperpage}{14}
+\indexentry{type!index|hyperpage}{14}
+\indexentry{index!type|hyperpage}{14}
+\indexentry{function!index|hyperpage}{14}
+\indexentry{index!function|hyperpage}{14}
+\indexentry{table!index|hyperpage}{14}
+\indexentry{index!table|hyperpage}{14}
+\indexentry{memory!index|hyperpage}{14}
+\indexentry{index!memory|hyperpage}{14}
+\indexentry{global!index|hyperpage}{14}
+\indexentry{index!global|hyperpage}{14}
+\indexentry{local!index|hyperpage}{14}
+\indexentry{index!local|hyperpage}{14}
+\indexentry{label!index|hyperpage}{14}
+\indexentry{index!label|hyperpage}{14}
+\indexentry{type definition|hyperindexformat{\textbf}}{14}
+\indexentry{type index|hyperpage}{14}
+\indexentry{function type|hyperpage}{14}
+\indexentry{abstract syntax!type definition|hyperpage}{14}
+\indexentry{type definition!abstract syntax|hyperpage}{14}
+\indexentry{function|hyperindexformat{\textbf}}{15}
+\indexentry{local|hyperindexformat{\textbf}}{15}
+\indexentry{function index|hyperpage}{15}
+\indexentry{local index|hyperpage}{15}
+\indexentry{type index|hyperpage}{15}
+\indexentry{value type|hyperpage}{15}
+\indexentry{expression|hyperpage}{15}
+\indexentry{import|hyperpage}{15}
+\indexentry{abstract syntax!function|hyperpage}{15}
+\indexentry{function!abstract syntax|hyperpage}{15}
+\indexentry{abstract syntax!local|hyperpage}{15}
+\indexentry{local!abstract syntax|hyperpage}{15}
+\indexentry{table|hyperindexformat{\textbf}}{15}
+\indexentry{table index|hyperpage}{15}
+\indexentry{table type|hyperpage}{15}
+\indexentry{limits|hyperpage}{15}
+\indexentry{element|hyperpage}{15}
+\indexentry{import|hyperpage}{15}
+\indexentry{abstract syntax!table|hyperpage}{15}
+\indexentry{table!abstract syntax|hyperpage}{15}
+\indexentry{memory|hyperindexformat{\textbf}}{15}
+\indexentry{memory index|hyperpage}{15}
+\indexentry{memory type|hyperpage}{15}
+\indexentry{limits|hyperpage}{15}
+\indexentry{page size|hyperpage}{15}
+\indexentry{data|hyperpage}{15}
+\indexentry{import|hyperpage}{15}
+\indexentry{abstract syntax!memory|hyperpage}{15}
+\indexentry{memory!abstract syntax|hyperpage}{15}
+\indexentry{global|hyperindexformat{\textbf}}{16}
+\indexentry{global index|hyperpage}{16}
+\indexentry{global type|hyperpage}{16}
+\indexentry{mutability|hyperpage}{16}
+\indexentry{expression|hyperpage}{16}
+\indexentry{constant|hyperpage}{16}
+\indexentry{value|hyperpage}{16}
+\indexentry{import|hyperpage}{16}
+\indexentry{abstract syntax!global|hyperpage}{16}
+\indexentry{global!abstract syntax|hyperpage}{16}
+\indexentry{element|hyperindexformat{\textbf}}{16}
+\indexentry{table|hyperpage}{16}
+\indexentry{table index|hyperpage}{16}
+\indexentry{expression|hyperpage}{16}
+\indexentry{constant|hyperpage}{16}
+\indexentry{function index|hyperpage}{16}
+\indexentry{vector|hyperpage}{16}
+\indexentry{abstract syntax!element|hyperpage}{16}
+\indexentry{element!abstract syntax|hyperpage}{16}
+\indexentry{table!element|hyperpage}{16}
+\indexentry{element!segment|hyperpage}{16}
+\indexentry{data|hyperindexformat{\textbf}}{16}
+\indexentry{memory|hyperpage}{16}
+\indexentry{memory index|hyperpage}{16}
+\indexentry{expression|hyperpage}{16}
+\indexentry{constant|hyperpage}{16}
+\indexentry{byte|hyperpage}{16}
+\indexentry{vector|hyperpage}{16}
+\indexentry{abstract syntax!data|hyperpage}{16}
+\indexentry{data!abstract syntax|hyperpage}{16}
+\indexentry{memory!data|hyperpage}{16}
+\indexentry{data!segment|hyperpage}{16}
+\indexentry{start function|hyperindexformat{\textbf}}{16}
+\indexentry{function|hyperpage}{16}
+\indexentry{function index|hyperpage}{16}
+\indexentry{table|hyperpage}{16}
+\indexentry{memory|hyperpage}{16}
+\indexentry{instantiation|hyperpage}{16}
+\indexentry{abstract syntax!start function|hyperpage}{16}
+\indexentry{start function!abstract syntax|hyperpage}{16}
+\indexentry{export|hyperindexformat{\textbf}}{16}
+\indexentry{name|hyperpage}{16}
+\indexentry{index|hyperpage}{16}
+\indexentry{function index|hyperpage}{16}
+\indexentry{table index|hyperpage}{16}
+\indexentry{memory index|hyperpage}{16}
+\indexentry{global index|hyperpage}{16}
+\indexentry{function|hyperpage}{16}
+\indexentry{table|hyperpage}{16}
+\indexentry{memory|hyperpage}{16}
+\indexentry{global|hyperpage}{16}
+\indexentry{instantiation|hyperpage}{16}
+\indexentry{abstract syntax!export|hyperpage}{16}
+\indexentry{export!abstract syntax|hyperpage}{16}
+\indexentry{function!export|hyperpage}{16}
+\indexentry{table!export|hyperpage}{16}
+\indexentry{memory!export|hyperpage}{16}
+\indexentry{global!export|hyperpage}{16}
+\indexentry{import|hyperindexformat{\textbf}}{17}
+\indexentry{name|hyperpage}{17}
+\indexentry{function type|hyperpage}{17}
+\indexentry{table type|hyperpage}{17}
+\indexentry{memory type|hyperpage}{17}
+\indexentry{global type|hyperpage}{17}
+\indexentry{index|hyperpage}{17}
+\indexentry{index space|hyperpage}{17}
+\indexentry{type index|hyperpage}{17}
+\indexentry{function index|hyperpage}{17}
+\indexentry{table index|hyperpage}{17}
+\indexentry{memory index|hyperpage}{17}
+\indexentry{global index|hyperpage}{17}
+\indexentry{function|hyperpage}{17}
+\indexentry{table|hyperpage}{17}
+\indexentry{memory|hyperpage}{17}
+\indexentry{global|hyperpage}{17}
+\indexentry{instantiation|hyperpage}{17}
+\indexentry{abstract syntax!import|hyperpage}{17}
+\indexentry{import!abstract syntax|hyperpage}{17}
+\indexentry{function!import|hyperpage}{17}
+\indexentry{table!import|hyperpage}{17}
+\indexentry{memory!import|hyperpage}{17}
+\indexentry{global!import|hyperpage}{17}
+\indexentry{validation|hyperindexformat{\textbf}}{19}
+\indexentry{type system|hyperindexformat{\textbf}}{19}
+\indexentry{function type|hyperpage}{19}
+\indexentry{table type|hyperpage}{19}
+\indexentry{memory type|hyperpage}{19}
+\indexentry{globaltype|hyperpage}{19}
+\indexentry{valtype|hyperpage}{19}
+\indexentry{resulttype|hyperpage}{19}
+\indexentry{index space|hyperpage}{19}
+\indexentry{instantiation. module|hyperpage}{19}
+\indexentry{context|hyperindexformat{\textbf}}{19}
+\indexentry{function type|hyperpage}{19}
+\indexentry{table type|hyperpage}{19}
+\indexentry{memory type|hyperpage}{19}
+\indexentry{global type|hyperpage}{19}
+\indexentry{value type|hyperpage}{19}
+\indexentry{result type|hyperpage}{19}
+\indexentry{index space|hyperpage}{19}
+\indexentry{module|hyperpage}{19}
+\indexentry{function|hyperpage}{19}
+\indexentry{typing rules|hyperindexformat{\textbf}}{20}
+\indexentry{limits|hyperpage}{21}
+\indexentry{validation!limits|hyperpage}{21}
+\indexentry{limits!validation|hyperpage}{21}
+\indexentry{abstract syntax!limits|hyperpage}{21}
+\indexentry{block type|hyperpage}{22}
+\indexentry{validation!block type|hyperpage}{22}
+\indexentry{block type!validation|hyperpage}{22}
+\indexentry{abstract syntax!block type|hyperpage}{22}
+\indexentry{table type|hyperpage}{22}
+\indexentry{element type|hyperpage}{22}
+\indexentry{limits|hyperpage}{22}
+\indexentry{validation!table type|hyperpage}{22}
+\indexentry{table type!validation|hyperpage}{22}
+\indexentry{abstract syntax!table type|hyperpage}{22}
+\indexentry{memory type|hyperpage}{22}
+\indexentry{limits|hyperpage}{22}
+\indexentry{validation!memory type|hyperpage}{22}
+\indexentry{memory type!validation|hyperpage}{22}
+\indexentry{abstract syntax!memory type|hyperpage}{22}
+\indexentry{global type|hyperpage}{22}
+\indexentry{value type|hyperpage}{22}
+\indexentry{mutability|hyperpage}{22}
+\indexentry{validation!global type|hyperpage}{22}
+\indexentry{global type!validation|hyperpage}{22}
+\indexentry{abstract syntax!global type|hyperpage}{22}
+\indexentry{instruction|hyperpage}{23}
+\indexentry{function type|hyperpage}{23}
+\indexentry{context|hyperpage}{23}
+\indexentry{value|hyperpage}{23}
+\indexentry{operand stack|hyperpage}{23}
+\indexentry{polymorphism|hyperindexformat{\textbf}}{23}
+\indexentry{numeric instruction|hyperpage}{23}
+\indexentry{validation!instruction|hyperpage}{23}
+\indexentry{instruction!validation|hyperpage}{23}
+\indexentry{abstract syntax!instruction|hyperpage}{23}
+\indexentry{parametric instructions|hyperpage}{24}
+\indexentry{value type|hyperpage}{24}
+\indexentry{polymorphism|hyperpage}{24}
+\indexentry{validation!instruction|hyperpage}{24}
+\indexentry{instruction!validation|hyperpage}{24}
+\indexentry{abstract syntax!instruction|hyperpage}{24}
+\indexentry{variable instructions|hyperpage}{25}
+\indexentry{local index|hyperpage}{25}
+\indexentry{global index|hyperpage}{25}
+\indexentry{context|hyperpage}{25}
+\indexentry{validation!instruction|hyperpage}{25}
+\indexentry{instruction!validation|hyperpage}{25}
+\indexentry{abstract syntax!instruction|hyperpage}{25}
+\indexentry{memory instruction|hyperpage}{26}
+\indexentry{memory index|hyperpage}{26}
+\indexentry{context|hyperpage}{26}
+\indexentry{validation!instruction|hyperpage}{26}
+\indexentry{instruction!validation|hyperpage}{26}
+\indexentry{abstract syntax!instruction|hyperpage}{26}
+\indexentry{control instructions|hyperpage}{27}
+\indexentry{structured control|hyperpage}{27}
+\indexentry{label|hyperpage}{27}
+\indexentry{block|hyperpage}{27}
+\indexentry{branch|hyperpage}{27}
+\indexentry{block type|hyperpage}{27}
+\indexentry{result type|hyperpage}{27}
+\indexentry{label index|hyperpage}{27}
+\indexentry{function index|hyperpage}{27}
+\indexentry{type index|hyperpage}{27}
+\indexentry{vector|hyperpage}{27}
+\indexentry{polymorphism|hyperpage}{27}
+\indexentry{context|hyperpage}{27}
+\indexentry{validation!instruction|hyperpage}{27}
+\indexentry{instruction!validation|hyperpage}{27}
+\indexentry{abstract syntax!instruction|hyperpage}{27}
+\indexentry{instruction|hyperpage}{30}
+\indexentry{instruction sequence|hyperpage}{30}
+\indexentry{expression|hyperpage}{30}
+\indexentry{result type|hyperpage}{30}
+\indexentry{validation!expression|hyperpage}{30}
+\indexentry{expression!validation|hyperpage}{30}
+\indexentry{abstract syntax!expression|hyperpage}{30}
+\indexentry{expression!constant|hyperpage}{30}
+\indexentry{constant|hyperindexformat{\textbf}}{30}
+\indexentry{function|hyperpage}{31}
+\indexentry{local|hyperpage}{31}
+\indexentry{function index|hyperpage}{31}
+\indexentry{local index|hyperpage}{31}
+\indexentry{type index|hyperpage}{31}
+\indexentry{function type|hyperpage}{31}
+\indexentry{value type|hyperpage}{31}
+\indexentry{expression|hyperpage}{31}
+\indexentry{import|hyperpage}{31}
+\indexentry{abstract syntax!function|hyperpage}{31}
+\indexentry{function!abstract syntax|hyperpage}{31}
+\indexentry{abstract syntax!function|hyperpage}{31}
+\indexentry{table|hyperpage}{31}
+\indexentry{table type|hyperpage}{31}
+\indexentry{validation!table|hyperpage}{31}
+\indexentry{table!validation|hyperpage}{31}
+\indexentry{abstract syntax!table|hyperpage}{31}
+\indexentry{memory|hyperpage}{32}
+\indexentry{memory type|hyperpage}{32}
+\indexentry{validation!memory|hyperpage}{32}
+\indexentry{memory!validation|hyperpage}{32}
+\indexentry{abstract syntax!memory|hyperpage}{32}
+\indexentry{global|hyperpage}{32}
+\indexentry{global type|hyperpage}{32}
+\indexentry{expression|hyperpage}{32}
+\indexentry{validation!global|hyperpage}{32}
+\indexentry{global!validation|hyperpage}{32}
+\indexentry{abstract syntax!global|hyperpage}{32}
+\indexentry{element|hyperpage}{32}
+\indexentry{table|hyperpage}{32}
+\indexentry{table index|hyperpage}{32}
+\indexentry{expression|hyperpage}{32}
+\indexentry{function index|hyperpage}{32}
+\indexentry{validation!element|hyperpage}{32}
+\indexentry{element!validation|hyperpage}{32}
+\indexentry{abstract syntax!element|hyperpage}{32}
+\indexentry{table!element|hyperpage}{32}
+\indexentry{element!segment|hyperpage}{32}
+\indexentry{data|hyperpage}{33}
+\indexentry{memory|hyperpage}{33}
+\indexentry{memory index|hyperpage}{33}
+\indexentry{expression|hyperpage}{33}
+\indexentry{byte|hyperpage}{33}
+\indexentry{validation!data|hyperpage}{33}
+\indexentry{data!validation|hyperpage}{33}
+\indexentry{abstract syntax!data|hyperpage}{33}
+\indexentry{memory!data|hyperpage}{33}
+\indexentry{data!segment|hyperpage}{33}
+\indexentry{start function|hyperpage}{33}
+\indexentry{function index|hyperpage}{33}
+\indexentry{validation!start function|hyperpage}{33}
+\indexentry{start function!validation|hyperpage}{33}
+\indexentry{abstract syntax!start function|hyperpage}{33}
+\indexentry{export|hyperpage}{33}
+\indexentry{name|hyperpage}{33}
+\indexentry{index|hyperpage}{33}
+\indexentry{function index|hyperpage}{33}
+\indexentry{table index|hyperpage}{33}
+\indexentry{memory index|hyperpage}{33}
+\indexentry{global index|hyperpage}{33}
+\indexentry{validation!export|hyperpage}{33}
+\indexentry{export!validation|hyperpage}{33}
+\indexentry{abstract syntax!export|hyperpage}{33}
+\indexentry{import|hyperpage}{34}
+\indexentry{name|hyperpage}{34}
+\indexentry{function type|hyperpage}{34}
+\indexentry{table type|hyperpage}{34}
+\indexentry{memory type|hyperpage}{34}
+\indexentry{global type|hyperpage}{34}
+\indexentry{validation!import|hyperpage}{34}
+\indexentry{import!validation|hyperpage}{34}
+\indexentry{abstract syntax!import|hyperpage}{34}
+\indexentry{module|hyperpage}{35}
+\indexentry{type definition|hyperpage}{35}
+\indexentry{function type|hyperpage}{35}
+\indexentry{function|hyperpage}{35}
+\indexentry{table|hyperpage}{35}
+\indexentry{memory|hyperpage}{35}
+\indexentry{global|hyperpage}{35}
+\indexentry{element|hyperpage}{35}
+\indexentry{data|hyperpage}{35}
+\indexentry{start function|hyperpage}{35}
+\indexentry{import|hyperpage}{35}
+\indexentry{export|hyperpage}{35}
+\indexentry{context|hyperpage}{35}
+\indexentry{validation!module|hyperpage}{35}
+\indexentry{module!validation|hyperpage}{35}
+\indexentry{abstract syntax!module|hyperpage}{35}
+\indexentry{execution|hyperindexformat{\textbf}}{37}
+\indexentry{stack|hyperpage}{37}
+\indexentry{store|hyperpage}{37}
+\indexentry{reduction rules|hyperindexformat{\textbf}}{38}
+\indexentry{configuration|hyperpage}{38}
+\indexentry{evaluation context|hyperpage}{38}
+\indexentry{runtime|hyperindexformat{\textbf}}{39}
+\indexentry{value|hyperindexformat{\textbf}}{39}
+\indexentry{constant|hyperpage}{39}
+\indexentry{value type|hyperpage}{39}
+\indexentry{integer|hyperpage}{39}
+\indexentry{floating-point|hyperpage}{39}
+\indexentry{abstract syntax!value|hyperpage}{39}
+\indexentry{value!abstract syntax|hyperpage}{39}
+\indexentry{result|hyperindexformat{\textbf}}{39}
+\indexentry{value|hyperpage}{39}
+\indexentry{trap|hyperpage}{39}
+\indexentry{abstract syntax!result|hyperpage}{39}
+\indexentry{result!abstract syntax|hyperpage}{39}
+\indexentry{store|hyperindexformat{\textbf}}{39}
+\indexentry{function instance|hyperpage}{39}
+\indexentry{table instance|hyperpage}{39}
+\indexentry{memory instance|hyperpage}{39}
+\indexentry{global instance|hyperpage}{39}
+\indexentry{module|hyperpage}{39}
+\indexentry{allocation|hyperpage}{39}
+\indexentry{abstract syntax!store|hyperpage}{39}
+\indexentry{store!abstract syntax|hyperpage}{39}
+\indexentry{address|hyperindexformat{\textbf}}{40}
+\indexentry{store|hyperpage}{40}
+\indexentry{function instance|hyperpage}{40}
+\indexentry{table instance|hyperpage}{40}
+\indexentry{memory instance|hyperpage}{40}
+\indexentry{global instance|hyperpage}{40}
+\indexentry{embedder|hyperpage}{40}
+\indexentry{abstract syntax!function address|hyperpage}{40}
+\indexentry{function address!abstract syntax|hyperpage}{40}
+\indexentry{abstract syntax!table address|hyperpage}{40}
+\indexentry{table address!abstract syntax|hyperpage}{40}
+\indexentry{abstract syntax!memory address|hyperpage}{40}
+\indexentry{memory address!abstract syntax|hyperpage}{40}
+\indexentry{abstract syntax!global address|hyperpage}{40}
+\indexentry{global address!abstract syntax|hyperpage}{40}
+\indexentry{function!address|hyperpage}{40}
+\indexentry{address!function|hyperpage}{40}
+\indexentry{table!address|hyperpage}{40}
+\indexentry{address!table|hyperpage}{40}
+\indexentry{memory!address|hyperpage}{40}
+\indexentry{address!memory|hyperpage}{40}
+\indexentry{global!address|hyperpage}{40}
+\indexentry{address!global|hyperpage}{40}
+\indexentry{instance|hyperindexformat{\textbf}}{40}
+\indexentry{function type|hyperpage}{40}
+\indexentry{function instance|hyperpage}{40}
+\indexentry{table instance|hyperpage}{40}
+\indexentry{memory instance|hyperpage}{40}
+\indexentry{global instance|hyperpage}{40}
+\indexentry{export instance|hyperpage}{40}
+\indexentry{table address|hyperpage}{40}
+\indexentry{memory address|hyperpage}{40}
+\indexentry{global address|hyperpage}{40}
+\indexentry{index|hyperpage}{40}
+\indexentry{name|hyperpage}{40}
+\indexentry{abstract syntax!module instance|hyperpage}{40}
+\indexentry{module instance!abstract syntax|hyperpage}{40}
+\indexentry{module!instance|hyperpage}{40}
+\indexentry{instance!module|hyperpage}{40}
+\indexentry{function instance|hyperindexformat{\textbf}}{40}
+\indexentry{module instance|hyperpage}{40}
+\indexentry{function|hyperpage}{40}
+\indexentry{closure|hyperpage}{40}
+\indexentry{module|hyperpage}{40}
+\indexentry{host function|hyperindexformat{\textbf}}{40}
+\indexentry{invocation|hyperpage}{40}
+\indexentry{abstract syntax!function instance|hyperpage}{40}
+\indexentry{function instance!abstract syntax|hyperpage}{40}
+\indexentry{function!instance|hyperpage}{40}
+\indexentry{instance!function|hyperpage}{40}
+\indexentry{table instance|hyperindexformat{\textbf}}{41}
+\indexentry{table|hyperpage}{41}
+\indexentry{function address|hyperpage}{41}
+\indexentry{table type|hyperpage}{41}
+\indexentry{embedder|hyperpage}{41}
+\indexentry{element segment|hyperpage}{41}
+\indexentry{abstract syntax!table instance|hyperpage}{41}
+\indexentry{table instance!abstract syntax|hyperpage}{41}
+\indexentry{table!instance|hyperpage}{41}
+\indexentry{instance!table|hyperpage}{41}
+\indexentry{memory instance|hyperindexformat{\textbf}}{41}
+\indexentry{memory|hyperpage}{41}
+\indexentry{byte|hyperpage}{41}
+\indexentry{page size|hyperindexformat{\textbf}}{41}
+\indexentry{memory type|hyperpage}{41}
+\indexentry{embedder|hyperpage}{41}
+\indexentry{data segment|hyperpage}{41}
+\indexentry{instruction|hyperpage}{41}
+\indexentry{abstract syntax!memory instance|hyperpage}{41}
+\indexentry{memory instance!abstract syntax|hyperpage}{41}
+\indexentry{memory!instance|hyperpage}{41}
+\indexentry{instance!memory|hyperpage}{41}
+\indexentry{global instance|hyperindexformat{\textbf}}{41}
+\indexentry{global|hyperpage}{41}
+\indexentry{value|hyperpage}{41}
+\indexentry{mutability|hyperpage}{41}
+\indexentry{instruction|hyperpage}{41}
+\indexentry{embedder|hyperpage}{41}
+\indexentry{abstract syntax!global instance|hyperpage}{41}
+\indexentry{global instance!abstract syntax|hyperpage}{41}
+\indexentry{global!instance|hyperpage}{41}
+\indexentry{instance!global|hyperpage}{41}
+\indexentry{export instance|hyperindexformat{\textbf}}{41}
+\indexentry{export|hyperpage}{41}
+\indexentry{name|hyperpage}{41}
+\indexentry{external value|hyperpage}{41}
+\indexentry{abstract syntax!export instance|hyperpage}{41}
+\indexentry{export instance!abstract syntax|hyperpage}{41}
+\indexentry{export!instance|hyperpage}{41}
+\indexentry{instance!export|hyperpage}{41}
+\indexentry{external value|hyperindexformat{\textbf}}{41}
+\indexentry{function address|hyperpage}{41}
+\indexentry{table address|hyperpage}{41}
+\indexentry{memory address|hyperpage}{41}
+\indexentry{global address|hyperpage}{41}
+\indexentry{store|hyperpage}{41}
+\indexentry{function|hyperpage}{41}
+\indexentry{table|hyperpage}{41}
+\indexentry{memory|hyperpage}{41}
+\indexentry{global|hyperpage}{41}
+\indexentry{abstract syntax!external value|hyperpage}{41}
+\indexentry{external value!abstract syntax|hyperpage}{41}
+\indexentry{external!value|hyperpage}{41}
+\indexentry{value!external|hyperpage}{41}
+\indexentry{stack|hyperindexformat{\textbf}}{42}
+\indexentry{frame|hyperindexformat{\textbf}}{42}
+\indexentry{label|hyperindexformat{\textbf}}{42}
+\indexentry{instruction|hyperpage}{42}
+\indexentry{store|hyperpage}{42}
+\indexentry{activation|hyperpage}{42}
+\indexentry{function|hyperpage}{42}
+\indexentry{call|hyperpage}{42}
+\indexentry{local|hyperpage}{42}
+\indexentry{module instance|hyperpage}{42}
+\indexentry{abstract syntax!frame|hyperpage}{42}
+\indexentry{frame!abstract syntax|hyperpage}{42}
+\indexentry{abstract syntax!label|hyperpage}{42}
+\indexentry{label!abstract syntax|hyperpage}{42}
+\indexentry{administrative instructions|hyperindexformat{\textbf}}{43}
+\indexentry{function|hyperpage}{43}
+\indexentry{function instance|hyperpage}{43}
+\indexentry{function address|hyperpage}{43}
+\indexentry{label|hyperpage}{43}
+\indexentry{frame|hyperpage}{43}
+\indexentry{instruction|hyperpage}{43}
+\indexentry{trap|hyperpage}{43}
+\indexentry{call|hyperpage}{43}
+\indexentry{memory|hyperpage}{43}
+\indexentry{memory instance|hyperpage}{43}
+\indexentry{table|hyperpage}{43}
+\indexentry{table instance|hyperpage}{43}
+\indexentry{element|hyperpage}{43}
+\indexentry{data|hyperpage}{43}
+\indexentry{segment|hyperpage}{43}
+\indexentry{: abstract syntax!administrative instruction|hyperpage}{43}
+\indexentry{administrative instruction!: abstract syntax|hyperpage}{43}
+\indexentry{block context|hyperindexformat{\textbf}}{44}
+\indexentry{instruction|hyperpage}{44}
+\indexentry{branch|hyperpage}{44}
+\indexentry{configuration|hyperindexformat{\textbf}}{44}
+\indexentry{thread|hyperindexformat{\textbf}}{44}
+\indexentry{store|hyperpage}{44}
+\indexentry{frame|hyperpage}{44}
+\indexentry{instruction|hyperpage}{44}
+\indexentry{module instruction|hyperpage}{44}
+\indexentry{evaluation context|hyperindexformat{\textbf}}{44}
+\indexentry{instruction|hyperpage}{44}
+\indexentry{trap|hyperpage}{44}
+\indexentry{label|hyperpage}{44}
+\indexentry{frame|hyperpage}{44}
+\indexentry{value|hyperpage}{44}
+\indexentry{value|hyperpage}{45}
+\indexentry{integer|hyperpage}{45}
+\indexentry{floating-point|hyperpage}{45}
+\indexentry{bit width|hyperpage}{45}
+\indexentry{determinism|hyperpage}{45}
+\indexentry{NaN|hyperpage}{45}
+\indexentry{bit|hyperpage}{46}
+\indexentry{integer|hyperpage}{46}
+\indexentry{floating-point|hyperpage}{46}
+\indexentry{Boolean|hyperpage}{46}
+\indexentry{IEEE 754|hyperpage}{46}
+\indexentry{significand|hyperpage}{46}
+\indexentry{exponent|hyperpage}{46}
+\indexentry{byte|hyperpage}{46}
+\indexentry{little endian|hyperpage}{46}
+\indexentry{memory|hyperpage}{46}
+\indexentry{integer|hyperpage}{46}
+\indexentry{sign|hyperpage}{47}
+\indexentry{signed integer|hyperpage}{47}
+\indexentry{unsigned integer|hyperpage}{47}
+\indexentry{uninterpreted integer|hyperpage}{47}
+\indexentry{two's complement|hyperpage}{47}
+\indexentry{Boolean|hyperpage}{47}
+\indexentry{floating-point|hyperpage}{51}
+\indexentry{IEEE 754|hyperpage}{51}
+\indexentry{rounding|hyperpage}{52}
+\indexentry{NaN|hyperpage}{53}
+\indexentry{instruction|hyperpage}{63}
+\indexentry{function type|hyperpage}{63}
+\indexentry{store|hyperpage}{63}
+\indexentry{validation|hyperpage}{63}
+\indexentry{numeric instruction|hyperpage}{63}
+\indexentry{determinism|hyperpage}{63}
+\indexentry{trap|hyperpage}{63}
+\indexentry{NaN|hyperpage}{63}
+\indexentry{value|hyperpage}{63}
+\indexentry{value type|hyperpage}{63}
+\indexentry{execution!instruction|hyperpage}{63}
+\indexentry{instruction!execution|hyperpage}{63}
+\indexentry{abstract syntax!instruction|hyperpage}{63}
+\indexentry{parametric instructions|hyperpage}{64}
+\indexentry{value|hyperpage}{64}
+\indexentry{execution!instruction|hyperpage}{64}
+\indexentry{instruction!execution|hyperpage}{64}
+\indexentry{abstract syntax!instruction|hyperpage}{64}
+\indexentry{variable instructions|hyperpage}{65}
+\indexentry{local index|hyperpage}{65}
+\indexentry{global index|hyperpage}{65}
+\indexentry{address|hyperpage}{65}
+\indexentry{global address|hyperpage}{65}
+\indexentry{global instance|hyperpage}{65}
+\indexentry{store|hyperpage}{65}
+\indexentry{frame|hyperpage}{65}
+\indexentry{value|hyperpage}{65}
+\indexentry{execution!instruction|hyperpage}{65}
+\indexentry{instruction!execution|hyperpage}{65}
+\indexentry{abstract syntax!instruction|hyperpage}{65}
+\indexentry{memory instruction|hyperpage}{66}
+\indexentry{memory index|hyperpage}{66}
+\indexentry{store|hyperpage}{66}
+\indexentry{frame|hyperpage}{66}
+\indexentry{address|hyperpage}{66}
+\indexentry{memory address|hyperpage}{66}
+\indexentry{memory instance|hyperpage}{66}
+\indexentry{store|hyperpage}{66}
+\indexentry{frame|hyperpage}{66}
+\indexentry{value|hyperpage}{66}
+\indexentry{integer|hyperpage}{66}
+\indexentry{limits|hyperpage}{66}
+\indexentry{value type|hyperpage}{66}
+\indexentry{bit width|hyperpage}{66}
+\indexentry{execution!instruction|hyperpage}{66}
+\indexentry{instruction!execution|hyperpage}{66}
+\indexentry{abstract syntax!instruction|hyperpage}{66}
+\indexentry{control instructions|hyperpage}{69}
+\indexentry{structured control|hyperpage}{69}
+\indexentry{label|hyperpage}{69}
+\indexentry{block|hyperpage}{69}
+\indexentry{branch|hyperpage}{69}
+\indexentry{result type|hyperpage}{69}
+\indexentry{label index|hyperpage}{69}
+\indexentry{function index|hyperpage}{69}
+\indexentry{type index|hyperpage}{69}
+\indexentry{vector|hyperpage}{69}
+\indexentry{address|hyperpage}{69}
+\indexentry{table address|hyperpage}{69}
+\indexentry{table instance|hyperpage}{69}
+\indexentry{store|hyperpage}{69}
+\indexentry{frame|hyperpage}{69}
+\indexentry{execution!instruction|hyperpage}{69}
+\indexentry{instruction!execution|hyperpage}{69}
+\indexentry{abstract syntax!instruction|hyperpage}{69}
+\indexentry{instruction|hyperpage}{72}
+\indexentry{instruction sequence|hyperpage}{72}
+\indexentry{block|hyperpage}{72}
+\indexentry{call|hyperindexformat{\textbf}}{73}
+\indexentry{function|hyperpage}{73}
+\indexentry{function instance|hyperpage}{73}
+\indexentry{label|hyperpage}{73}
+\indexentry{frame|hyperpage}{73}
+\indexentry{host function|hyperpage}{74}
+\indexentry{store|hyperpage}{74}
+\indexentry{expression|hyperpage}{75}
+\indexentry{execution!expression|hyperpage}{75}
+\indexentry{expression!execution|hyperpage}{75}
+\indexentry{abstract syntax!expression|hyperpage}{75}
+\indexentry{external value|hyperpage}{75}
+\indexentry{external type|hyperpage}{75}
+\indexentry{validation|hyperpage}{75}
+\indexentry{import|hyperpage}{75}
+\indexentry{store|hyperpage}{75}
+\indexentry{function type|hyperpage}{75}
+\indexentry{function address|hyperpage}{75}
+\indexentry{table type|hyperpage}{75}
+\indexentry{table address|hyperpage}{75}
+\indexentry{limits|hyperpage}{75}
+\indexentry{memory type|hyperpage}{75}
+\indexentry{memory address|hyperpage}{75}
+\indexentry{limits|hyperpage}{75}
+\indexentry{global type|hyperpage}{76}
+\indexentry{global address|hyperpage}{76}
+\indexentry{value type|hyperpage}{76}
+\indexentry{mutability|hyperpage}{76}
+\indexentry{matching|hyperindexformat{\textbf}}{76}
+\indexentry{external type|hyperpage}{76}
+\indexentry{limits|hyperpage}{76}
+\indexentry{function type|hyperpage}{76}
+\indexentry{table type|hyperpage}{76}
+\indexentry{limits|hyperpage}{76}
+\indexentry{element type|hyperpage}{76}
+\indexentry{memory type|hyperpage}{77}
+\indexentry{limits|hyperpage}{77}
+\indexentry{global type|hyperpage}{77}
+\indexentry{value type|hyperpage}{77}
+\indexentry{mutability|hyperpage}{77}
+\indexentry{allocation|hyperindexformat{\textbf}}{77}
+\indexentry{store|hyperpage}{77}
+\indexentry{address|hyperpage}{77}
+\indexentry{function|hyperpage}{77}
+\indexentry{function instance|hyperpage}{77}
+\indexentry{function address|hyperpage}{77}
+\indexentry{module instance|hyperpage}{77}
+\indexentry{function type|hyperpage}{77}
+\indexentry{host function|hyperpage}{77}
+\indexentry{function instance|hyperpage}{77}
+\indexentry{function address|hyperpage}{77}
+\indexentry{function type|hyperpage}{77}
+\indexentry{table|hyperpage}{78}
+\indexentry{table instance|hyperpage}{78}
+\indexentry{table address|hyperpage}{78}
+\indexentry{table type|hyperpage}{78}
+\indexentry{limits|hyperpage}{78}
+\indexentry{memory|hyperpage}{78}
+\indexentry{memory instance|hyperpage}{78}
+\indexentry{memory address|hyperpage}{78}
+\indexentry{memory type|hyperpage}{78}
+\indexentry{limits|hyperpage}{78}
+\indexentry{byte|hyperpage}{78}
+\indexentry{global|hyperpage}{79}
+\indexentry{global instance|hyperpage}{79}
+\indexentry{global address|hyperpage}{79}
+\indexentry{global type|hyperpage}{79}
+\indexentry{value type|hyperpage}{79}
+\indexentry{mutability|hyperpage}{79}
+\indexentry{value|hyperpage}{79}
+\indexentry{table|hyperpage}{79}
+\indexentry{table instance|hyperpage}{79}
+\indexentry{table address|hyperpage}{79}
+\indexentry{grow|hyperpage}{79}
+\indexentry{limits|hyperpage}{79}
+\indexentry{memory|hyperpage}{79}
+\indexentry{memory instance|hyperpage}{79}
+\indexentry{memory address|hyperpage}{79}
+\indexentry{grow|hyperpage}{79}
+\indexentry{limits|hyperpage}{79}
+\indexentry{module|hyperpage}{79}
+\indexentry{module instance|hyperpage}{79}
+\indexentry{function instance|hyperpage}{79}
+\indexentry{table instance|hyperpage}{79}
+\indexentry{memory instance|hyperpage}{79}
+\indexentry{global instance|hyperpage}{79}
+\indexentry{export instance|hyperpage}{79}
+\indexentry{function address|hyperpage}{79}
+\indexentry{table address|hyperpage}{79}
+\indexentry{memory address|hyperpage}{79}
+\indexentry{global address|hyperpage}{79}
+\indexentry{function index|hyperpage}{79}
+\indexentry{table index|hyperpage}{79}
+\indexentry{memory index|hyperpage}{79}
+\indexentry{global index|hyperpage}{79}
+\indexentry{type|hyperpage}{79}
+\indexentry{function|hyperpage}{79}
+\indexentry{table|hyperpage}{79}
+\indexentry{memory|hyperpage}{79}
+\indexentry{global|hyperpage}{79}
+\indexentry{import|hyperpage}{79}
+\indexentry{export|hyperpage}{79}
+\indexentry{external value|hyperpage}{79}
+\indexentry{external type|hyperpage}{79}
+\indexentry{matching|hyperpage}{79}
+\indexentry{instantiation|hyperindexformat{\textbf}}{81}
+\indexentry{module|hyperpage}{81}
+\indexentry{instance|hyperpage}{81}
+\indexentry{store|hyperpage}{81}
+\indexentry{trap|hyperpage}{81}
+\indexentry{invocation|hyperindexformat{\textbf}}{83}
+\indexentry{module|hyperpage}{83}
+\indexentry{module instance|hyperpage}{83}
+\indexentry{function|hyperpage}{83}
+\indexentry{export|hyperpage}{83}
+\indexentry{function address|hyperpage}{83}
+\indexentry{function instance|hyperpage}{83}
+\indexentry{function type|hyperpage}{83}
+\indexentry{value|hyperpage}{83}
+\indexentry{stack|hyperpage}{83}
+\indexentry{trap|hyperpage}{83}
+\indexentry{store|hyperpage}{83}
+\indexentry{binary format|hyperindexformat{\textbf}}{85}
+\indexentry{module|hyperpage}{85}
+\indexentry{byte|hyperpage}{85}
+\indexentry{file extension|hyperpage}{85}
+\indexentry{abstract syntax|hyperpage}{85}
+\indexentry{grammar notation|hyperpage}{85}
+\indexentry{notation|hyperpage}{85}
+\indexentry{byte|hyperpage}{85}
+\indexentry{binary format!grammar|hyperpage}{85}
+\indexentry{binary format!notation|hyperpage}{85}
+\indexentry{notation!binary format|hyperpage}{85}
+\indexentry{vector|hyperpage}{86}
+\indexentry{binary format!vector|hyperpage}{86}
+\indexentry{vector!binary format|hyperpage}{86}
+\indexentry{value|hyperpage}{86}
+\indexentry{binary format!value|hyperpage}{86}
+\indexentry{value!binary format|hyperpage}{86}
+\indexentry{byte|hyperpage}{86}
+\indexentry{binary format!byte|hyperpage}{86}
+\indexentry{byte!binary format|hyperpage}{86}
+\indexentry{integer|hyperpage}{86}
+\indexentry{unsigned integer|hyperpage}{86}
+\indexentry{signed integer|hyperpage}{86}
+\indexentry{uninterpreted integer|hyperpage}{86}
+\indexentry{LEB128|hyperpage}{86}
+\indexentry{two's complement|hyperpage}{86}
+\indexentry{binary format!integer|hyperpage}{86}
+\indexentry{integer!binary format|hyperpage}{86}
+\indexentry{binary format!unsigned integer|hyperpage}{86}
+\indexentry{unsigned integer!binary format|hyperpage}{86}
+\indexentry{binary format!signed integer|hyperpage}{86}
+\indexentry{signed integer!binary format|hyperpage}{86}
+\indexentry{binary format!uninterpreted integer|hyperpage}{86}
+\indexentry{uninterpreted integer!binary format|hyperpage}{86}
+\indexentry{floating-point number|hyperpage}{87}
+\indexentry{little endian|hyperpage}{87}
+\indexentry{binary format!floating-point number|hyperpage}{87}
+\indexentry{floating-point number!binary format|hyperpage}{87}
+\indexentry{name|hyperpage}{87}
+\indexentry{byte|hyperpage}{87}
+\indexentry{Unicode|hyperpage}{87}
+\indexentry{UTF-8|hyperindexformat{\textbf}}{87}
+\indexentry{binary format!name|hyperpage}{87}
+\indexentry{name!binary format|hyperpage}{87}
+\indexentry{type|hyperpage}{88}
+\indexentry{binary format!type|hyperpage}{88}
+\indexentry{type!binary format|hyperpage}{88}
+\indexentry{value type|hyperpage}{88}
+\indexentry{binary format!value type|hyperpage}{88}
+\indexentry{value type!binary format|hyperpage}{88}
+\indexentry{result type|hyperpage}{88}
+\indexentry{value type|hyperpage}{88}
+\indexentry{binary format!result type|hyperpage}{88}
+\indexentry{result type!binary format|hyperpage}{88}
+\indexentry{function type|hyperpage}{88}
+\indexentry{value type|hyperpage}{88}
+\indexentry{result type|hyperpage}{88}
+\indexentry{binary format!function type|hyperpage}{88}
+\indexentry{function type!binary format|hyperpage}{88}
+\indexentry{limits|hyperpage}{88}
+\indexentry{binary format!limits|hyperpage}{88}
+\indexentry{limits!binary format|hyperpage}{88}
+\indexentry{memory type|hyperpage}{88}
+\indexentry{limits|hyperpage}{88}
+\indexentry{page size|hyperpage}{88}
+\indexentry{binary format!memory type|hyperpage}{88}
+\indexentry{memory type!binary format|hyperpage}{88}
+\indexentry{table type|hyperpage}{89}
+\indexentry{element type|hyperpage}{89}
+\indexentry{limits|hyperpage}{89}
+\indexentry{binary format!table type|hyperpage}{89}
+\indexentry{table type!binary format|hyperpage}{89}
+\indexentry{binary format!element type|hyperpage}{89}
+\indexentry{element type!binary format|hyperpage}{89}
+\indexentry{global type|hyperpage}{89}
+\indexentry{mutability|hyperpage}{89}
+\indexentry{value type|hyperpage}{89}
+\indexentry{binary format!global type|hyperpage}{89}
+\indexentry{global type!binary format|hyperpage}{89}
+\indexentry{binary format!mutability|hyperpage}{89}
+\indexentry{mutability!binary format|hyperpage}{89}
+\indexentry{instruction|hyperpage}{89}
+\indexentry{opcode|hyperindexformat{\textbf}}{89}
+\indexentry{control instructions|hyperpage}{89}
+\indexentry{structured control|hyperpage}{89}
+\indexentry{label|hyperpage}{89}
+\indexentry{block|hyperpage}{89}
+\indexentry{branch|hyperpage}{89}
+\indexentry{result type|hyperpage}{89}
+\indexentry{value type|hyperpage}{89}
+\indexentry{block type|hyperpage}{89}
+\indexentry{label index|hyperpage}{89}
+\indexentry{function index|hyperpage}{89}
+\indexentry{type index|hyperpage}{89}
+\indexentry{vector|hyperpage}{89}
+\indexentry{polymorphism|hyperpage}{89}
+\indexentry{LEB128|hyperpage}{89}
+\indexentry{binary format!instruction|hyperpage}{89}
+\indexentry{instruction!binary format|hyperpage}{89}
+\indexentry{binary format!block type|hyperpage}{89}
+\indexentry{block type!binary format|hyperpage}{89}
+\indexentry{value type|hyperpage}{90}
+\indexentry{polymorphism|hyperpage}{90}
+\indexentry{binary format!instruction|hyperpage}{90}
+\indexentry{instruction!binary format|hyperpage}{90}
+\indexentry{variable instructions|hyperpage}{90}
+\indexentry{local index|hyperpage}{90}
+\indexentry{global index|hyperpage}{90}
+\indexentry{binary format!instruction|hyperpage}{90}
+\indexentry{instruction!binary format|hyperpage}{90}
+\indexentry{memory instruction|hyperpage}{90}
+\indexentry{memory index|hyperpage}{90}
+\indexentry{binary format!instruction|hyperpage}{90}
+\indexentry{instruction!binary format|hyperpage}{90}
+\indexentry{numeric instruction|hyperpage}{91}
+\indexentry{binary format!instruction|hyperpage}{91}
+\indexentry{instruction!binary format|hyperpage}{91}
+\indexentry{expression|hyperpage}{94}
+\indexentry{binary format!expression|hyperpage}{94}
+\indexentry{expression!binary format|hyperpage}{94}
+\indexentry{expression!constant|hyperpage}{94}
+\indexentry{index|hyperpage}{94}
+\indexentry{type index|hyperpage}{94}
+\indexentry{function index|hyperpage}{94}
+\indexentry{table index|hyperpage}{94}
+\indexentry{memory index|hyperpage}{94}
+\indexentry{global index|hyperpage}{94}
+\indexentry{local index|hyperpage}{94}
+\indexentry{label index|hyperpage}{94}
+\indexentry{binary format!type index|hyperpage}{94}
+\indexentry{type index!binary format|hyperpage}{94}
+\indexentry{binary format!function index|hyperpage}{94}
+\indexentry{function index!binary format|hyperpage}{94}
+\indexentry{binary format!table index|hyperpage}{94}
+\indexentry{table index!binary format|hyperpage}{94}
+\indexentry{binary format!memory index|hyperpage}{94}
+\indexentry{memory index!binary format|hyperpage}{94}
+\indexentry{binary format!global index|hyperpage}{94}
+\indexentry{global index!binary format|hyperpage}{94}
+\indexentry{binary format!local index|hyperpage}{94}
+\indexentry{local index!binary format|hyperpage}{94}
+\indexentry{binary format!label index|hyperpage}{94}
+\indexentry{label index!binary format|hyperpage}{94}
+\indexentry{section|hyperindexformat{\textbf}}{94}
+\indexentry{binary format!section|hyperpage}{94}
+\indexentry{section!binary format|hyperpage}{94}
+\indexentry{custom section|hyperindexformat{\textbf}}{95}
+\indexentry{binary format!custom section|hyperpage}{95}
+\indexentry{custom section!binary format|hyperpage}{95}
+\indexentry{section!custom|hyperpage}{95}
+\indexentry{type section|hyperindexformat{\textbf}}{95}
+\indexentry{type definition|hyperpage}{95}
+\indexentry{binary format!type section|hyperpage}{95}
+\indexentry{type section!binary format|hyperpage}{95}
+\indexentry{section!type|hyperpage}{95}
+\indexentry{type!section|hyperpage}{95}
+\indexentry{import section|hyperindexformat{\textbf}}{96}
+\indexentry{import|hyperpage}{96}
+\indexentry{name|hyperpage}{96}
+\indexentry{function type|hyperpage}{96}
+\indexentry{table type|hyperpage}{96}
+\indexentry{memory type|hyperpage}{96}
+\indexentry{global type|hyperpage}{96}
+\indexentry{binary format!import|hyperpage}{96}
+\indexentry{import!binary format|hyperpage}{96}
+\indexentry{section!import|hyperpage}{96}
+\indexentry{import!section|hyperpage}{96}
+\indexentry{function section|hyperindexformat{\textbf}}{96}
+\indexentry{function|hyperpage}{96}
+\indexentry{type index|hyperpage}{96}
+\indexentry{function type|hyperpage}{96}
+\indexentry{binary format!function|hyperpage}{96}
+\indexentry{function!binary format|hyperpage}{96}
+\indexentry{section!function|hyperpage}{96}
+\indexentry{function!section|hyperpage}{96}
+\indexentry{table section|hyperindexformat{\textbf}}{96}
+\indexentry{table|hyperpage}{96}
+\indexentry{table type|hyperpage}{96}
+\indexentry{binary format!table|hyperpage}{96}
+\indexentry{table!binary format|hyperpage}{96}
+\indexentry{section!table|hyperpage}{96}
+\indexentry{table!section|hyperpage}{96}
+\indexentry{memory section|hyperindexformat{\textbf}}{96}
+\indexentry{memory|hyperpage}{96}
+\indexentry{memory type|hyperpage}{96}
+\indexentry{binary format!memory|hyperpage}{96}
+\indexentry{memory!binary format|hyperpage}{96}
+\indexentry{section!memory|hyperpage}{96}
+\indexentry{memory!section|hyperpage}{96}
+\indexentry{global section|hyperindexformat{\textbf}}{96}
+\indexentry{global|hyperpage}{96}
+\indexentry{global type|hyperpage}{96}
+\indexentry{expression|hyperpage}{96}
+\indexentry{binary format!global|hyperpage}{96}
+\indexentry{global!binary format|hyperpage}{96}
+\indexentry{section!global|hyperpage}{96}
+\indexentry{global!section|hyperpage}{96}
+\indexentry{export section|hyperindexformat{\textbf}}{96}
+\indexentry{export|hyperpage}{96}
+\indexentry{name|hyperpage}{96}
+\indexentry{index|hyperpage}{96}
+\indexentry{function index|hyperpage}{96}
+\indexentry{table index|hyperpage}{96}
+\indexentry{memory index|hyperpage}{96}
+\indexentry{global index|hyperpage}{96}
+\indexentry{binary format!export|hyperpage}{96}
+\indexentry{export!binary format|hyperpage}{96}
+\indexentry{section!export|hyperpage}{96}
+\indexentry{export!section|hyperpage}{96}
+\indexentry{start section|hyperindexformat{\textbf}}{97}
+\indexentry{start function|hyperpage}{97}
+\indexentry{function index|hyperpage}{97}
+\indexentry{binary format!start function|hyperpage}{97}
+\indexentry{start function!binary format|hyperpage}{97}
+\indexentry{section!start|hyperpage}{97}
+\indexentry{start function!section|hyperpage}{97}
+\indexentry{element section|hyperindexformat{\textbf}}{97}
+\indexentry{element|hyperpage}{97}
+\indexentry{table index|hyperpage}{97}
+\indexentry{expression|hyperpage}{97}
+\indexentry{function index|hyperpage}{97}
+\indexentry{binary format!element|hyperpage}{97}
+\indexentry{element!binary format|hyperpage}{97}
+\indexentry{section!element|hyperpage}{97}
+\indexentry{element!section|hyperpage}{97}
+\indexentry{table!element|hyperpage}{97}
+\indexentry{element!segment|hyperpage}{97}
+\indexentry{code section|hyperindexformat{\textbf}}{97}
+\indexentry{function|hyperpage}{97}
+\indexentry{local|hyperpage}{97}
+\indexentry{type index|hyperpage}{97}
+\indexentry{function type|hyperpage}{97}
+\indexentry{binary format!function|hyperpage}{97}
+\indexentry{function!binary format|hyperpage}{97}
+\indexentry{binary format!local|hyperpage}{97}
+\indexentry{local!binary format|hyperpage}{97}
+\indexentry{section!code|hyperpage}{97}
+\indexentry{code!section|hyperpage}{97}
+\indexentry{data section|hyperindexformat{\textbf}}{98}
+\indexentry{data|hyperpage}{98}
+\indexentry{memory|hyperpage}{98}
+\indexentry{memory index|hyperpage}{98}
+\indexentry{expression|hyperpage}{98}
+\indexentry{byte|hyperpage}{98}
+\indexentry{binary format!data|hyperpage}{98}
+\indexentry{data!binary format|hyperpage}{98}
+\indexentry{section!data|hyperpage}{98}
+\indexentry{data!section|hyperpage}{98}
+\indexentry{memory!data|hyperpage}{98}
+\indexentry{data!segment|hyperpage}{98}
+\indexentry{module|hyperpage}{98}
+\indexentry{section|hyperpage}{98}
+\indexentry{type definition|hyperpage}{98}
+\indexentry{function type|hyperpage}{98}
+\indexentry{function|hyperpage}{98}
+\indexentry{table|hyperpage}{98}
+\indexentry{memory|hyperpage}{98}
+\indexentry{global|hyperpage}{98}
+\indexentry{element|hyperpage}{98}
+\indexentry{data|hyperpage}{98}
+\indexentry{start function|hyperpage}{98}
+\indexentry{import|hyperpage}{98}
+\indexentry{export|hyperpage}{98}
+\indexentry{context|hyperpage}{98}
+\indexentry{version|hyperpage}{98}
+\indexentry{binary format!module|hyperpage}{98}
+\indexentry{module!binary format|hyperpage}{98}
+\indexentry{text format|hyperindexformat{\textbf}}{101}
+\indexentry{Unicode|hyperpage}{101}
+\indexentry{UTF-8|hyperpage}{101}
+\indexentry{S-expression|hyperpage}{101}
+\indexentry{identifier|hyperpage}{101}
+\indexentry{file extension|hyperpage}{101}
+\indexentry{abstract syntax|hyperpage}{101}
+\indexentry{grammar notation|hyperpage}{101}
+\indexentry{notation|hyperpage}{101}
+\indexentry{Unicode|hyperpage}{101}
+\indexentry{text format!grammar|hyperpage}{101}
+\indexentry{text format!notation|hyperpage}{101}
+\indexentry{notation!text format|hyperpage}{101}
+\indexentry{abbreviations|hyperindexformat{\textbf}}{102}
+\indexentry{rewrite rule|hyperpage}{102}
+\indexentry{identifier context|hyperindexformat{\textbf}}{102}
+\indexentry{identifier|hyperpage}{102}
+\indexentry{index|hyperpage}{102}
+\indexentry{index space|hyperpage}{102}
+\indexentry{vector|hyperpage}{103}
+\indexentry{text format!vector|hyperpage}{103}
+\indexentry{vector!text format|hyperpage}{103}
+\indexentry{lexical format|hyperpage}{103}
+\indexentry{character|hyperindexformat{\textbf}}{103}
+\indexentry{Unicode|hyperpage}{103}
+\indexentry{ASCII|hyperpage}{103}
+\indexentry{code point|hyperpage}{103}
+\indexentry{source text|hyperindexformat{\textbf}}{103}
+\indexentry{text format!character|hyperpage}{103}
+\indexentry{character!text format|hyperpage}{103}
+\indexentry{token|hyperindexformat{\textbf}}{103}
+\indexentry{keyword|hyperindexformat{\textbf}}{103}
+\indexentry{character|hyperpage}{103}
+\indexentry{white space|hyperpage}{103}
+\indexentry{comment|hyperpage}{103}
+\indexentry{source text|hyperpage}{103}
+\indexentry{text format!token|hyperpage}{103}
+\indexentry{white space|hyperindexformat{\textbf}}{104}
+\indexentry{character|hyperpage}{104}
+\indexentry{ASCII|hyperpage}{104}
+\indexentry{text format!white space|hyperpage}{104}
+\indexentry{comment|hyperindexformat{\textbf}}{104}
+\indexentry{character|hyperpage}{104}
+\indexentry{text format!comment|hyperpage}{104}
+\indexentry{value|hyperpage}{104}
+\indexentry{text format!value|hyperpage}{104}
+\indexentry{value!text format|hyperpage}{104}
+\indexentry{integer|hyperpage}{104}
+\indexentry{unsigned integer|hyperpage}{104}
+\indexentry{signed integer|hyperpage}{104}
+\indexentry{uninterpreted integer|hyperpage}{104}
+\indexentry{text format!integer|hyperpage}{104}
+\indexentry{integer!text format|hyperpage}{104}
+\indexentry{text format!unsigned integer|hyperpage}{104}
+\indexentry{unsigned integer!text format|hyperpage}{104}
+\indexentry{text format!signed integer|hyperpage}{104}
+\indexentry{signed integer!text format|hyperpage}{104}
+\indexentry{text format!uninterpreted integer|hyperpage}{104}
+\indexentry{uninterpreted integer!text format|hyperpage}{104}
+\indexentry{floating-point number|hyperpage}{105}
+\indexentry{text format!floating-point number|hyperpage}{105}
+\indexentry{floating-point number!text format|hyperpage}{105}
+\indexentry{string|hyperindexformat{\textbf}}{105}
+\indexentry{byte|hyperpage}{105}
+\indexentry{character|hyperpage}{105}
+\indexentry{ASCII|hyperpage}{105}
+\indexentry{Unicode|hyperpage}{105}
+\indexentry{UTF-8|hyperpage}{105}
+\indexentry{text format!byte|hyperpage}{105}
+\indexentry{byte!text format|hyperpage}{105}
+\indexentry{text format!string|hyperpage}{105}
+\indexentry{string!text format|hyperpage}{105}
+\indexentry{name|hyperpage}{106}
+\indexentry{byte|hyperpage}{106}
+\indexentry{character|hyperpage}{106}
+\indexentry{code point|hyperpage}{106}
+\indexentry{text format!name|hyperpage}{106}
+\indexentry{name!text format|hyperpage}{106}
+\indexentry{identifiers|hyperindexformat{\textbf}}{106}
+\indexentry{text format!identifiers|hyperpage}{106}
+\indexentry{identifiers!text format|hyperpage}{106}
+\indexentry{type|hyperpage}{106}
+\indexentry{text format!type|hyperpage}{106}
+\indexentry{type!text format|hyperpage}{106}
+\indexentry{value type|hyperpage}{107}
+\indexentry{text format!value type|hyperpage}{107}
+\indexentry{value type!text format|hyperpage}{107}
+\indexentry{function type|hyperpage}{107}
+\indexentry{value type|hyperpage}{107}
+\indexentry{result type|hyperpage}{107}
+\indexentry{text format!function type|hyperpage}{107}
+\indexentry{function type!text format|hyperpage}{107}
+\indexentry{limits|hyperpage}{107}
+\indexentry{text format!limits|hyperpage}{107}
+\indexentry{limits!text format|hyperpage}{107}
+\indexentry{memory type|hyperpage}{107}
+\indexentry{limits|hyperpage}{107}
+\indexentry{page size|hyperpage}{107}
+\indexentry{text format!memory type|hyperpage}{107}
+\indexentry{memory type!text format|hyperpage}{107}
+\indexentry{table type|hyperpage}{107}
+\indexentry{element type|hyperpage}{107}
+\indexentry{limits|hyperpage}{107}
+\indexentry{text format!table type|hyperpage}{107}
+\indexentry{table type!text format|hyperpage}{107}
+\indexentry{text format!element type|hyperpage}{107}
+\indexentry{element type!text format|hyperpage}{107}
+\indexentry{global type|hyperpage}{107}
+\indexentry{mutability|hyperpage}{107}
+\indexentry{value type|hyperpage}{107}
+\indexentry{text format!global type|hyperpage}{107}
+\indexentry{global type!text format|hyperpage}{107}
+\indexentry{text format!mutability|hyperpage}{107}
+\indexentry{mutability!text format|hyperpage}{107}
+\indexentry{instruction|hyperpage}{107}
+\indexentry{index|hyperpage}{108}
+\indexentry{label index|hyperpage}{108}
+\indexentry{text format!label index|hyperpage}{108}
+\indexentry{label index!text format|hyperpage}{108}
+\indexentry{control instructions|hyperpage}{108}
+\indexentry{structured control|hyperpage}{108}
+\indexentry{label|hyperpage}{108}
+\indexentry{block|hyperpage}{108}
+\indexentry{branch|hyperpage}{108}
+\indexentry{result type|hyperpage}{108}
+\indexentry{label index|hyperpage}{108}
+\indexentry{function index|hyperpage}{108}
+\indexentry{type index|hyperpage}{108}
+\indexentry{vector|hyperpage}{108}
+\indexentry{polymorphism|hyperpage}{108}
+\indexentry{text format!instruction|hyperpage}{108}
+\indexentry{instruction!text format|hyperpage}{108}
+\indexentry{value type|hyperpage}{109}
+\indexentry{polymorphism|hyperpage}{109}
+\indexentry{text format!instruction|hyperpage}{109}
+\indexentry{instruction!text format|hyperpage}{109}
+\indexentry{variable instructions|hyperpage}{109}
+\indexentry{local index|hyperpage}{109}
+\indexentry{global index|hyperpage}{109}
+\indexentry{text format!instruction|hyperpage}{109}
+\indexentry{instruction!text format|hyperpage}{109}
+\indexentry{memory instruction|hyperpage}{109}
+\indexentry{memory index|hyperpage}{109}
+\indexentry{text format!instruction|hyperpage}{109}
+\indexentry{instruction!text format|hyperpage}{109}
+\indexentry{numeric instruction|hyperpage}{110}
+\indexentry{text format!instruction|hyperpage}{110}
+\indexentry{instruction!text format|hyperpage}{110}
+\indexentry{folded instruction|hyperindexformat{\textbf}}{113}
+\indexentry{S-expression|hyperpage}{113}
+\indexentry{expression|hyperpage}{113}
+\indexentry{text format!expression|hyperpage}{113}
+\indexentry{expression!text format|hyperpage}{113}
+\indexentry{expression!constant|hyperpage}{113}
+\indexentry{index|hyperpage}{114}
+\indexentry{type index|hyperpage}{114}
+\indexentry{function index|hyperpage}{114}
+\indexentry{table index|hyperpage}{114}
+\indexentry{memory index|hyperpage}{114}
+\indexentry{global index|hyperpage}{114}
+\indexentry{local index|hyperpage}{114}
+\indexentry{label index|hyperpage}{114}
+\indexentry{text format!type index|hyperpage}{114}
+\indexentry{type index!text format|hyperpage}{114}
+\indexentry{text format!function index|hyperpage}{114}
+\indexentry{function index!text format|hyperpage}{114}
+\indexentry{text format!table index|hyperpage}{114}
+\indexentry{table index!text format|hyperpage}{114}
+\indexentry{text format!memory index|hyperpage}{114}
+\indexentry{memory index!text format|hyperpage}{114}
+\indexentry{text format!global index|hyperpage}{114}
+\indexentry{global index!text format|hyperpage}{114}
+\indexentry{text format!local index|hyperpage}{114}
+\indexentry{local index!text format|hyperpage}{114}
+\indexentry{text format!label index|hyperpage}{114}
+\indexentry{label index!text format|hyperpage}{114}
+\indexentry{type definition|hyperpage}{114}
+\indexentry{identifier|hyperpage}{114}
+\indexentry{text format!type definition|hyperpage}{114}
+\indexentry{type definition!text format|hyperpage}{114}
+\indexentry{type use|hyperpage}{114}
+\indexentry{text format!type use|hyperpage}{114}
+\indexentry{type use!text format|hyperpage}{114}
+\indexentry{import|hyperpage}{115}
+\indexentry{name|hyperpage}{115}
+\indexentry{function type|hyperpage}{115}
+\indexentry{table type|hyperpage}{115}
+\indexentry{memory type|hyperpage}{115}
+\indexentry{global type|hyperpage}{115}
+\indexentry{text format!import|hyperpage}{115}
+\indexentry{import!text format|hyperpage}{115}
+\indexentry{function|hyperpage}{115}
+\indexentry{type index|hyperpage}{115}
+\indexentry{function type|hyperpage}{115}
+\indexentry{identifier|hyperpage}{115}
+\indexentry{local|hyperpage}{115}
+\indexentry{text format!function|hyperpage}{115}
+\indexentry{function!text format|hyperpage}{115}
+\indexentry{text format!local|hyperpage}{115}
+\indexentry{local!text format|hyperpage}{115}
+\indexentry{import|hyperpage}{115}
+\indexentry{name|hyperpage}{115}
+\indexentry{text format!import|hyperpage}{115}
+\indexentry{import!text format|hyperpage}{115}
+\indexentry{export|hyperpage}{115}
+\indexentry{name|hyperpage}{115}
+\indexentry{index|hyperpage}{115}
+\indexentry{function index|hyperpage}{115}
+\indexentry{text format!export|hyperpage}{115}
+\indexentry{export!text format|hyperpage}{115}
+\indexentry{table|hyperpage}{116}
+\indexentry{table type|hyperpage}{116}
+\indexentry{identifier|hyperpage}{116}
+\indexentry{text format!table|hyperpage}{116}
+\indexentry{table!text format|hyperpage}{116}
+\indexentry{import|hyperpage}{116}
+\indexentry{name|hyperpage}{116}
+\indexentry{text format!import|hyperpage}{116}
+\indexentry{import!text format|hyperpage}{116}
+\indexentry{export|hyperpage}{116}
+\indexentry{name|hyperpage}{116}
+\indexentry{index|hyperpage}{116}
+\indexentry{table index|hyperpage}{116}
+\indexentry{text format!export|hyperpage}{116}
+\indexentry{export!text format|hyperpage}{116}
+\indexentry{element|hyperpage}{116}
+\indexentry{table index|hyperpage}{116}
+\indexentry{function index|hyperpage}{116}
+\indexentry{text format!element|hyperpage}{116}
+\indexentry{element!text format|hyperpage}{116}
+\indexentry{table!element|hyperpage}{116}
+\indexentry{element!segment|hyperpage}{116}
+\indexentry{memory|hyperpage}{116}
+\indexentry{memory type|hyperpage}{116}
+\indexentry{identifier|hyperpage}{116}
+\indexentry{text format!memory|hyperpage}{116}
+\indexentry{memory!text format|hyperpage}{116}
+\indexentry{import|hyperpage}{116}
+\indexentry{name|hyperpage}{116}
+\indexentry{text format!import|hyperpage}{116}
+\indexentry{import!text format|hyperpage}{116}
+\indexentry{export|hyperpage}{116}
+\indexentry{name|hyperpage}{116}
+\indexentry{index|hyperpage}{116}
+\indexentry{memory index|hyperpage}{116}
+\indexentry{text format!export|hyperpage}{116}
+\indexentry{export!text format|hyperpage}{116}
+\indexentry{data|hyperpage}{116}
+\indexentry{memory|hyperpage}{116}
+\indexentry{memory index|hyperpage}{116}
+\indexentry{expression|hyperpage}{116}
+\indexentry{byte|hyperpage}{116}
+\indexentry{page size|hyperpage}{116}
+\indexentry{text format!data|hyperpage}{116}
+\indexentry{data!text format|hyperpage}{116}
+\indexentry{memory!data|hyperpage}{116}
+\indexentry{data!segment|hyperpage}{116}
+\indexentry{global|hyperpage}{117}
+\indexentry{global type|hyperpage}{117}
+\indexentry{identifier|hyperpage}{117}
+\indexentry{expression|hyperpage}{117}
+\indexentry{text format!global|hyperpage}{117}
+\indexentry{global!text format|hyperpage}{117}
+\indexentry{import|hyperpage}{117}
+\indexentry{name|hyperpage}{117}
+\indexentry{text format!import|hyperpage}{117}
+\indexentry{import!text format|hyperpage}{117}
+\indexentry{export|hyperpage}{117}
+\indexentry{name|hyperpage}{117}
+\indexentry{index|hyperpage}{117}
+\indexentry{global index|hyperpage}{117}
+\indexentry{text format!export|hyperpage}{117}
+\indexentry{export!text format|hyperpage}{117}
+\indexentry{export|hyperpage}{117}
+\indexentry{name|hyperpage}{117}
+\indexentry{index|hyperpage}{117}
+\indexentry{function index|hyperpage}{117}
+\indexentry{table index|hyperpage}{117}
+\indexentry{memory index|hyperpage}{117}
+\indexentry{global index|hyperpage}{117}
+\indexentry{text format!export|hyperpage}{117}
+\indexentry{export!text format|hyperpage}{117}
+\indexentry{start function|hyperpage}{117}
+\indexentry{function index|hyperpage}{117}
+\indexentry{text format!start function|hyperpage}{117}
+\indexentry{start function!text format|hyperpage}{117}
+\indexentry{element|hyperpage}{118}
+\indexentry{table index|hyperpage}{118}
+\indexentry{expression|hyperpage}{118}
+\indexentry{function index|hyperpage}{118}
+\indexentry{text format!element|hyperpage}{118}
+\indexentry{element!text format|hyperpage}{118}
+\indexentry{table!element|hyperpage}{118}
+\indexentry{element!segment|hyperpage}{118}
+\indexentry{data|hyperpage}{118}
+\indexentry{memory|hyperpage}{118}
+\indexentry{memory index|hyperpage}{118}
+\indexentry{expression|hyperpage}{118}
+\indexentry{byte|hyperpage}{118}
+\indexentry{text format!data|hyperpage}{118}
+\indexentry{data!text format|hyperpage}{118}
+\indexentry{memory!data|hyperpage}{118}
+\indexentry{data!segment|hyperpage}{118}
+\indexentry{module|hyperpage}{119}
+\indexentry{type definition|hyperpage}{119}
+\indexentry{function type|hyperpage}{119}
+\indexentry{function|hyperpage}{119}
+\indexentry{table|hyperpage}{119}
+\indexentry{memory|hyperpage}{119}
+\indexentry{global|hyperpage}{119}
+\indexentry{element|hyperpage}{119}
+\indexentry{data|hyperpage}{119}
+\indexentry{start function|hyperpage}{119}
+\indexentry{import|hyperpage}{119}
+\indexentry{export|hyperpage}{119}
+\indexentry{identifier context|hyperpage}{119}
+\indexentry{identifier|hyperpage}{119}
+\indexentry{name section|hyperpage}{119}
+\indexentry{text format!module|hyperpage}{119}
+\indexentry{module!text format|hyperpage}{119}
+\indexentry{section!name|hyperpage}{119}
+\indexentry{embedding|hyperindexformat{\textbf}}{121}
+\indexentry{embedder|hyperpage}{121}
+\indexentry{implementation|hyperpage}{121}
+\indexentry{host|hyperpage}{121}
+\indexentry{allocation|hyperpage}{121}
+\indexentry{store|hyperpage}{121}
+\indexentry{module|hyperpage}{122}
+\indexentry{binary format|hyperpage}{122}
+\indexentry{text format|hyperpage}{122}
+\indexentry{validation|hyperpage}{122}
+\indexentry{instantiation|hyperpage}{122}
+\indexentry{module instance|hyperpage}{122}
+\indexentry{import|hyperpage}{122}
+\indexentry{export|hyperpage}{123}
+\indexentry{module|hyperpage}{123}
+\indexentry{store|hyperpage}{123}
+\indexentry{module instance|hyperpage}{123}
+\indexentry{export instance|hyperpage}{123}
+\indexentry{function|hyperpage}{123}
+\indexentry{host function|hyperpage}{123}
+\indexentry{function address|hyperpage}{123}
+\indexentry{function instance|hyperpage}{123}
+\indexentry{function type|hyperpage}{123}
+\indexentry{store|hyperpage}{123}
+\indexentry{invocation|hyperpage}{124}
+\indexentry{value|hyperpage}{124}
+\indexentry{result|hyperpage}{124}
+\indexentry{table|hyperpage}{124}
+\indexentry{table address|hyperpage}{124}
+\indexentry{store|hyperpage}{124}
+\indexentry{table instance|hyperpage}{124}
+\indexentry{table type|hyperpage}{124}
+\indexentry{element|hyperpage}{124}
+\indexentry{function address|hyperpage}{124}
+\indexentry{memory|hyperpage}{125}
+\indexentry{memory address|hyperpage}{125}
+\indexentry{store|hyperpage}{125}
+\indexentry{memory instance|hyperpage}{125}
+\indexentry{memory type|hyperpage}{125}
+\indexentry{byte|hyperpage}{125}
+\indexentry{global|hyperpage}{127}
+\indexentry{global address|hyperpage}{127}
+\indexentry{store|hyperpage}{127}
+\indexentry{global instance|hyperpage}{127}
+\indexentry{global type|hyperpage}{127}
+\indexentry{value|hyperpage}{127}
+\indexentry{implementation limitations|hyperindexformat{\textbf}}{127}
+\indexentry{implementation|hyperpage}{127}
+\indexentry{abstract syntax|hyperpage}{128}
+\indexentry{module|hyperpage}{128}
+\indexentry{type|hyperpage}{128}
+\indexentry{function|hyperpage}{128}
+\indexentry{table|hyperpage}{128}
+\indexentry{memory|hyperpage}{128}
+\indexentry{global|hyperpage}{128}
+\indexentry{element|hyperpage}{128}
+\indexentry{data|hyperpage}{128}
+\indexentry{import|hyperpage}{128}
+\indexentry{export|hyperpage}{128}
+\indexentry{parameter|hyperpage}{128}
+\indexentry{result|hyperpage}{128}
+\indexentry{local|hyperpage}{128}
+\indexentry{structured control instruction|hyperpage}{128}
+\indexentry{instruction|hyperpage}{128}
+\indexentry{name|hyperpage}{128}
+\indexentry{Unicode|hyperpage}{128}
+\indexentry{code point|hyperpage}{128}
+\indexentry{binary format|hyperpage}{129}
+\indexentry{module|hyperpage}{129}
+\indexentry{section|hyperpage}{129}
+\indexentry{function|hyperpage}{129}
+\indexentry{code|hyperpage}{129}
+\indexentry{text format|hyperpage}{129}
+\indexentry{source text|hyperpage}{129}
+\indexentry{token|hyperpage}{129}
+\indexentry{identifier|hyperpage}{129}
+\indexentry{character|hyperpage}{129}
+\indexentry{unicode|hyperpage}{129}
+\indexentry{validation|hyperpage}{129}
+\indexentry{function|hyperpage}{129}
+\indexentry{execution|hyperpage}{129}
+\indexentry{module instance|hyperpage}{129}
+\indexentry{function instance|hyperpage}{129}
+\indexentry{table instance|hyperpage}{129}
+\indexentry{memory instance|hyperpage}{129}
+\indexentry{global instance|hyperpage}{129}
+\indexentry{allocation|hyperpage}{129}
+\indexentry{frame|hyperpage}{129}
+\indexentry{label|hyperpage}{129}
+\indexentry{value|hyperpage}{129}
+\indexentry{validation|hyperpage}{130}
+\indexentry{algorithm|hyperpage}{130}
+\indexentry{instruction|hyperpage}{130}
+\indexentry{module|hyperpage}{130}
+\indexentry{binary format|hyperpage}{130}
+\indexentry{opcode|hyperpage}{130}
+\indexentry{value type|hyperpage}{130}
+\indexentry{stack|hyperpage}{130}
+\indexentry{label|hyperpage}{130}
+\indexentry{frame|hyperpage}{130}
+\indexentry{instruction|hyperpage}{130}
+\indexentry{opcode|hyperpage}{132}
+\indexentry{custom section|hyperpage}{133}
+\indexentry{section|hyperpage}{133}
+\indexentry{binary format|hyperpage}{133}
+\indexentry{name section|hyperindexformat{\textbf}}{133}
+\indexentry{name|hyperpage}{133}
+\indexentry{Unicode UTF-8|hyperpage}{133}
+\indexentry{name map|hyperindexformat{\textbf}}{134}
+\indexentry{index|hyperpage}{134}
+\indexentry{index space|hyperpage}{134}
+\indexentry{module|hyperpage}{134}
+\indexentry{function|hyperpage}{134}
+\indexentry{function index|hyperpage}{134}
+\indexentry{function|hyperpage}{134}
+\indexentry{local|hyperpage}{134}
+\indexentry{function index|hyperpage}{134}
+\indexentry{local index|hyperpage}{134}
+\indexentry{soundness|hyperindexformat{\textbf}}{134}
+\indexentry{type system|hyperpage}{134}
+\indexentry{value|hyperpage}{135}
+\indexentry{value type|hyperpage}{135}
+\indexentry{result|hyperpage}{135}
+\indexentry{result type|hyperpage}{135}
+\indexentry{trap|hyperpage}{135}
+\indexentry{store|hyperpage}{136}
+\indexentry{function instance|hyperpage}{136}
+\indexentry{table instance|hyperpage}{136}
+\indexentry{memory instance|hyperpage}{136}
+\indexentry{global instance|hyperpage}{136}
+\indexentry{function type|hyperpage}{136}
+\indexentry{table type|hyperpage}{136}
+\indexentry{memory type|hyperpage}{136}
+\indexentry{global type|hyperpage}{136}
+\indexentry{function type|hyperpage}{136}
+\indexentry{function instance|hyperpage}{136}
+\indexentry{function type|hyperpage}{136}
+\indexentry{function instance|hyperpage}{136}
+\indexentry{host function|hyperpage}{136}
+\indexentry{table type|hyperpage}{137}
+\indexentry{table instance|hyperpage}{137}
+\indexentry{limits|hyperpage}{137}
+\indexentry{function address|hyperpage}{137}
+\indexentry{memory type|hyperpage}{137}
+\indexentry{memory instance|hyperpage}{137}
+\indexentry{limits|hyperpage}{137}
+\indexentry{byte|hyperpage}{137}
+\indexentry{global type|hyperpage}{137}
+\indexentry{global instance|hyperpage}{137}
+\indexentry{value|hyperpage}{137}
+\indexentry{mutability|hyperpage}{137}
+\indexentry{external type|hyperpage}{137}
+\indexentry{export instance|hyperpage}{137}
+\indexentry{name|hyperpage}{137}
+\indexentry{external value|hyperpage}{137}
+\indexentry{module instance|hyperpage}{137}
+\indexentry{context|hyperpage}{137}
+\indexentry{configuration|hyperpage}{138}
+\indexentry{administrative instruction|hyperpage}{138}
+\indexentry{store|hyperpage}{138}
+\indexentry{frame|hyperpage}{138}
+\indexentry{result type|hyperpage}{138}
+\indexentry{thread|hyperpage}{138}
+\indexentry{thread|hyperpage}{139}
+\indexentry{frame|hyperpage}{139}
+\indexentry{instruction|hyperpage}{139}
+\indexentry{result type|hyperpage}{139}
+\indexentry{context|hyperpage}{139}
+\indexentry{frame|hyperpage}{139}
+\indexentry{local|hyperpage}{139}
+\indexentry{module instance|hyperpage}{139}
+\indexentry{value|hyperpage}{139}
+\indexentry{value type|hyperpage}{139}
+\indexentry{context|hyperpage}{139}
+\indexentry{administrative instruction|hyperpage}{139}
+\indexentry{value type|hyperpage}{139}
+\indexentry{context|hyperpage}{139}
+\indexentry{store|hyperpage}{139}
+\indexentry{trap|hyperpage}{139}
+\indexentry{function address|hyperpage}{139}
+\indexentry{extern value|hyperpage}{139}
+\indexentry{extern type|hyperpage}{139}
+\indexentry{function type|hyperpage}{139}
+\indexentry{element|hyperpage}{139}
+\indexentry{table|hyperpage}{139}
+\indexentry{table address|hyperpage}{139}
+\indexentry{module instance|hyperpage}{139}
+\indexentry{function index|hyperpage}{139}
+\indexentry{data|hyperpage}{140}
+\indexentry{memory|hyperpage}{140}
+\indexentry{memory address|hyperpage}{140}
+\indexentry{byte|hyperpage}{140}
+\indexentry{label|hyperpage}{140}
+\indexentry{instruction|hyperpage}{140}
+\indexentry{result type|hyperpage}{140}
+\indexentry{frame|hyperpage}{140}
+\indexentry{instruction|hyperpage}{140}
+\indexentry{result type|hyperpage}{140}
+\indexentry{store extension|hyperindexformat{\textbf}}{140}
+\indexentry{store|hyperpage}{140}
+\indexentry{store|hyperpage}{141}
+\indexentry{function instance|hyperpage}{141}
+\indexentry{table instance|hyperpage}{141}
+\indexentry{memory instance|hyperpage}{141}
+\indexentry{global instance|hyperpage}{141}
+\indexentry{function instance|hyperpage}{141}
+\indexentry{table instance|hyperpage}{141}
+\indexentry{memory instance|hyperpage}{141}
+\indexentry{global instance|hyperpage}{141}
+\indexentry{value|hyperpage}{141}
+\indexentry{mutability|hyperpage}{141}
+\indexentry{preservation|hyperindexformat{\textbf}}{142}
+\indexentry{progress|hyperindexformat{\textbf}}{142}
+\indexentry{soundness|hyperpage}{142}
+\indexentry{configuration|hyperpage}{142}
+\indexentry{thread|hyperpage}{142}
+\indexentry{terminal configuration|hyperpage}{142}
+\indexentry{instantiation|hyperpage}{142}
+\indexentry{invocation|hyperpage}{142}
+\indexentry{validity|hyperpage}{142}
+\indexentry{module|hyperpage}{142}

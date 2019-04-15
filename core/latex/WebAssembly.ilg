@@ -1,0 +1,46 @@
+This is makeindex, version 2.15 [TeX Live 2017] (kpathsea + Thai support).
+Scanning style file ./python.ist.......done (7 attributes redefined, 0 ignored).
+Scanning input file WebAssembly.idx.....done (1811 entries accepted, 0 rejected).
+Sorting entries.................done (20708 comparisons).
+Generating output file WebAssembly.ind....
+## Warning (input = WebAssembly.idx, line = 1302; output = WebAssembly.ind, line = 162):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+
+## Warning (input = WebAssembly.idx, line = 720; output = WebAssembly.ind, line = 256):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+
+## Warning (input = WebAssembly.idx, line = 660; output = WebAssembly.ind, line = 300):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+
+## Warning (input = WebAssembly.idx, line = 387; output = WebAssembly.ind, line = 317):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+
+## Warning (input = WebAssembly.idx, line = 140; output = WebAssembly.ind, line = 445):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+.
+## Warning (input = WebAssembly.idx, line = 122; output = WebAssembly.ind, line = 509):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+
+## Warning (input = WebAssembly.idx, line = 157; output = WebAssembly.ind, line = 531):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+
+## Warning (input = WebAssembly.idx, line = 116; output = WebAssembly.ind, line = 589):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+
+## Warning (input = WebAssembly.idx, line = 1305; output = WebAssembly.ind, line = 626):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+
+## Warning (input = WebAssembly.idx, line = 123; output = WebAssembly.ind, line = 684):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+
+## Warning (input = WebAssembly.idx, line = 246; output = WebAssembly.ind, line = 765):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+
+## Warning (input = WebAssembly.idx, line = 304; output = WebAssembly.ind, line = 769):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+
+## Warning (input = WebAssembly.idx, line = 622; output = WebAssembly.ind, line = 825):
+   -- Conflicting entries: multiple encaps for the same page under same key.
+done (856 lines written, 13 warnings).
+Output written in WebAssembly.ind.
+Transcript written in WebAssembly.ilg.
