@@ -41,14 +41,14 @@
 ### Functions with multiple return Values
 
 A simple swap function.
-```
+```wasm
 (func $swap (param i32 i32) (result i32 i32)
 	(get_local 1) (get_local 0)
 )
 ```
 
 An addition function returning an additional carry bit.
-```
+```wasm
 (func $add64_u_with_carry (param $i i64) (param $j i64) (param $c i32) (result i64 i32)
 	(local $k i64)
 	(set_local $k
@@ -69,7 +69,7 @@ An addition function returning an additional carry bit.
 ### Blocks with inputs
 
 Conditionally manipulating a stack operand without using a local.
-```
+```wasm
 (func $add64_u_saturated (param i64 i64) (result i64)
 	($i64.add_u_carry (get_local 0) (get_local 1) (i32.const 0))
 	(if (param i64) (result i64)
@@ -79,7 +79,7 @@ Conditionally manipulating a stack operand without using a local.
 ```
 
 An iterative factorial funciton whose loop doesn't use locals, but uses arguments like phis.
-```
+```wasm
 (func $fac (param i64) (result i64)
 	(i64.const 1) (get_local 0)
 	(loop $l (param i64 i64) (result i64)
