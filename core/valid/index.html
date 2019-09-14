@@ -9,7 +9,7 @@
     <title>Validation &#8212; WebAssembly 1.0</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -19,65 +19,14 @@
     <link rel="next" title="Conventions" href="conventions.html" />
     <link rel="prev" title="Modules" href="../syntax/modules.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head> <script type="text/javascript">MathJax.Hub.Config({TeX: {MAXBUFFER: 30*1024}})</script><body>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="validation">
-<span id="valid"></span><h1>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="conventions.html">Conventions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="conventions.html#contexts">Contexts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conventions.html#prose-notation">Prose Notation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conventions.html#formal-notation">Formal Notation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="types.html#limits">Limits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="types.html#block-types">Block Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="types.html#table-types">Table Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="types.html#memory-types">Memory Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="types.html#global-types">Global Types</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="instructions.html">Instructions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="instructions.html#numeric-instructions">Numeric Instructions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="instructions.html#parametric-instructions">Parametric Instructions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="instructions.html#variable-instructions">Variable Instructions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="instructions.html#memory-instructions">Memory Instructions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="instructions.html#control-instructions">Control Instructions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="instructions.html#instruction-sequences">Instruction Sequences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="instructions.html#expressions">Expressions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#functions">Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#tables">Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#memories">Memories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#globals">Globals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#element-segments">Element Segments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#data-segments">Data Segments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#start-function">Start Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#exports">Exports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#imports">Imports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#valid-module">Modules</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-
-          </div>
-        </div>
-      </div>
+  </head> <script type="text/javascript">MathJax.Hub.Config({TeX: {MAXBUFFER: 30*1024}})</script><body>
+  <div class="document">
+    
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
@@ -128,8 +77,64 @@
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="validation">
+<span id="valid"></span><h1>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">Conventions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html#contexts">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html#prose-notation">Prose Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html#formal-notation">Formal Notation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="types.html#limits">Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html#block-types">Block Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html#table-types">Table Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html#memory-types">Memory Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html#global-types">Global Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="instructions.html#numeric-instructions">Numeric Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instructions.html#parametric-instructions">Parametric Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instructions.html#variable-instructions">Variable Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instructions.html#memory-instructions">Memory Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instructions.html#control-instructions">Control Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instructions.html#instruction-sequences">Instruction Sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instructions.html#expressions">Expressions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#tables">Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#memories">Memories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#globals">Globals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#element-segments">Element Segments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#data-segments">Data Segments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#start-function">Start Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#exports">Exports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#imports">Imports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#valid-module">Modules</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
     <div class="footer">
       &copy;2017, WebAssembly Community Group.
       
