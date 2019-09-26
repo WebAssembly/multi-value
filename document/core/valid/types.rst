@@ -96,7 +96,7 @@ Function Types
 .. math::
    \frac{
    }{
-     \vdashfunctype [t_1^\ast] \to [t_2^?] \ok
+     \vdashfunctype [t_1^\ast] \to [t_2^\ast] \ok
    }
 
 
