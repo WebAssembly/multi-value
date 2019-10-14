@@ -5,9 +5,9 @@
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <meta content="ED" name="w3c-status">
   <meta content="This document provides an explicit JavaScript API for interacting with WebAssembly." name="abstract">
-  <meta content="Bikeshed version e86d5b1b47a216fa66165c234892adc259212183" name="generator">
+  <meta content="Bikeshed version 86a39676f08870ba1210b97fe65ff62bd4e723c9" name="generator">
   <link href="https://www.w3.org/TR/wasm-js-api-1/" rel="canonical">
-  <meta content="22d3e262f33c67993747823b99cc1885a4258f9c" name="document-revision">
+  <meta content="28d8871ad5ddccc46fc22c90620522764732ee49" name="document-revision">
 <style>
 emu-const {
     font-family: serif;
@@ -271,7 +271,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebAssembly JavaScript Interface</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-09-26">26 September 2019</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-10-14">14 October 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -945,7 +945,7 @@ If this throws an exception, catch it, <a data-link-type="dfn" href="https://hey
 };
 </pre>
    <div class="algorithm" data-algorithm="Instance(module, importObject)">
-     The <dfn class="dfn-paneled idl-code" data-dfn-for="Instance" data-dfn-type="constructor" data-export id="dom-instance-instance"><code>Instance(<var>module</var>, <var>importObject</var>)</code></dfn> constructor, when invoked, runs the following steps: 
+     The <dfn class="dfn-paneled idl-code" data-dfn-for="Instance" data-dfn-type="constructor" data-export data-lt="Instance(module, importObject)|Instance(module)" id="dom-instance-instance"><code>Instance(<var>module</var>, <var>importObject</var>)</code></dfn> constructor, when invoked, runs the following steps: 
     <ol>
      <li data-md>
       <p>Let <var>module</var> be <var>module</var>.[[Module]].</p>
@@ -1349,7 +1349,7 @@ If this throws an exception, catch it, <a data-link-type="dfn" href="https://hey
     </ol>
    </div>
    <div class="algorithm" data-algorithm="Global(descriptor, v)">
-     The <dfn class="dfn-paneled idl-code" data-dfn-for="Global" data-dfn-type="constructor" data-export id="dom-global-global"><code>Global(<var>descriptor</var>, <var>v</var>)</code></dfn> constructor, when invoked, performs the following steps: 
+     The <dfn class="dfn-paneled idl-code" data-dfn-for="Global" data-dfn-type="constructor" data-export data-lt="Global(descriptor, v)|Global(descriptor)" id="dom-global-global"><code>Global(<var>descriptor</var>, <var>v</var>)</code></dfn> constructor, when invoked, performs the following steps: 
     <ol>
      <li data-md>
       <p>Let <var>mutable</var> be <var>descriptor</var>["mutable"].</p>
@@ -1583,14 +1583,14 @@ This slot holds a <a data-link-type="dfn" href="https://webassembly.github.io/sp
      <li data-md>
       <p>Let <var>ret</var> be ? <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-call" id="ref-for-sec-call">Call</a>(<var>func</var>, undefined, <var>jsArguments</var>).</p>
      <li data-md>
-      <p>If <var>results</var> <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-empty" id="ref-for-list-empty">empty</a>, return undefined.</p>
+      <p>If <var>results</var> <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-is-empty" id="ref-for-list-is-empty">is empty</a>, return undefined.</p>
      <li data-md>
       <p>Otherwise, if <var>results</var>’s <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-size" id="ref-for-list-size②">size</a> is 1, return ? <a data-link-type="dfn" href="#towebassemblyvalue" id="ref-for-towebassemblyvalue④">ToWebAssemblyValue</a>(<var>ret</var>, <var>results</var>[0]).</p>
      <li data-md>
       <p>Otherwise,</p>
       <ol>
        <li data-md>
-        <p>Let <var>method</var> be ? <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-getmethod" id="ref-for-sec-getmethod">GetMethod</a>(<var>results</var>, @@iterator).</p>
+        <p>Let <var>method</var> be ? <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-getmethod" id="ref-for-sec-getmethod">GetMethod</a>(<var>ret</var>, <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-well-known-symbols" id="ref-for-sec-well-known-symbols">@@iterator</a>).</p>
        <li data-md>
         <p>If <var>method</var> is undefined, <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-throw" id="ref-for-dfn-throw">throw</a> a <code class="idl"><a data-link-type="idl" href="https://tc39.github.io/ecma262/#sec-native-error-types-used-in-this-standard-typeerror" id="ref-for-sec-native-error-types-used-in-this-standard-typeerror⑨">TypeError</a></code>.</p>
        <li data-md>
@@ -1823,6 +1823,7 @@ In practice, an implementation may run out of resources for valid modules below 
    <li><a href="#global">Global</a><span>, in §3.5</span>
    <li><a href="#dom-importexportkind-global">"global"</a><span>, in §3.1</span>
    <li><a href="#dictdef-globaldescriptor">GlobalDescriptor</a><span>, in §3.5</span>
+   <li><a href="#dom-global-global">Global(descriptor)</a><span>, in §3.5</span>
    <li><a href="#dom-global-global">Global(descriptor, v)</a><span>, in §3.5</span>
    <li><a href="#global-object-cache">Global object cache</a><span>, in §2.2</span>
    <li>
@@ -1849,6 +1850,7 @@ In practice, an implementation may run out of resources for valid modules below 
    <li><a href="#initialize-a-table-object">initialize a table object</a><span>, in §3.4</span>
    <li><a href="#instance">Instance</a><span>, in §3.2</span>
    <li><a href="#dom-webassemblyinstantiatedsource-instance">instance</a><span>, in §3</span>
+   <li><a href="#dom-instance-instance">Instance(module)</a><span>, in §3.2</span>
    <li><a href="#dom-instance-instance">Instance(module, importObject)</a><span>, in §3.2</span>
    <li><a href="#instantiate-a-promise-of-a-module">instantiate a promise of a module</a><span>, in §3</span>
    <li><a href="#instantiate-a-webassembly-module">instantiate a WebAssembly module</a><span>, in §3</span>
@@ -1925,6 +1927,12 @@ In practice, an implementation may run out of resources for valid modules below 
    <a href="https://tc39.github.io/ecma262/#sec-properties-of-the-function-prototype-object">https://tc39.github.io/ecma262/#sec-properties-of-the-function-prototype-object</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-sec-properties-of-the-function-prototype-object">3.6. Exported Functions</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-sec-well-known-symbols">
+   <a href="https://tc39.github.io/ecma262/#sec-well-known-symbols">https://tc39.github.io/ecma262/#sec-well-known-symbols</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-sec-well-known-symbols">3.6. Exported Functions</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-sec-arraybuffer-objects">
@@ -2158,12 +2166,6 @@ In practice, an implementation may run out of resources for valid modules below 
     <li><a href="#ref-for-set-append⑧">3.6. Exported Functions</a> <a href="#ref-for-set-append⑨">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-list-empty">
-   <a href="https://infra.spec.whatwg.org/#list-empty">https://infra.spec.whatwg.org/#list-empty</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-list-empty">3.6. Exported Functions</a>
-   </ul>
-  </aside>
   <aside class="dfn-panel" data-for="term-for-map-exists">
    <a href="https://infra.spec.whatwg.org/#map-exists">https://infra.spec.whatwg.org/#map-exists</a><b>Referenced in:</b>
    <ul>
@@ -2171,6 +2173,12 @@ In practice, an implementation may run out of resources for valid modules below 
     <li><a href="#ref-for-map-exists③">3.4. Tables</a> <a href="#ref-for-map-exists④">(2)</a>
     <li><a href="#ref-for-map-exists⑤">3.5. Globals</a> <a href="#ref-for-map-exists⑥">(2)</a>
     <li><a href="#ref-for-map-exists⑦">3.6. Exported Functions</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-list-is-empty">
+   <a href="https://infra.spec.whatwg.org/#list-is-empty">https://infra.spec.whatwg.org/#list-is-empty</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-list-is-empty">3.6. Exported Functions</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-list-iterate">
@@ -2783,6 +2791,7 @@ In practice, an implementation may run out of resources for valid modules below 
     <a data-link-type="biblio">[ECMASCRIPT]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-sec-properties-of-the-function-prototype-object" style="color:initial">%functionprototype%</span>
+     <li><span class="dfn-paneled" id="term-for-sec-well-known-symbols" style="color:initial">@@iterator</span>
      <li><span class="dfn-paneled" id="term-for-sec-arraybuffer-objects" style="color:initial">ArrayBuffer</span>
      <li><span class="dfn-paneled" id="term-for-sec-createmethodproperty" style="color:initial">CreateMethodProperty</span>
      <li><span class="dfn-paneled" id="term-for-sec-native-error-types-used-in-this-standard-rangeerror" style="color:initial">RangeError</span>
@@ -2830,8 +2839,8 @@ In practice, an implementation may run out of resources for valid modules below 
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-set-append" style="color:initial">append <small>(for set)</small></span>
-     <li><span class="dfn-paneled" id="term-for-list-empty" style="color:initial">empty</span>
      <li><span class="dfn-paneled" id="term-for-map-exists" style="color:initial">exist</span>
+     <li><span class="dfn-paneled" id="term-for-list-is-empty" style="color:initial">is empty</span>
      <li><span class="dfn-paneled" id="term-for-list-iterate" style="color:initial">iterate</span>
      <li><span class="dfn-paneled" id="term-for-list" style="color:initial">list</span>
      <li><span class="dfn-paneled" id="term-for-ordered-map" style="color:initial">ordered map</span>
@@ -2936,7 +2945,7 @@ In practice, an implementation may run out of resources for valid modules below 
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
    <dt id="biblio-ecmascript">[ECMASCRIPT]
-   <dd><a href="https://tc39.github.io/ecma262/">ECMAScript Language Specification</a>. URL: <a href="https://tc39.github.io/ecma262/">https://tc39.github.io/ecma262/</a>
+   <dd><a href="https://tc39.es/ecma262/">ECMAScript Language Specification</a>. URL: <a href="https://tc39.es/ecma262/">https://tc39.es/ecma262/</a>
    <dt id="biblio-encoding">[ENCODING]
    <dd>Anne van Kesteren. <a href="https://encoding.spec.whatwg.org/">Encoding Standard</a>. Living Standard. URL: <a href="https://encoding.spec.whatwg.org/">https://encoding.spec.whatwg.org/</a>
    <dt id="biblio-html">[HTML]
