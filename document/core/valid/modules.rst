@@ -460,6 +460,9 @@ Instead, the context :math:`C` for validation of the module's content is constru
 
 * Under the context :math:`C`:
 
+  * For each :math:`\functype_i` in :math:`\module.\MTYPES`,
+    the :ref:`function type <syntax-functype>` :math:`\functype_i` must be :ref:`valid <valid-functype>`.
+
   * For each :math:`\func_i` in :math:`\module.\MFUNCS`,
     the definition :math:`\func_i` must be :ref:`valid <valid-func>` with a :ref:`function type <syntax-functype>` :math:`\X{ft}_i`.
 
@@ -512,6 +515,8 @@ Instead, the context :math:`C` for validation of the module's content is constru
 .. math::
    \frac{
      \begin{array}{@{}c@{}}
+     (\vdashfunctype \functype \ok)^\ast
+     \quad
      (C \vdashfunc \func : \X{ft})^\ast
      \quad
      (C \vdashtable \table : \X{tt})^\ast
