@@ -408,6 +408,8 @@ with the import’s <a class="reference internal" href="../syntax/types.html#syn
 </li>
 <li>Let <span class="math notranslate nohighlight">\(C'\)</span> be the <a class="reference internal" href="conventions.html#context"><span class="std std-ref">context</span></a> where <span class="math notranslate nohighlight">\(C'.\href{../valid/conventions.html#context}{\mathsf{globals}}\)</span> is the sequence <span class="math notranslate nohighlight">\(\href{../syntax/types.html#syntax-externtype}{\mathrm{globals}}(\mathit{it}^\ast)\)</span> and all other fields are empty.</li>
 <li>Under the context <span class="math notranslate nohighlight">\(C\)</span>:<ul>
+<li>For each <span class="math notranslate nohighlight">\(\href{../syntax/types.html#syntax-functype}{\mathit{functype}}_i\)</span> in <span class="math notranslate nohighlight">\(\href{../syntax/modules.html#syntax-module}{\mathit{module}}.\href{../syntax/modules.html#syntax-module}{\mathsf{types}}\)</span>,
+the <a class="reference internal" href="../syntax/types.html#syntax-functype"><span class="std std-ref">function type</span></a> <span class="math notranslate nohighlight">\(\href{../syntax/types.html#syntax-functype}{\mathit{functype}}_i\)</span> must be <a class="reference internal" href="types.html#valid-functype"><span class="std std-ref">valid</span></a>.</li>
 <li>For each <span class="math notranslate nohighlight">\(\href{../syntax/modules.html#syntax-func}{\mathit{func}}_i\)</span> in <span class="math notranslate nohighlight">\(\href{../syntax/modules.html#syntax-module}{\mathit{module}}.\href{../syntax/modules.html#syntax-module}{\mathsf{funcs}}\)</span>,
 the definition <span class="math notranslate nohighlight">\(\href{../syntax/modules.html#syntax-func}{\mathit{func}}_i\)</span> must be <a class="reference internal" href="#valid-func"><span class="std std-ref">valid</span></a> with a <a class="reference internal" href="../syntax/types.html#syntax-functype"><span class="std std-ref">function type</span></a> <span class="math notranslate nohighlight">\(\mathit{ft}_i\)</span>.</li>
 <li>For each <span class="math notranslate nohighlight">\(\href{../syntax/modules.html#syntax-table}{\mathit{table}}_i\)</span> in <span class="math notranslate nohighlight">\(\href{../syntax/modules.html#syntax-module}{\mathit{module}}.\href{../syntax/modules.html#syntax-module}{\mathsf{tables}}\)</span>,
@@ -445,6 +447,8 @@ the segment <span class="math notranslate nohighlight">\(\href{../syntax/modules
 <div class="math notranslate nohighlight">
 \[\begin{split}\frac{
   \begin{array}{&#64;{}c&#64;{}}
+  (\href{../valid/types.html#valid-functype}{\vdash} \href{../syntax/types.html#syntax-functype}{\mathit{functype}} \mathrel{\mbox{ok}})^\ast
+  \quad
   (C \href{../valid/modules.html#valid-func}{\vdash} \href{../syntax/modules.html#syntax-func}{\mathit{func}} : \mathit{ft})^\ast
   \quad
   (C \href{../valid/modules.html#valid-table}{\vdash} \href{../syntax/modules.html#syntax-table}{\mathit{table}} : \mathit{tt})^\ast
