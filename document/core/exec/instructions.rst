@@ -672,13 +672,17 @@ Control Instructions
 
 3. Let :math:`L` be the label whose arity is :math:`n` and whose continuation is the end of the block.
 
-4. :ref:`Enter <exec-instr-seq-enter>` the block :math:`\instr^\ast` with label :math:`L`.
+4. Assert: due to :ref:`validation <valid-block>`, there are at least :math:`m` values on the top of the stack.
+
+5. Pop the values :math:`\val^m` from the stack.
+
+6. :ref:`Enter <exec-instr-seq-enter>` the block :math:`\val^m~\instr^\ast` with label :math:`L`.
 
 .. math::
    ~\\[-1ex]
    \begin{array}{lcl@{\qquad}l}
-   F; \BLOCK~\X{bt}~\instr^\ast~\END &\stepto&
-     F; \LABEL_n\{\epsilon\}~\instr^\ast~\END
+   F; \val^m~\BLOCK~\X{bt}~\instr^\ast~\END &\stepto&
+     F; \LABEL_n\{\epsilon\}~\val^m~\instr^\ast~\END
      & (\iff \expand_F(\X{bt}) = [t_1^m] \to [t_2^n])
    \end{array}
 
@@ -694,13 +698,17 @@ Control Instructions
 
 3. Let :math:`L` be the label whose arity is :math:`m` and whose continuation is the start of the loop.
 
-4. :ref:`Enter <exec-instr-seq-enter>` the block :math:`\instr^\ast` with label :math:`L`.
+4. Assert: due to :ref:`validation <valid-loop>`, there are at least :math:`m` values on the top of the stack.
+
+5. Pop the values :math:`\val^m` from the stack.
+
+6. :ref:`Enter <exec-instr-seq-enter>` the block :math:`\val^m~\instr^\ast` with label :math:`L`.
 
 .. math::
    ~\\[-1ex]
    \begin{array}{lcl@{\qquad}l}
-   F; \LOOP~\X{bt}~\instr^\ast~\END &\stepto&
-     F; \LABEL_m\{\LOOP~\X{bt}~\instr^\ast~\END\}~\instr^\ast~\END
+   F; \val^m~\LOOP~\X{bt}~\instr^\ast~\END &\stepto&
+     F; \LABEL_m\{\LOOP~\X{bt}~\instr^\ast~\END\}~\val^m~\instr^\ast~\END
      & (\iff \expand_F(\X{bt}) = [t_1^m] \to [t_2^n])
    \end{array}
 
@@ -720,22 +728,26 @@ Control Instructions
 
 5. Pop the value :math:`\I32.\CONST~c` from the stack.
 
-6. If :math:`c` is non-zero, then:
+6. Assert: due to :ref:`validation <valid-if>`, there are at least :math:`m` values on the top of the stack.
 
-   a. :ref:`Enter <exec-instr-seq-enter>` the block :math:`\instr_1^\ast` with label :math:`L`.
+7. Pop the values :math:`\val^m` from the stack.
 
-7. Else:
+8. If :math:`c` is non-zero, then:
 
-   a. :ref:`Enter <exec-instr-seq-enter>` the block :math:`\instr_2^\ast` with label :math:`L`.
+   a. :ref:`Enter <exec-instr-seq-enter>` the block :math:`\val^m~\instr_1^\ast` with label :math:`L`.
+
+9. Else:
+
+   a. :ref:`Enter <exec-instr-seq-enter>` the block :math:`\val^m~\instr_2^\ast` with label :math:`L`.
 
 .. math::
    ~\\[-1ex]
    \begin{array}{lcl@{\qquad}l}
-   F; (\I32.\CONST~c)~\IF~\X{bt}~\instr_1^\ast~\ELSE~\instr_2^\ast~\END &\stepto&
-     F; \LABEL_n\{\epsilon\}~\instr_1^\ast~\END
+   F; \val^m~(\I32.\CONST~c)~\IF~\X{bt}~\instr_1^\ast~\ELSE~\instr_2^\ast~\END &\stepto&
+     F; \LABEL_n\{\epsilon\}~\val^m~\instr_1^\ast~\END
      & (\iff c \neq 0 \wedge \expand_F(\X{bt}) = [t_1^m] \to [t_2^n]) \\
-   F; (\I32.\CONST~c)~\IF~\X{bt}~\instr_1^\ast~\ELSE~\instr_2^\ast~\END &\stepto&
-     F; \LABEL_n\{\epsilon\}~\instr_2^\ast~\END
+   F; \val^m~(\I32.\CONST~c)~\IF~\X{bt}~\instr_1^\ast~\ELSE~\instr_2^\ast~\END &\stepto&
+     F; \LABEL_n\{\epsilon\}~\val^m~\instr_2^\ast~\END
      & (\iff c = 0 \wedge \expand_F(\X{bt}) = [t_1^m] \to [t_2^n]) \\
    \end{array}
 
