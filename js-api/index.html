@@ -5,9 +5,9 @@
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <meta content="ED" name="w3c-status">
   <meta content="This document provides an explicit JavaScript API for interacting with WebAssembly." name="abstract">
-  <meta content="Bikeshed version 98212c11613b78977e54b28cc53499f2ee83d388" name="generator">
+  <meta content="Bikeshed version 2dbd5e1f0bb11704a5d90167ddaef9475f9c26b3" name="generator">
   <link href="https://www.w3.org/TR/wasm-js-api-1/" rel="canonical">
-  <meta content="8082a1d8c2258de9dcb34453a7e38e04162d37ef" name="document-revision">
+  <meta content="263503eee4fb9d628c765c5fb0c1ffcf46be608b" name="document-revision">
 <style>
 emu-const {
     font-family: serif;
@@ -271,7 +271,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebAssembly JavaScript Interface</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-10-18">18 October 2019</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-11-07">7 November 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1755,8 +1755,8 @@ In practice, an implementation may run out of resources for valid modules below 
     <li>The maximum number of table entries in any table initialization is 10000000.
     <li>The maximum number of memories, including declared or imported memories, is 1.
     <li>The initial or maximum number of pages for any memory, declared or imported, is at most 32767.
-    <li>The maximum number of parameters to any function is 1000.
-    <li>The maximum number of return values for any function is 1.
+    <li>The maximum number of parameters to any function or block is 1000.
+    <li>The maximum number of return values for any function or block is 1000.
     <li>The maximum size of a function body, including locals declarations, is 7654321 bytes.
     <li>The maximum number of locals declared in a function, including implicitly declared as parameters, is 50000.
    </ul>
