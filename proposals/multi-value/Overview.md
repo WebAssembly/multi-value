@@ -78,7 +78,7 @@ Conditionally manipulating a stack operand without using a local.
 )
 ```
 
-An iterative factorial funciton whose loop doesn't use locals, but uses arguments like phis.
+An iterative factorial function whose loop doesn't use locals, but uses arguments like phis.
 ```wasm
 (func $fac (param i64) (result i64)
 	(i64.const 1) (get_local 0)
@@ -170,7 +170,7 @@ The text format is mostly unaffected, except that the syntax for block types is 
 
 ### Soundness Proof
 
-The typing of admininstrative instructions need to be generalised, see the paper.
+The typing of administrative instructions need to be generalised, see the paper.
 
 
 ## Possible Alternatives and Extensions
