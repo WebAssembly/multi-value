@@ -765,6 +765,26 @@
   ))
   "type mismatch"
 )
+(assert_invalid
+  (module (func $type-param-brif-void-vs-num
+        (f32.const 0)
+        (loop (param i32)
+            (drop)
+            (br_if 0 (f32.const 1))
+        )
+  ))
+  "type mismatch"
+)
+(assert_invalid
+  (module (func $type-param-brif-wrong-vs-num
+        (f32.const 0)
+        (loop (param i32)
+            (i64.const 0)
+            (br_if 0 (f32.const 1))
+        )
+  ))
+  "type mismatch"
+)
 
 (assert_malformed
   (module quote "(func (param i32) (result i32) loop (param $x i32) end)")

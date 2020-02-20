@@ -1470,6 +1470,12 @@
   ))
   "type mismatch"
 )
+(assert_invalid
+  (module (func $type-param-nested-poly-num-nondrop
+    (unreachable) (block (param i32))
+  ))
+  "type mismatch"
+)
 
 (assert_malformed
   (module quote "(func (param i32) (result i32) block (param $x i32) end)")
