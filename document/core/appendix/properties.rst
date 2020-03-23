@@ -157,6 +157,8 @@ Module instances are classified by *module contexts*, which are regular :ref:`co
 :ref:`Host Function Instances <syntax-funcinst>` :math:`\{\FITYPE~\functype, \FIHOSTCODE~\X{hf}\}`
 ..................................................................................................
 
+* The :ref:`function type <syntax-functype>` :math:`\functype` must be :ref:`valid <valid-functype>`.
+
 * Let :math:`[t_1^\ast] \to [t_2^\ast]` be the :ref:`function type <syntax-functype>` :math:`\functype`.
 
 * For every :ref:`valid <valid-store>` :ref:`store <syntax-store>` :math:`S_1` :ref:`extending <extend-store>` :math:`S` and every sequence :math:`\val^\ast` of :ref:`values <syntax-val>` whose :ref:`types <valid-val>` coincide with :math:`t_1^\ast`:
@@ -173,6 +175,10 @@ Module instances are classified by *module contexts*, which are regular :ref:`co
 
 .. math::
    \frac{
+     \begin{array}[b]{@{}l@{}}
+     \vdashfunctype [t_1^\ast] \to [t_2^\ast] \ok \\
+     \end{array}
+     \quad
      \begin{array}[b]{@{}l@{}}
      \forall S_1, \val^\ast,~
        {\vdashstore S_1 \ok} \wedge
