@@ -1,19 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Values &#8212; WebAssembly 1.0</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"MAXBUFFER": 30720}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Types" href="types.html" />
@@ -24,7 +24,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head> <script type="text/javascript">MathJax.Hub.Config({TeX: {MAXBUFFER: 30*1024}})</script><body>
+  </head><body>
   <div class="document">
     
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -65,17 +65,15 @@
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="documentwrapper">
@@ -126,12 +124,12 @@ As an additional constraint, the total number of bytes encoding a value of type 
   n{:}\href{../binary/values.html#binary-int}{\def\mathdef957#1{{\mathtt{s}#1}}\mathdef957{N}} &amp;\Rightarrow&amp; i &amp; (\mathrel{\mbox{if}} n = \href{../exec/numerics.html#aux-signed}{\mathrm{signed}}_{\href{../syntax/values.html#syntax-int}{\mathit{i}N}}(i))
 \end{array}\]</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>The side conditions <span class="math notranslate nohighlight">\(N &gt; 7\)</span> in the productions for non-terminal bytes of the <span class="math notranslate nohighlight">\(\def\mathdef993#1{{\mathit{u#1}}}\mathdef993{}\)</span> and <span class="math notranslate nohighlight">\(\def\mathdef994#1{{\mathit{s#1}}}\mathdef994{}\)</span> encodings restrict the encoding’s length.
 However, “trailing zeros” are still allowed within these bounds.
 For example, <span class="math notranslate nohighlight">\(\def\mathdef995#1{\mathtt{0x#1}}\mathdef995{03}\)</span> and <span class="math notranslate nohighlight">\(\def\mathdef996#1{\mathtt{0x#1}}\mathdef996{83}~\def\mathdef997#1{\mathtt{0x#1}}\mathdef997{00}\)</span> are both well-formed encodings for the value <span class="math notranslate nohighlight">\(3\)</span> as a <span class="math notranslate nohighlight">\(\href{../syntax/values.html#syntax-int}{\mathit{u8}}\)</span>.
 Similarly, either of <span class="math notranslate nohighlight">\(\def\mathdef998#1{\mathtt{0x#1}}\mathdef998{7e}\)</span> and <span class="math notranslate nohighlight">\(\def\mathdef999#1{\mathtt{0x#1}}\mathdef999{FE}~\def\mathdef1000#1{\mathtt{0x#1}}\mathdef1000{7F}\)</span> and <span class="math notranslate nohighlight">\(\def\mathdef1001#1{\mathtt{0x#1}}\mathdef1001{FE}~\def\mathdef1002#1{\mathtt{0x#1}}\mathdef1002{FF}~\def\mathdef1003#1{\mathtt{0x#1}}\mathdef1003{7F}\)</span> are well-formed encodings of the value <span class="math notranslate nohighlight">\(-2\)</span> as a <span class="math notranslate nohighlight">\(\href{../syntax/values.html#syntax-int}{\mathit{s16}}\)</span>.</p>
-<p class="last">The side conditions on the value <span class="math notranslate nohighlight">\(n\)</span> of terminal bytes further enforce that
+<p>The side conditions on the value <span class="math notranslate nohighlight">\(n\)</span> of terminal bytes further enforce that
 any unused bits in these bytes must be <span class="math notranslate nohighlight">\(0\)</span> for positive values and <span class="math notranslate nohighlight">\(1\)</span> for negative ones.
 For example, <span class="math notranslate nohighlight">\(\def\mathdef1004#1{\mathtt{0x#1}}\mathdef1004{83}~\def\mathdef1005#1{\mathtt{0x#1}}\mathdef1005{10}\)</span> is malformed as a <span class="math notranslate nohighlight">\(\href{../syntax/values.html#syntax-int}{\mathit{u8}}\)</span> encoding.
 Similarly, both <span class="math notranslate nohighlight">\(\def\mathdef1006#1{\mathtt{0x#1}}\mathdef1006{83}~\def\mathdef1007#1{\mathtt{0x#1}}\mathdef1007{3E}\)</span> and <span class="math notranslate nohighlight">\(\def\mathdef1008#1{\mathtt{0x#1}}\mathdef1008{FF}~\def\mathdef1009#1{\mathtt{0x#1}}\mathdef1009{7B}\)</span> are malformed as <span class="math notranslate nohighlight">\(\href{../syntax/values.html#syntax-int}{\mathit{s8}}\)</span> encodings.</p>
@@ -184,8 +182,8 @@ Similarly, both <span class="math notranslate nohighlight">\(\def\mathdef1006#1{
 \mathrel{\mbox{where}} b_2, b_3, b_4 &lt; \def\mathdef1028#1{\mathtt{0x#1}}\mathdef1028{C0} \\
 \end{array}\end{split}\]</div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Unlike in some other formats, name strings are not 0-terminated.</p>
+<p class="admonition-title">Note</p>
+<p>Unlike in some other formats, name strings are not 0-terminated.</p>
 </div>
 </div>
 </div>
