@@ -164,8 +164,8 @@ The implementation consumes a WebAssembly AST given in S-expression syntax. Here
 
 Note: The grammar is shown here for convenience, the definite source is the [specification of the text format](https://webassembly.github.io/spec/core/text/).
 ```
-num:    <digit> (_? <digit>)*
-hexnum: <hexdigit> (_? <hexdigit>)*
+num:    <digit>(_? <digit>)*
+hexnum: <hexdigit>(_? <hexdigit>)*
 nat:    <num> | 0x<hexnum>
 int:    <nat> | +<nat> | -<nat>
 float:  <num>.<num>?(e|E <num>)? | 0x<hexnum>.<hexnum>?(p|P <num>)?
@@ -236,23 +236,23 @@ op:
 
 func:    ( func <name>? <func_type> <local>* <instr>* )
          ( func <name>? ( export <string> ) <...> )                         ;; = (export <string> (func <N>)) (func <name>? <...>)
-         ( func <name>? ( import <string> <string> ) <func_type>)           ;; = (import <name>? <string> <string> (func <func_type>))
+         ( func <name>? ( import <string> <string> ) <func_type>)           ;; = (import <string> <string> (func <name>? <func_type>))
 param:   ( param <val_type>* ) | ( param <name> <val_type> )
 result:  ( result <val_type>* )
 local:   ( local <val_type>* ) | ( local <name> <val_type> )
 
 global:  ( global <name>? <global_type> <instr>* )
          ( global <name>? ( export <string> ) <...> )                       ;; = (export <string> (global <N>)) (global <name>? <...>)
-         ( global <name>? ( import <string> <string> ) <global_type> )      ;; = (import <name>? <string> <string> (global <global_type>))
+         ( global <name>? ( import <string> <string> ) <global_type> )      ;; = (import <string> <string> (global <name>? <global_type>))
 table:   ( table <name>? <table_type> )
          ( table <name>? ( export <string> ) <...> )                        ;; = (export <string> (table <N>)) (table <name>? <...>)
-         ( table <name>? ( import <string> <string> ) <table_type> )        ;; = (import <name>? <string> <string> (table <table_type>))
+         ( table <name>? ( import <string> <string> ) <table_type> )        ;; = (import <string> <string> (table <name>? <table_type>))
          ( table <name>? ( export <string> )* <elem_type> ( elem <var>* ) ) ;; = (table <name>? ( export <string> )* <size> <size> <elem_type>) (elem (i32.const 0) <var>*)
 elem:    ( elem <var>? (offset <instr>* ) <var>* )
          ( elem <var>? <expr> <var>* )                                      ;; = (elem <var>? (offset <expr>) <var>*)
 memory:  ( memory <name>? <memory_type> )
          ( memory <name>? ( export <string> ) <...> )                       ;; = (export <string> (memory <N>))+ (memory <name>? <...>)
-         ( memory <name>? ( import <string> <string> ) <memory_type> )      ;; = (import <name>? <string> <string> (memory <memory_type>))
+         ( memory <name>? ( import <string> <string> ) <memory_type> )      ;; = (import <string> <string> (memory <name>? <memory_type>))
          ( memory <name>? ( export <string> )* ( data <string>* ) )         ;; = (memory <name>? ( export <string> )* <size> <size>) (data (i32.const 0) <string>*)
 data:    ( data <var>? ( offset <instr>* ) <string>* )
          ( data <var>? <expr> <string>* )                                   ;; = (data <var>? (offset <expr>) <string>*)
@@ -324,15 +324,21 @@ action:
   ( get <name>? <string> )                   ;; get global export
 
 assertion:
-  ( assert_return <action> <expr>* )         ;; assert action has expected results
-  ( assert_return_canonical_nan <action> )   ;; assert action results in NaN in a canonical form
-  ( assert_return_arithmetic_nan <action> )  ;; assert action results in NaN with 1 in MSB of fraction field
+  ( assert_return <action> <result>* )       ;; assert action has expected results
   ( assert_trap <action> <failure> )         ;; assert action traps with given failure string
   ( assert_exhaustion <action> <failure> )   ;; assert action exhausts system resources
   ( assert_malformed <module> <failure> )    ;; assert module cannot be decoded with given failure string
   ( assert_invalid <module> <failure> )      ;; assert module is invalid with given failure string
   ( assert_unlinkable <module> <failure> )   ;; assert module fails to link
   ( assert_trap <module> <failure> )         ;; assert module traps on instantiation
+
+result:
+  ( <val_type>.const <numpat> )
+
+numpat:
+  <value>                                    ;; literal result
+  nan:canonical                              ;; NaN in canonical form
+  nan:arithmetic                             ;; NaN with 1 in MSB of payload
 
 meta:
   ( script <name>? <script> )                ;; name a subscript
@@ -350,10 +356,61 @@ A module of the form `(module quote <string>*)` is given in textual form and wil
 There are also a number of meta commands.
 The `script` command is a simple mechanism to name sub-scripts themselves. This is mainly useful for converting scripts with the `output` command. Commands inside a `script` will be executed normally, but nested meta are expanded in place (`input`, recursively) or elided (`output`) in the named script.
 
-The `input` and `output` meta commands determine the requested file format from the file name extension. They can handle both `.wasm`, `.wat`, and `.wast` files. In the case of input, a `.wast` script will be recursively executed. Output additionally handles `.js` as a target, which will convert the referenced script to an equivalent, self-contained JavaScript runner. It also recognises `.bin.wast` specially, which creates a script where module definitions are in binary.
+The `input` and `output` meta commands determine the requested file format from the file name extension. They can handle both `.wasm`, `.wat`, and `.wast` files. In the case of input, a `.wast` script will be recursively executed. Output additionally handles `.js` as a target, which will convert the referenced script to an equivalent, self-contained JavaScript runner. It also recognises `.bin.wast` specially, which creates a _binary script_ where module definitions are in binary, as defined below.
 
 The interpreter supports a "dry" mode (flag `-d`), in which modules are only validated. In this mode, all actions and assertions are ignored.
 It also supports an "unchecked" mode (flag `-u`), in which module definitions are not validated before use.
+
+### Binary Scripts
+
+The grammar of binary scripts is a subset of the grammar for general scripts:
+```
+binscript: <cmd>*
+
+cmd:
+  <module>                                   ;; define, validate, and initialize module
+  ( register <string> <name>? )              ;; register module for imports
+module with given failure string
+  <action>                                   ;; perform action and print results
+  <assertion>                                ;; assert result of an action
+
+module:
+  ( module <name>? binary <string>* )        ;; module in binary format (may be malformed)
+
+action:
+  ( invoke <name>? <string> <expr>* )        ;; invoke function export
+  ( get <name>? <string> )                   ;; get global export
+
+assertion:
+  ( assert_return <action> <result>* )       ;; assert action has expected results
+  ( assert_trap <action> <failure> )         ;; assert action traps with given failure string
+  ( assert_exhaustion <action> <failure> )   ;; assert action exhausts system resources
+  ( assert_malformed <module> <failure> )    ;; assert module cannot be decoded with given failure string
+  ( assert_invalid <module> <failure> )      ;; assert module is invalid with given failure string
+  ( assert_unlinkable <module> <failure> )   ;; assert module fails to link
+  ( assert_trap <module> <failure> )         ;; assert module traps on instantiation
+
+result:
+  ( <val_type>.const <numpat> )
+
+numpat:
+  <value>                                    ;; literal result
+  nan:canonical                              ;; NaN in canonical form
+  nan:arithmetic                             ;; NaN with 1 in MSB of payload
+
+value:  <int> | <float>
+int:    0x<hexnum>
+float:  0x<hexnum>.<hexnum>?(p|P <num>)?
+hexnum: <hexdigit>(_? <hexdigit>)*
+
+name:   $(<letter> | <digit> | _ | . | + | - | * | / | \ | ^ | ~ | = | < | > | ! | ? | @ | # | $ | % | & | | | : | ' | `)+
+string: "(<char> | \n | \t | \\ | \' | \" | \<hex><hex> | \u{<hex>+})*"
+```
+This grammar removes meta commands, textual and quoted modules.
+All numbers are in hex notation.
+
+Moreover, float values are required to be precise, that is, they may not contain bits that would lead to rounding.
+
 
 ## Abstract Syntax
 
