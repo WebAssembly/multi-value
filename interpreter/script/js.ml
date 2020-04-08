@@ -138,7 +138,7 @@ function assert_return(action, ...expected) {
         // Note that JS can't reliably distinguish different NaN values,
         // so there's no good way to test that it's a canonical NaN.
         if (!Number.isNaN(actual[i])) {
-          throw new Error("Wasm return value NaN expected, got " + actual);
+          throw new Error("Wasm return value NaN expected, got " + actual[i]);
         };
         return;
       default:
