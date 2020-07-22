@@ -2,7 +2,7 @@
 
 # Multi-value Proposal for WebAssembly
 
-**Note: This proposal has been merged into the WebAssemlby standard on 2020/04/09.**
+**Note: This proposal has been merged into the WebAssembly standard on 2020/04/09.**
 
 This repository is a clone of [github.com/WebAssembly/spec/](https://github.com/WebAssembly/spec/).
 It is meant for discussion, prototype specification and implementation of a proposal to add support for returning multiple values to WebAssembly.
